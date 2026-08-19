@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-leaflet";
+import React, { useEffect, useRef } from "react";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 export interface Waypoint {
   id: string;
@@ -23,131 +23,147 @@ interface MapInnerProps {
   onSelectWaypoint: (wp: Waypoint) => void;
 }
 
-// Helper component to center map on active waypoint selection
-function MapRecenter({ center }: { center: [number, number] }) {
-  const map = useMap();
-  useEffect(() => {
-    map.flyTo(center, 7, { duration: 1.2 });
-  }, [center, map]);
-  return null;
-}
-
 export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint }: MapInnerProps) {
-  const activeWp = waypoints.find((w) => w.id === activeWaypointId) || waypoints[1];
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
 
-  // Custom Icon Builders
-  const createMarkerIcon = (status: string) => {
-    if (status === "current") {
-      return L.divIcon({
-        className: "pulse-marker-container",
-        html: `<div class="pulse-marker-ring"></div><div class="pulse-marker-dot"></div>`,
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
+  useEffect(() => {
+    if (!mapContainerRef.current) return;
+
+    // Initialize Leaflet map instance once
+    if (!mapInstanceRef.current) {
+      const activeWp = waypoints.find((w) => w.id === activeWaypointId) || waypoints[1];
+      
+      const map = L.map(mapContainerRef.current, {
+        center: activeWp.coordinates,
+        zoom: 6,
+        scrollWheelZoom: false,
+        zoomControl: true,
       });
+
+      // CartoDB Dark Matter Tile Layer
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 19,
+      }).addTo(map);
+
+      mapInstanceRef.current = map;
     }
 
-    if (status === "completed") {
-      return L.divIcon({
-        className: "custom-completed-pin",
-        html: `<div style="width: 14px; height: 14px; background: #E07A5F; border: 2px solid #F4F1DE; border-radius: 50%; box-shadow: 0 0 10px rgba(224,122,95,0.6);"></div>`,
-        iconSize: [14, 14],
-        iconAnchor: [7, 7],
-      });
-    }
+    const map = mapInstanceRef.current;
 
-    return L.divIcon({
-      className: "custom-upcoming-pin",
-      html: `<div style="width: 10px; height: 10px; background: #515E58; border: 2px solid #1F2421; border-radius: 50%;"></div>`,
-      iconSize: [10, 10],
-      iconAnchor: [5, 5],
+    // Clear existing polylines & markers on re-render
+    map.eachLayer((layer) => {
+      if (layer instanceof L.Polyline || layer instanceof L.Marker) {
+        map.removeLayer(layer);
+      }
     });
-  };
 
-  // Build Polylines: completed line & upcoming line
-  const completedCoords: [number, number][] = waypoints
-    .filter((w) => w.status === "completed" || w.status === "current")
-    .map((w) => w.coordinates);
+    // Custom Icon Builder
+    const createMarkerIcon = (status: string) => {
+      if (status === "current") {
+        return L.divIcon({
+          className: "pulse-marker-container",
+          html: `<div class="pulse-marker-ring"></div><div class="pulse-marker-dot"></div>`,
+          iconSize: [40, 40],
+          iconAnchor: [20, 20],
+        });
+      }
 
-  const upcomingCoords: [number, number][] = waypoints
-    .filter((w) => w.status === "current" || w.status === "upcoming")
-    .map((w) => w.coordinates);
+      if (status === "completed") {
+        return L.divIcon({
+          className: "custom-completed-pin",
+          html: `<div style="width: 14px; height: 14px; background: #E07A5F; border: 2px solid #F4F1DE; border-radius: 50%; box-shadow: 0 0 10px rgba(224,122,95,0.6);"></div>`,
+          iconSize: [14, 14],
+          iconAnchor: [7, 7],
+        });
+      }
+
+      return L.divIcon({
+        className: "custom-upcoming-pin",
+        html: `<div style="width: 10px; height: 10px; background: #515E58; border: 2px solid #1F2421; border-radius: 50%;"></div>`,
+        iconSize: [10, 10],
+        iconAnchor: [5, 5],
+      });
+    };
+
+    // Draw Completed Route Line
+    const completedCoords = waypoints
+      .filter((w) => w.status === "completed" || w.status === "current")
+      .map((w) => w.coordinates);
+
+    if (completedCoords.length > 1) {
+      L.polyline(completedCoords, {
+        color: "#E07A5F",
+        weight: 5,
+        opacity: 0.9,
+        lineCap: "round",
+      }).addTo(map);
+    }
+
+    // Draw Upcoming Route Line
+    const upcomingCoords = waypoints
+      .filter((w) => w.status === "current" || w.status === "upcoming")
+      .map((w) => w.coordinates);
+
+    if (upcomingCoords.length > 1) {
+      L.polyline(upcomingCoords, {
+        color: "#81B29A",
+        weight: 3,
+        dashArray: "8, 12",
+        opacity: 0.7,
+        lineCap: "round",
+      }).addTo(map);
+    }
+
+    // Add Markers
+    waypoints.forEach((wp) => {
+      const marker = L.marker(wp.coordinates, {
+        icon: createMarkerIcon(wp.status),
+      }).addTo(map);
+
+      const popupContent = `
+        <div style="padding: 4px; max-width: 240px; font-family: sans-serif;">
+          <div style="font-weight: bold; font-size: 14px; color: #F4F1DE; border-bottom: 1px solid rgba(224,122,95,0.3); padding-bottom: 4px;">
+            ${wp.name}
+          </div>
+          <p style="font-size: 12px; color: #D8D4BC; margin-top: 6px; line-height: 1.4;">
+            "${wp.storySnippet}"
+          </p>
+          ${
+            wp.driverName
+              ? `<div style="font-size: 11px; color: #F2CC8F; margin-top: 6px; font-family: monospace;">🚗 Ride: ${wp.driverName} (${wp.rideVehicle || "Vehicle"})</div>`
+              : ""
+          }
+        </div>
+      `;
+
+      marker.bindPopup(popupContent);
+      marker.on("click", () => onSelectWaypoint(wp));
+    });
+
+    // Center Map on Active Waypoint
+    const activeWp = waypoints.find((w) => w.id === activeWaypointId);
+    if (activeWp) {
+      map.flyTo(activeWp.coordinates, 7, { duration: 1.2 });
+    }
+  }, [waypoints, activeWaypointId, onSelectWaypoint]);
+
+  // Clean cleanup on component unmount
+  useEffect(() => {
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, []);
 
   return (
-    <MapContainer
-      center={activeWp.coordinates}
-      zoom={6}
-      scrollWheelZoom={false}
+    <div
+      ref={mapContainerRef}
       style={{ width: "100%", height: "100%", borderRadius: "24px" }}
-    >
-      {/* Dark modern map tile layer (CartoDB Dark Matter) */}
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-      />
-
-      <MapRecenter center={activeWp.coordinates} />
-
-      {/* Completed Polyline - Solid Amber Glow */}
-      {completedCoords.length > 1 && (
-        <Polyline
-          positions={completedCoords}
-          pathOptions={{
-            color: "#E07A5F",
-            weight: 5,
-            opacity: 0.9,
-            lineCap: "round",
-          }}
-        />
-      )}
-
-      {/* Upcoming Polyline - Dashed Muted Asphalt Line */}
-      {upcomingCoords.length > 1 && (
-        <Polyline
-          positions={upcomingCoords}
-          pathOptions={{
-            color: "#81B29A",
-            weight: 3,
-            dashArray: "8, 12",
-            opacity: 0.7,
-            lineCap: "round",
-          }}
-        />
-      )}
-
-      {/* Waypoint Markers */}
-      {waypoints.map((wp) => (
-        <Marker
-          key={wp.id}
-          position={wp.coordinates}
-          icon={createMarkerIcon(wp.status)}
-          eventHandlers={{
-            click: () => onSelectWaypoint(wp),
-          }}
-        >
-          <Popup>
-            <div className="p-2 space-y-1.5 max-w-xs font-sans">
-              <div className="flex items-center justify-between border-b border-asphalt-border/60 pb-1">
-                <span className="font-bold text-sm text-parchment">{wp.name}</span>
-                <span className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full ${
-                  wp.status === "current"
-                    ? "bg-amber-desert/20 text-amber-desert border border-amber-desert/40"
-                    : wp.status === "completed"
-                    ? "bg-sage/20 text-sage"
-                    : "bg-asphalt-card text-parchment-muted"
-                }`}>
-                  {wp.status === "current" ? "📍 Current Stop" : wp.status === "completed" ? "✓ Visited" : "Upcoming"}
-                </span>
-              </div>
-              <p className="text-xs text-parchment-muted leading-relaxed">{wp.storySnippet}</p>
-              {wp.driverName && (
-                <div className="text-[11px] text-sunset font-mono pt-1">
-                  🚗 Ride: {wp.driverName} ({wp.rideVehicle || "Vehicle"})
-                </div>
-              )}
-            </div>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+      className="w-full h-full rounded-3xl overflow-hidden"
+    />
   );
 }
