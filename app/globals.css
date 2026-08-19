@@ -1,0 +1,134 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-desert-amber: #E07A5F;
+  --color-highway-asphalt: #1F2421;
+  --color-warm-parchment: #F4F1DE;
+  --color-sage: #81B29A;
+  --color-sunset: #F2CC8F;
+}
+
+body {
+  background-color: #161917;
+  color: #F4F1DE;
+  font-family: var(--font-outfit), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #191D1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #363E3A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E07A5F;
+}
+
+/* Custom Selection */
+::selection {
+  background: rgba(224, 122, 95, 0.4);
+  color: #F4F1DE;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(31, 36, 33, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(244, 241, 222, 0.08);
+}
+
+.glass-card {
+  background: rgba(39, 46, 42, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 122, 95, 0.15);
+}
+
+.glass-card:hover {
+  border-color: rgba(224, 122, 95, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(224, 122, 95, 0.15);
+}
+
+/* Animated Gradient Text */
+.text-gradient-amber {
+  background: linear-gradient(135deg, #F4F1DE 0%, #F2CC8F 50%, #E07A5F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F2CC8F 70%, #E07A5F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Leaflet Map Customizations */
+.leaflet-container {
+  background-color: #1a1e1b !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(31, 36, 33, 0.95) !important;
+  backdrop-filter: blur(12px);
+  color: #F4F1DE !important;
+  border: 1px solid rgba(224, 122, 95, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+  padding: 4px;
+}
+
+.leaflet-popup-tip {
+  background: rgba(31, 36, 33, 0.95) !important;
+  border: 1px solid rgba(224, 122, 95, 0.3) !important;
+}
+
+/* Map Pulse Marker */
+.pulse-marker-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-marker-dot {
+  width: 16px;
+  height: 16px;
+  background-color: #E07A5F;
+  border: 3px solid #F4F1DE;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(224, 122, 95, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+.pulse-marker-ring {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(224, 122, 95, 0.4);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  z-index: 1;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  80%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}

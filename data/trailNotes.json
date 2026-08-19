@@ -1,0 +1,74 @@
+[
+  {
+    "id": "note-1",
+    "name": "Sarah & Dave Miller",
+    "handle": "@smiller_travels",
+    "amount": 35,
+    "tier": "Warm Diner Meal for Two",
+    "city": "Flagstaff, AZ",
+    "timestamp": "2 hours ago",
+    "message": "We saw your story on TikTok! Safe travels across Northern AZ. Grab a hot meal at the Route 66 diner when you roll into town!",
+    "likes": 24,
+    "verified": true
+  },
+  {
+    "id": "note-2",
+    "name": "Captain Dan",
+    "handle": "@dan_the_trucker",
+    "amount": 75,
+    "tier": "Emergency Motel Room in a Storm",
+    "city": "Barstow, CA",
+    "timestamp": "5 hours ago",
+    "message": "Been driving rig 18-wheelers for 22 years. The news lies about America—there's good folks at every exit. Keep your head up boys!",
+    "likes": 56,
+    "verified": true
+  },
+  {
+    "id": "note-3",
+    "name": "Maya Lin",
+    "handle": "@mayalin_design",
+    "amount": 15,
+    "tier": "Hot Truck Stop Shower & Laundry",
+    "city": "Los Angeles, CA",
+    "timestamp": "1 day ago",
+    "message": "Sending good vibes from LA! Nothing like a fresh shower after 8 hours standing on the highway ramp. Rooting for you Lee & Jake!",
+    "likes": 18,
+    "verified": false
+  },
+  {
+    "id": "note-4",
+    "name": "Tyler Vance",
+    "handle": "@tvance_outdoors",
+    "amount": 5,
+    "tier": "Gas Station Coffee & Power Snack",
+    "city": "Albuquerque, NM",
+    "timestamp": "1 day ago",
+    "message": "Black coffee & beef jerky energy fuel! Can't wait till you guys cross into New Mexico.",
+    "likes": 9,
+    "verified": false
+  },
+  {
+    "id": "note-5",
+    "name": "The Henderson Family",
+    "handle": "@henderson_roadtrip",
+    "amount": 100,
+    "tier": "Custom Legend Supporter",
+    "city": "Columbus, OH",
+    "timestamp": "2 days ago",
+    "message": "Ohio is waiting for you! We're showing our kids your daily updates to teach them about trust and open minds. Godspeed!",
+    "likes": 42,
+    "verified": true
+  },
+  {
+    "id": "note-6",
+    "name": "Chloe Bennett",
+    "handle": "@chloebennett_art",
+    "amount": 35,
+    "tier": "Warm Diner Meal for Two",
+    "city": "St. Louis, MO",
+    "timestamp": "3 days ago",
+    "message": "Proof that human warmth is alive and well. Enjoy dinner on me when you hit the Gateway Arch!",
+    "likes": 15,
+    "verified": false
+  }
+]

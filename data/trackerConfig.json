@@ -1,0 +1,153 @@
+{
+  "journeyTitle": "Trusting The Thumb: 2,000 Miles Across America",
+  "creators": {
+    "lee": {
+      "name": "Lee Parsons",
+      "age": 23,
+      "handle": "@theleeparsons",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+      "socials": {
+        "youtube": "https://youtube.com/@theleeparsons",
+        "tiktok": "https://tiktok.com/@theleeparsons",
+        "instagram": "https://instagram.com/theleeparsons"
+      }
+    },
+    "jake": {
+      "name": "Jake Parsons",
+      "age": 20,
+      "handle": "@Jake_thedrummer26",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      "socials": {
+        "youtube": "https://youtube.com/@Jake_thedrummer26",
+        "tiktok": "https://tiktok.com/@Jake_thedrummer26",
+        "instagram": "https://instagram.com/Jake_thedrummer26"
+      }
+    }
+  },
+  "liveStatus": {
+    "state": "active",
+    "statusBadgeText": "On the Road: Barstow, CA",
+    "statusType": "on_road",
+    "currentCity": "Barstow, CA",
+    "currentCoordinates": [34.8958, -117.0173],
+    "lastUpdated": "2026-08-19T14:30:00Z",
+    "currentNote": "Waiting near Interstate 40 ramp with sign 'ANYWHERE EAST'. Hot sun, high spirits!"
+  },
+  "metrics": {
+    "milesTraveled": 482,
+    "totalMilesGoal": 2150,
+    "ridesCaught": 7,
+    "daysOnHighway": 4,
+    "generosityCounter": 14
+  },
+  "waypoints": [
+    {
+      "id": "la",
+      "name": "Los Angeles, CA",
+      "state": "CA",
+      "coordinates": [34.0522, -118.2437],
+      "status": "completed",
+      "mileMarker": 0,
+      "dateCompleted": "Sept 20, 2026",
+      "storySnippet": "Started with $40 in our pockets, two 65L backpacks, and thumbs high on Santa Monica Blvd.",
+      "driverName": "Marcus (Construction Worker)",
+      "rideVehicle": "1998 Ford F-150"
+    },
+    {
+      "id": "barstow",
+      "name": "Barstow, CA",
+      "state": "CA",
+      "coordinates": [34.8958, -117.0173],
+      "status": "current",
+      "mileMarker": 115,
+      "dateCompleted": "Sept 21, 2026",
+      "storySnippet": "Marcus drove us 115 miles across the High Desert. Bought us 2 cold Gatorades and wished us luck.",
+      "driverName": "Marcus & Elena",
+      "rideVehicle": "Ford F-150 / Dodge Van"
+    },
+    {
+      "id": "flagstaff",
+      "name": "Flagstaff, AZ",
+      "state": "AZ",
+      "coordinates": [35.1983, -111.6513],
+      "status": "upcoming",
+      "mileMarker": 482,
+      "dateCompleted": null,
+      "storySnippet": "Targeting the pine forests of Northern Arizona along Route 66.",
+      "driverName": null,
+      "rideVehicle": null
+    },
+    {
+      "id": "albuquerque",
+      "name": "Albuquerque, NM",
+      "state": "NM",
+      "coordinates": [35.0844, -106.6504],
+      "status": "upcoming",
+      "mileMarker": 805,
+      "dateCompleted": null,
+      "storySnippet": "Crossing into the Land of Enchantment. Hoping for a long-haul trucker ride.",
+      "driverName": null,
+      "rideVehicle": null
+    },
+    {
+      "id": "amarillo",
+      "name": "Amarillo, TX",
+      "state": "TX",
+      "coordinates": [35.222, -101.8313],
+      "status": "upcoming",
+      "mileMarker": 1092,
+      "dateCompleted": null,
+      "storySnippet": "Panhandle plains ahead. Big skies and classic Texas hospitality.",
+      "driverName": null,
+      "rideVehicle": null
+    },
+    {
+      "id": "okc",
+      "name": "Oklahoma City, OK",
+      "state": "OK",
+      "coordinates": [35.4676, -97.5164],
+      "status": "upcoming",
+      "mileMarker": 1350,
+      "dateCompleted": null,
+      "storySnippet": "Connecting Route 66 into I-44 towards the heartland.",
+      "driverName": null,
+      "rideVehicle": null
+    },
+    {
+      "id": "stlouis",
+      "name": "St. Louis, MO",
+      "state": "MO",
+      "coordinates": [38.627, -90.1994],
+      "status": "upcoming",
+      "mileMarker": 1850,
+      "dateCompleted": null,
+      "storySnippet": "The Gateway to the West. Crossing the Mississippi River.",
+      "driverName": null,
+      "rideVehicle": null
+    },
+    {
+      "id": "indianapolis",
+      "name": "Indianapolis, IN",
+      "state": "IN",
+      "coordinates": [39.7684, -86.1581],
+      "status": "upcoming",
+      "mileMarker": 2090,
+      "dateCompleted": null,
+      "storySnippet": "Final stretch on I-70 East towards the finish line.",
+      "driverName": null,
+      "rideVehicle": null
+    },
+    {
+      "id": "ohio",
+      "name": "Columbus, OH (Finish Line)",
+      "state": "OH",
+      "coordinates": [39.9612, -82.9988],
+      "status": "upcoming",
+      "mileMarker": 2150,
+      "dateCompleted": null,
+      "storySnippet": "The finish line! Home state reunion after 2,000 miles of trusting thumbs and human kindness.",
+      "driverName": null,
+      "rideVehicle": null
+    }
+  ]
+}
