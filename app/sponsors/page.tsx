@@ -10,10 +10,6 @@ import {
   Send, 
   Download, 
   CheckCircle2, 
-  Shirt, 
-  BatteryCharging, 
-  Apple, 
-  Smartphone, 
   Mail, 
   User, 
   Briefcase,
@@ -66,13 +62,6 @@ export default function SponsorsPage() {
     }
   };
 
-  const categories = [
-    { icon: Shirt, title: "Outdoor & Layering Gear", examples: "Backpacks, boots, weather-proof jackets, socks" },
-    { icon: BatteryCharging, title: "Portable Power & Solar", examples: "Power banks, solar chargers, rugged cables" },
-    { icon: Apple, title: "Nutrition & Hydration", examples: "Energy bars, electrolyte mix, beef jerky, water filters" },
-    { icon: Smartphone, title: "Travel Tech & Hardware", examples: "Action cameras, satellite communicators, audio gear" },
-  ];
-
   return (
     <main className="min-h-screen bg-asphalt-darker text-parchment relative selection:bg-amber-desert/30">
       
@@ -101,18 +90,18 @@ export default function SponsorsPage() {
           </div>
 
           {/* Banner Callout */}
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-desert/15 border border-amber-desert/40 text-amber-desert text-xs font-mono font-bold uppercase shadow-amber-glow">
               <Building2 className="w-4 h-4" />
               Brand Partnerships & Sponsorship Hub
             </div>
 
             <h1 className="font-display text-4xl sm:text-6xl font-black text-parchment">
-              TEST YOUR GEAR <span className="text-gradient-amber">IN THE FIELD</span>
+              PARTNER WITH <span className="text-gradient-amber">THE BROTHERS</span>
             </h1>
             
             <p className="text-base sm:text-lg text-parchment-muted leading-relaxed">
-              Partner with Lee and Jake as they put products through 2,000 miles of extreme real-world highway testing starting October 1st, 2026 across TikTok, IG Reels, and YouTube.
+              Partner with Lee and Jake as they hitchhike 2,000 miles across America starting October 1st, 2026.
             </p>
 
             <div className="pt-2">
@@ -123,68 +112,6 @@ export default function SponsorsPage() {
                 <Download className="w-4 h-4 text-amber-desert" />
                 <span>Download Sponsor One-Sheet / Media Deck</span>
               </button>
-            </div>
-          </div>
-
-          {/* Value Propositions */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
-            <div className="bg-asphalt-card/80 p-6 rounded-3xl border border-asphalt-border space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-desert/15 border border-amber-desert/30 flex items-center justify-center text-amber-desert font-bold">
-                01
-              </div>
-              <h3 className="font-display font-bold text-lg text-parchment">
-                Daily Short-Form Reach
-              </h3>
-              <p className="text-xs text-parchment-muted leading-relaxed">
-                Multiple daily video drops on TikTok, IG Reels, and YouTube Shorts reaching highly engaged outdoors, travel, and adventure audiences.
-              </p>
-            </div>
-
-            <div className="bg-asphalt-card/80 p-6 rounded-3xl border border-asphalt-border space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-sunset/15 border border-sunset/30 flex items-center justify-center text-sunset font-bold">
-                02
-              </div>
-              <h3 className="font-display font-bold text-lg text-parchment">
-                Extreme Field Testing
-              </h3>
-              <p className="text-xs text-parchment-muted leading-relaxed">
-                No staged studio shoots—authentic, rugged integration in desert heat, mountain passes, truck stops, and roadside weather.
-              </p>
-            </div>
-
-            <div className="bg-asphalt-card/80 p-6 rounded-3xl border border-asphalt-border space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-sage/15 border border-sage/30 flex items-center justify-center text-sage font-bold">
-                03
-              </div>
-              <h3 className="font-display font-bold text-lg text-parchment">
-                High-Res Commercial Assets
-              </h3>
-              <p className="text-xs text-parchment-muted leading-relaxed">
-                Full rights licensing for high-resolution photography and 4K cinema video deliverables ready for your brand&apos;s ad campaigns.
-              </p>
-            </div>
-          </div>
-
-          {/* Target Categories */}
-          <div className="mb-16 max-w-5xl mx-auto">
-            <h3 className="font-display font-bold text-xl text-parchment mb-6 text-center">
-              Target Sponsor Categories
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {categories.map((cat) => {
-                const Icon = cat.icon;
-                return (
-                  <div key={cat.title} className="bg-asphalt-card/60 p-5 rounded-2xl border border-asphalt-border/60 flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-asphalt-darker border border-amber-desert/30 text-amber-desert shrink-0">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-display font-bold text-sm text-parchment">{cat.title}</h4>
-                      <p className="text-[11px] text-parchment-muted mt-1 leading-normal">{cat.examples}</p>
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </div>
 
