@@ -6,12 +6,16 @@ import Hero from "@/components/Hero";
 import RouteTracker from "@/components/RouteTracker";
 import OurStats from "@/components/OurStats";
 import Mission from "@/components/Mission";
+import DriverStories from "@/components/DriverStories";
 import OurRules from "@/components/OurRules";
 import BucketList from "@/components/BucketList";
 import Hotline from "@/components/Hotline";
+import TipJarSection from "@/components/TipJarSection";
+import SponsorsSection from "@/components/SponsorsSection";
 import Footer from "@/components/Footer";
 
 import initialTrackerConfig from "@/data/trackerConfig.json";
+import initialDriverStories from "@/data/driverStories.json";
 
 export default function HomePage() {
   const [config] = useState(initialTrackerConfig);
@@ -43,6 +47,9 @@ export default function HomePage() {
       {/* Deep Mission Statement & Creator Profiles */}
       <Mission />
 
+      {/* Driver Stories - Voices from the Highway */}
+      <DriverStories initialStories={initialDriverStories as any} />
+
       {/* Our Rules of the Road */}
       <OurRules />
 
@@ -51,6 +58,12 @@ export default function HomePage() {
 
       {/* Hitchhiker Hotline */}
       <Hotline />
+
+      {/* Supporter Tip Jar Section */}
+      <TipJarSection />
+
+      {/* Brand Sponsors Showcase Section */}
+      <SponsorsSection />
 
       {/* Footer */}
       <Footer />

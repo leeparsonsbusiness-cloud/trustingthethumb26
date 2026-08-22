@@ -1,0 +1,29 @@
+[
+  {
+    "id": "story-1",
+    "driverName": "Marcus & Elena Vance",
+    "locationSegment": "Barstow, CA ➔ Kingman, AZ",
+    "vehicleType": "1994 Ford F-150 Truck",
+    "storyText": "Saw Lee and Jake standing by the I-40 East ramp with their cardboard sign. Turned around at the next exit to pick them up. Spent 3 hours sharing hot diner coffee and talking about family, faith, and music across the Mojave desert.",
+    "date": "Pre-Launch Story",
+    "verified": true
+  },
+  {
+    "id": "story-2",
+    "driverName": "Dave 'Big Mac' Miller",
+    "locationSegment": "Albuquerque, NM ➔ Santa Rosa, NM",
+    "vehicleType": "18-Wheeler Freightliner",
+    "storyText": "Picked up the boys right outside Albuquerque. Taught them how truckers communicate on CB radio channel 19. They shared their mission statement with me—it gave me renewed hope for the younger generation.",
+    "date": "Pre-Launch Story",
+    "verified": true
+  },
+  {
+    "id": "story-3",
+    "driverName": "Sarah Jenkins",
+    "locationSegment": "Amarillo, TX ➔ Oklahoma City, OK",
+    "vehicleType": "Subaru Outback",
+    "storyText": "Was nervous at first, but seeing their big smiles and clean backpacks made me pull over. Best 4-hour road conversation I've had in years. They bought me a slice of pecan pie at the rest stop!",
+    "date": "Pre-Launch Story",
+    "verified": true
+  }
+]

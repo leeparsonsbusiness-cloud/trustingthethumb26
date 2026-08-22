@@ -10,7 +10,10 @@ import {
   Instagram, 
   ShieldCheck,
   Trophy,
-  PhoneCall
+  PhoneCall,
+  Car,
+  Heart,
+  Building2
 } from "lucide-react";
 import Link from "next/link";
 
@@ -37,9 +40,11 @@ export default function Header({
   const navLinks = [
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
+    { name: "Driver Stories", href: "/#driver-stories", icon: Car },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
     { name: "Bucket List", href: "/#bucket-list", icon: Trophy },
     { name: "Hotline", href: "/#hotline", icon: PhoneCall },
+    { name: "Tip Jar", href: "/#tip-jar-section", icon: Heart },
   ];
 
   return (
@@ -77,16 +82,26 @@ export default function Header({
           </Link>
 
           {/* Center Nav Links (Desktop) */}
-          <nav className="hidden xl:flex items-center gap-1.5 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-5 py-1.5 shadow-inner">
+          <nav className="hidden xl:flex items-center gap-1 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-4 py-1.5 shadow-inner">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-4 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
+                className="px-3 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
+
+            <span className="text-asphalt-border mx-1 font-light">|</span>
+
+            <Link
+              href="/sponsors"
+              className="px-3 py-1.5 text-xs font-bold text-amber-desert hover:text-sunset hover:bg-amber-desert/10 rounded-full transition-all duration-200 flex items-center gap-1"
+            >
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Sponsors</span>
+            </Link>
           </nav>
 
           {/* Right Action & Live Status Pill */}
@@ -143,6 +158,15 @@ export default function Header({
                 </a>
               );
             })}
+
+            <Link
+              href="/sponsors"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-amber-desert/15 text-amber-desert text-sm font-bold border border-amber-desert/40 transition-colors"
+            >
+              <Building2 className="w-4 h-4" />
+              <span>Brand Partnerships & Sponsors Page</span>
+            </Link>
           </div>
 
           {/* Mobile Creator Handles */}
