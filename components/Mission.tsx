@@ -120,9 +120,9 @@ export default function Mission() {
             {/* Creator 1: Lee */}
             <div className="bg-asphalt-card p-6 sm:p-8 rounded-3xl border border-asphalt-border hover:border-amber-desert/40 transition-all flex flex-col sm:flex-row items-center gap-6 shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+                src="/lee.jpg"
                 alt="Lee Parsons"
-                className="w-24 h-24 rounded-2xl object-cover border-2 border-amber-desert shadow-amber-glow shrink-0"
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-amber-desert shadow-amber-glow shrink-0"
               />
               <div className="space-y-3 text-center sm:text-left">
                 <div>
