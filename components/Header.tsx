@@ -12,7 +12,6 @@ import {
   ShieldCheck,
   Trophy,
   PhoneCall,
-  Building2,
   Activity
 } from "lucide-react";
 import Link from "next/link";
@@ -87,21 +86,11 @@ export default function Header({
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
+                className="px-3.5 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
-            
-            <span className="text-asphalt-border mx-1 font-light">|</span>
-            
-            <Link
-              href="/sponsors"
-              className="px-3 py-1.5 text-xs font-bold text-amber-desert hover:text-sunset hover:bg-amber-desert/10 rounded-full transition-all duration-200 flex items-center gap-1"
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Sponsors</span>
-            </Link>
           </nav>
 
           {/* Right Action & Live Status Pill */}
@@ -158,15 +147,6 @@ export default function Header({
                 </a>
               );
             })}
-
-            <Link
-              href="/sponsors"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-amber-desert/15 text-amber-desert text-sm font-bold border border-amber-desert/40 transition-colors"
-            >
-              <Building2 className="w-4 h-4" />
-              <span>Brand Partnerships & Sponsors Page</span>
-            </Link>
           </div>
 
           {/* Mobile Creator Handles */}
