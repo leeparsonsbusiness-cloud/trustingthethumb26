@@ -8,7 +8,6 @@ import {
   Instagram,
   Heart,
   Globe,
-  MapPin,
   ShieldCheck,
   UserCheck
 } from "lucide-react";
@@ -39,11 +38,11 @@ export default function Mission() {
           {/* Main Core Thesis Callout Card */}
           <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-amber-desert/30 shadow-2xl relative overflow-hidden text-center space-y-6">
             
-            <div className="w-16 h-16 rounded-2xl bg-amber-desert/15 border border-amber-desert/30 flex items-center justify-center text-amber-desert mx-auto shadow-amber-glow p-2">
+            <div className="w-16 h-16 rounded-2xl bg-amber-desert/15 border border-amber-desert/30 flex items-center justify-center text-amber-desert mx-auto shadow-amber-glow p-2.5">
               <img
-                src="/logo.jpg"
-                alt="Trust The Thumb Emblem"
-                className="w-full h-full object-contain filter invert"
+                src="/logo.svg"
+                alt="Trust The Thumb Transparent Emblem"
+                className="w-full h-full object-contain filter drop-shadow"
               />
             </div>
 
@@ -177,10 +176,11 @@ export default function Mission() {
                 </p>
                 <div className="flex items-center justify-center sm:justify-start gap-3 pt-1">
                   <a
-                    href="https://youtube.com/@Jake_thedrummer26"
+                    href="https://youtube.com/@theleeparsons"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2 bg-asphalt-darker rounded-xl text-parchment-muted hover:text-amber-desert border border-asphalt-border transition-colors"
+                    title="YouTube Channel"
                   >
                     <Youtube className="w-4 h-4" />
                   </a>

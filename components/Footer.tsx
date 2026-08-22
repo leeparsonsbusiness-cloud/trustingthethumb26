@@ -3,6 +3,7 @@
 import React from "react";
 import { Compass, ShieldAlert, Youtube, Instagram, ArrowUp, Building2, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import ViewCounter from "./ViewCounter";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -17,7 +18,7 @@ export default function Footer() {
         {/* Brand Sponsor Callout Banner */}
         <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-desert/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-12 h-12 rounded-2xl bg-amber-desert/15 border border-amber-desert/30 flex items-center justify-center text-amber-desert shrink-0 shadow-amber-glow">
+            <div className="w-12 h-12 rounded-2xl bg-amber-desert/15 border border-amber-desert/30 flex items-center justify-center text-amber-desert shrink-0 shadow-amber-glow p-2">
               <Building2 className="w-6 h-6" />
             </div>
             <div>
@@ -45,11 +46,11 @@ export default function Footer() {
           {/* Brand & Mission Brief (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-desert to-sunset flex items-center justify-center shadow-amber-glow p-1.5 overflow-hidden">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-desert to-sunset flex items-center justify-center shadow-amber-glow p-2 overflow-hidden text-asphalt-darker">
                 <img
-                  src="/logo.jpg"
-                  alt="Trust The Thumb Logo"
-                  className="w-full h-full object-contain filter invert"
+                  src="/logo.svg"
+                  alt="Trust The Thumb Transparent Logo"
+                  className="w-full h-full object-contain filter drop-shadow"
                 />
               </div>
               <span className="font-display font-black text-xl text-parchment tracking-wider">
@@ -123,8 +124,13 @@ export default function Footer() {
 
         </div>
 
+        {/* Weekly Auto-Resetting View Counter Banner */}
+        <div className="flex justify-center pt-4">
+          <ViewCounter />
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-asphalt-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+        <div className="pt-6 border-t border-asphalt-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div>
             © 2026 Trust The Thumb. All Rights Reserved. LA ➔ Ohio.
           </div>

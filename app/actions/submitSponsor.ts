@@ -3,6 +3,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { revalidatePath } from "next/cache";
+import { sendEmailNotification } from "@/lib/mailer";
 
 export interface SponsorInquiry {
   id: string;
@@ -45,6 +46,38 @@ export async function submitSponsorInquiry(formData: {
     inquiries.unshift(newInquiry);
     await fs.writeFile(SPONSOR_FILE, JSON.stringify(inquiries, null, 2), "utf-8");
 
+    // Email Notification to leeparsonsbusiness@gmail.com
+    const subject = `🚀 New Sponsor Inquiry: ${newInquiry.companyName}`;
+    const text = `
+New Brand Sponsorship Proposal Received on Trust The Thumb!
+
+Company Name: ${newInquiry.companyName}
+Contact Person: ${newInquiry.contactName || "N/A"}
+Contact Email: ${newInquiry.email}
+Partnership Type: ${newInquiry.partnershipType}
+Submission Time: ${newInquiry.timestamp}
+
+Message / Details:
+${newInquiry.message || "No additional message details provided."}
+    `;
+
+    const html = `
+      <div style="font-family: sans-serif; padding: 20px; background: #1f2421; color: #f4f1de; border-radius: 12px;">
+        <h2 style="color: #e07a5f;">🚀 New Brand Sponsorship Inquiry</h2>
+        <p><strong>Company:</strong> ${newInquiry.companyName}</p>
+        <p><strong>Contact Name:</strong> ${newInquiry.contactName || "N/A"}</p>
+        <p><strong>Email:</strong> <a href="mailto:${newInquiry.email}" style="color: #f2cc8f;">${newInquiry.email}</a></p>
+        <p><strong>Partnership Type:</strong> ${newInquiry.partnershipType}</p>
+        <p><strong>Message:</strong></p>
+        <blockquote style="background: #161917; padding: 12px; border-left: 4px solid #e07a5f; color: #d8d4bc;">
+          ${newInquiry.message || "No additional message provided."}
+        </blockquote>
+      </div>
+    `;
+
+    await sendEmailNotification({ subject, text, html });
+
+    revalidatePath("/sponsors");
     revalidatePath("/");
     return { success: true, inquiry: newInquiry };
   } catch (error) {
