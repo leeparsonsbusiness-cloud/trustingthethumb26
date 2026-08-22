@@ -159,9 +159,9 @@ export default function Mission() {
             {/* Creator 2: Jake */}
             <div className="bg-asphalt-card p-6 sm:p-8 rounded-3xl border border-asphalt-border hover:border-amber-desert/40 transition-all flex flex-col sm:flex-row items-center gap-6 shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+                src="/jake.jpg"
                 alt="Jake Parsons"
-                className="w-24 h-24 rounded-2xl object-cover border-2 border-sunset shadow-lg shrink-0"
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-sunset shadow-lg shrink-0"
               />
               <div className="space-y-3 text-center sm:text-left">
                 <div>
