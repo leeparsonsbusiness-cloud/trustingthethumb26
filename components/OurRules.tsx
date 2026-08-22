@@ -98,7 +98,7 @@ export default function OurRules() {
                   </h3>
 
                   <p className="text-sm text-parchment-muted leading-relaxed">
-                    {rule.description || rule.desc}
+                    {rule.desc}
                   </p>
                 </div>
 
