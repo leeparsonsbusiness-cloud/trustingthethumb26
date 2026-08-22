@@ -133,7 +133,7 @@ export default function Mission() {
                   <div className="text-xs font-mono text-amber-desert">@theleeparsons</div>
                 </div>
                 <p className="text-xs text-parchment-muted leading-relaxed">
-                  Lead storyteller, camera operator, and logistics wrangler. Passionate about human-centric storytelling and documentary film.
+                  Filmmaker, music producer, and nature lover who likes to push his life to the limits. Documenting the human story from behind the lens across every highway mile.
                 </p>
                 <div className="flex items-center justify-center sm:justify-start gap-3 pt-1">
                   <a
@@ -172,7 +172,7 @@ export default function Mission() {
                   <div className="text-xs font-mono text-amber-desert">@Jake_thedrummer26</div>
                 </div>
                 <p className="text-xs text-parchment-muted leading-relaxed">
-                  Musician, drummer, cardboard sign artist, and morale booster. Keeping rhythm and high energy through 10-hour highway stands.
+                  Drummer, adventurer, cardboard sign artist, and photographer. Never afraid to try new things, step into the unknown, and capture raw roadside moments.
                 </p>
                 <div className="flex items-center justify-center sm:justify-start gap-3 pt-1">
                   <a
