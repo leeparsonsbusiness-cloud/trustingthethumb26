@@ -8,22 +8,18 @@ import {
   X, 
   Youtube, 
   Instagram, 
-  Video, 
-  ExternalLink,
-  Navigation,
-  HeartHandshake
+  Clock,
+  UserCheck
 } from "lucide-react";
 
 interface HeaderProps {
   statusBadgeText?: string;
-  statusType?: string;
   currentCity?: string;
 }
 
 export default function Header({
-  statusBadgeText = "On the Road: Barstow, CA",
-  statusType = "on_road",
-  currentCity = "Barstow, CA",
+  statusBadgeText = "Launching Oct 1: Los Angeles, CA",
+  currentCity = "Los Angeles, CA",
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,10 +33,10 @@ export default function Header({
   }, []);
 
   const navLinks = [
+    { name: "Countdown", href: "#countdown", icon: Clock },
     { name: "Live Tracker", href: "#live-tracker", icon: MapPin },
     { name: "The Mission", href: "#the-mission", icon: Compass },
-    { name: "Trail Notes & Tips", href: "#tip-jar", icon: HeartHandshake },
-    { name: "Sponsors", href: "#sponsors", icon: Navigation },
+    { name: "The Creators", href: "#creators", icon: UserCheck },
   ];
 
   return (
@@ -54,18 +50,22 @@ export default function Header({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo */}
+          {/* Brand Logo with Official Thumbs Up Image */}
           <a
             href="#"
             className="flex items-center gap-3 group focus:outline-none"
-            aria-label="Trusting The Thumb Home"
+            aria-label="Trust The Thumb Home"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-desert to-sunset flex items-center justify-center shadow-amber-glow group-hover:scale-105 transition-transform duration-300">
-              <Compass className="w-6 h-6 text-asphalt-darker stroke-[2.5]" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-desert to-sunset flex items-center justify-center shadow-amber-glow group-hover:scale-105 transition-transform duration-300 overflow-hidden p-1.5">
+              <img
+                src="/logo.jpg"
+                alt="Trust The Thumb Logo"
+                className="w-full h-full object-contain filter invert drop-shadow"
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-black tracking-wider text-lg sm:text-xl text-parchment group-hover:text-amber-desert transition-colors leading-none">
-                TRUSTING THE THUMB
+                TRUST THE THUMB
               </span>
               <span className="text-[10px] tracking-widest text-parchment-muted uppercase font-mono mt-1">
                 2,000 Miles Across America
@@ -89,13 +89,13 @@ export default function Header({
           {/* Right Action & Live Status Pill */}
           <div className="hidden lg:flex items-center gap-4">
             {/* Live Status Pill */}
-            <div className="flex items-center gap-2.5 bg-asphalt-card/90 border border-sage/40 px-3.5 py-1.5 rounded-full shadow-sage-pulse">
+            <div className="flex items-center gap-2.5 bg-asphalt-card/90 border border-amber-desert/40 px-3.5 py-1.5 rounded-full shadow-amber-glow">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sage"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-desert"></span>
               </span>
-              <span className="text-xs font-bold text-sage tracking-wide">
-                🟢 {statusBadgeText}
+              <span className="text-xs font-bold text-amber-desert tracking-wide">
+                🟡 {statusBadgeText}
               </span>
             </div>
 
@@ -147,12 +147,12 @@ export default function Header({
 
           {/* Mobile Status Badge & Menu Trigger */}
           <div className="flex lg:hidden items-center gap-2">
-            <div className="flex items-center gap-1.5 bg-asphalt-card border border-sage/40 px-2.5 py-1 rounded-full text-[11px] font-semibold text-sage">
+            <div className="flex items-center gap-1.5 bg-asphalt-card border border-amber-desert/40 px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-desert">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-sage"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-desert"></span>
               </span>
-              <span>{currentCity}</span>
+              <span>Oct 1 Start</span>
             </div>
 
             <button
@@ -187,7 +187,7 @@ export default function Header({
             })}
           </div>
 
-          {/* Mobile Creator Handles & Social Links */}
+          {/* Mobile Creator Handles */}
           <div className="pt-3 border-t border-asphalt-border/60 space-y-3">
             <div className="text-xs font-mono uppercase tracking-wider text-parchment-muted">
               Follow The Creators

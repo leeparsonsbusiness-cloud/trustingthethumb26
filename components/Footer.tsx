@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Compass, ShieldAlert, Heart, Youtube, Instagram, ArrowUp } from "lucide-react";
+import { Compass, ShieldAlert, Youtube, Instagram, ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -19,16 +19,20 @@ export default function Footer() {
           {/* Brand & Mission Brief (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-desert to-sunset flex items-center justify-center shadow-amber-glow">
-                <Compass className="w-5 h-5 text-asphalt-darker stroke-[2.5]" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-desert to-sunset flex items-center justify-center shadow-amber-glow p-1.5 overflow-hidden">
+                <img
+                  src="/logo.jpg"
+                  alt="Trust The Thumb Logo"
+                  className="w-full h-full object-contain filter invert"
+                />
               </div>
               <span className="font-display font-black text-xl text-parchment tracking-wider">
-                TRUSTING THE THUMB
+                TRUST THE THUMB
               </span>
             </div>
             
             <p className="text-xs text-parchment-muted leading-relaxed max-w-sm">
-              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A live 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds.
+              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds starting October 1st, 2026.
             </p>
 
             <div className="text-xs font-mono text-amber-desert">
@@ -43,28 +47,23 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
+                <a href="#countdown" className="hover:text-amber-desert transition-colors">
+                  ➔ Launch Countdown
+                </a>
+              </li>
+              <li>
                 <a href="#live-tracker" className="hover:text-amber-desert transition-colors">
-                  ➔ Live Route Tracker
+                  ➔ Live Route Map
                 </a>
               </li>
               <li>
                 <a href="#the-mission" className="hover:text-amber-desert transition-colors">
-                  ➔ The Mission & Story
+                  ➔ The Mission Statement
                 </a>
               </li>
               <li>
-                <a href="#tip-jar" className="hover:text-amber-desert transition-colors">
-                  ➔ Trail Notes & Tip Jar
-                </a>
-              </li>
-              <li>
-                <a href="#supporters-wall" className="hover:text-amber-desert transition-colors">
-                  ➔ Supporters Wall Feed
-                </a>
-              </li>
-              <li>
-                <a href="#sponsors" className="hover:text-amber-desert transition-colors">
-                  ➔ Sponsor & Brand Hub
+                <a href="#creators" className="hover:text-amber-desert transition-colors">
+                  ➔ Meet The Brothers
                 </a>
               </li>
             </ul>
@@ -86,7 +85,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-asphalt-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div>
-            © 2026 Trusting The Thumb. All Rights Reserved. LA ➔ Ohio.
+            © 2026 Trust The Thumb. All Rights Reserved. LA ➔ Ohio.
           </div>
 
           <div className="flex items-center gap-6">
@@ -96,6 +95,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 bg-asphalt-card rounded-lg hover:text-amber-desert border border-asphalt-border"
+                title="Lee Parsons YouTube"
               >
                 <Youtube className="w-4 h-4" />
               </a>
@@ -104,6 +104,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 bg-asphalt-card rounded-lg hover:text-amber-desert border border-asphalt-border"
+                title="Lee Parsons Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>

@@ -3,16 +3,15 @@
 import React from "react";
 import { 
   MapPin, 
-  HeartHandshake, 
   Car, 
   Calendar, 
   Coffee, 
   Route, 
-  ArrowRight,
-  ShieldCheck,
+  Sparkles,
   Flame,
-  Sparkles
+  Clock
 } from "lucide-react";
+import CountdownTimer from "./CountdownTimer";
 
 interface MetricsData {
   milesTraveled: number;
@@ -24,9 +23,10 @@ interface MetricsData {
 
 interface HeroProps {
   metrics: MetricsData;
+  launchDate?: string;
 }
 
-export default function Hero({ metrics }: HeroProps) {
+export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: HeroProps) {
   const milesProgress = Math.min(
     Math.round((metrics.milesTraveled / metrics.totalMilesGoal) * 100),
     100
@@ -34,9 +34,9 @@ export default function Hero({ metrics }: HeroProps) {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-asphalt-darker">
-      {/* Background Image / Ambient Glows */}
+      {/* Background Ambient Glows */}
       <div 
-        className="absolute inset-0 z-0 opacity-25 mix-blend-luminosity bg-cover bg-center pointer-events-none"
+        className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity bg-cover bg-center pointer-events-none"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2000&q=80')`,
         }}
@@ -49,16 +49,26 @@ export default function Hero({ metrics }: HeroProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto space-y-6">
           
-          {/* Tagline Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-asphalt-card/90 border border-amber-desert/40 shadow-amber-glow backdrop-blur-md">
-            <Flame className="w-4 h-4 text-amber-desert animate-pulse" />
-            <span className="text-xs sm:text-sm font-semibold tracking-wider text-amber-desert uppercase font-mono">
-              Live Cross-Country Experiment
-            </span>
-            <span className="hidden sm:inline text-parchment-muted">•</span>
-            <span className="hidden sm:inline text-xs text-parchment-muted font-mono">
-              LA ➔ Ohio
-            </span>
+          {/* Official Logo Emblem & Tagline Pill */}
+          <div className="flex flex-col items-center justify-center gap-3">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-amber-desert to-sunset p-2.5 shadow-amber-glow animate-float">
+              <img
+                src="/logo.jpg"
+                alt="Trust The Thumb Official Logo"
+                className="w-full h-full object-contain filter invert drop-shadow-md"
+              />
+            </div>
+
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-asphalt-card/90 border border-amber-desert/40 shadow-amber-glow backdrop-blur-md">
+              <Flame className="w-4 h-4 text-amber-desert animate-pulse" />
+              <span className="text-xs sm:text-sm font-semibold tracking-wider text-amber-desert uppercase font-mono">
+                TRUST THE THUMB
+              </span>
+              <span className="text-parchment-muted">•</span>
+              <span className="text-xs text-parchment-muted font-mono">
+                LA ➔ OHIO
+              </span>
+            </div>
           </div>
 
           {/* Main Cinematic Headline */}
@@ -72,9 +82,9 @@ export default function Hero({ metrics }: HeroProps) {
             Testing American kindness from <span className="text-parchment font-semibold border-b border-amber-desert/50">Los Angeles to Ohio</span> with only backpacks, thumbs out, and an open mind.
           </p>
 
-          {/* Core Thesis Highlight Banner */}
-          <div className="max-w-2xl mx-auto pt-2">
-            <div className="px-5 py-3 rounded-2xl bg-asphalt-card/70 border border-asphalt-border/80 flex items-center justify-center gap-3 shadow-inner">
+          {/* Core Thesis Statement */}
+          <div className="max-w-2xl mx-auto pt-1">
+            <div className="px-5 py-3.5 rounded-2xl bg-asphalt-card/70 border border-asphalt-border/80 flex items-center justify-center gap-3 shadow-inner">
               <Sparkles className="w-5 h-5 text-sunset shrink-0" />
               <p className="text-xs sm:text-sm font-medium text-parchment-muted italic">
                 &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot;
@@ -82,28 +92,25 @@ export default function Hero({ metrics }: HeroProps) {
             </div>
           </div>
 
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          {/* Official Countdown Timer Section */}
+          <div id="countdown" className="pt-6 pb-2">
+            <CountdownTimer targetDate={launchDate} />
+          </div>
+
+          {/* Action CTA Button */}
+          <div className="flex justify-center pt-2">
             <a
               href="#live-tracker"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-base shadow-amber-glow hover:scale-105 active:scale-95 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-base shadow-amber-glow hover:scale-105 active:scale-95 transition-all duration-200"
             >
               <MapPin className="w-5 h-5 stroke-[2.5]" />
-              <span>Track Live Location</span>
-            </a>
-
-            <a
-              href="#tip-jar"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-asphalt-card/90 border border-asphalt-border text-parchment font-display font-bold text-base hover:bg-asphalt-border/60 hover:border-amber-desert/40 hover:text-amber-desert hover:scale-105 active:scale-95 transition-all duration-200"
-            >
-              <HeartHandshake className="w-5 h-5 text-amber-desert" />
-              <span>Buy The Brothers A Meal</span>
+              <span>Explore Live Route Map</span>
             </a>
           </div>
 
         </div>
 
-        {/* Dynamic Key Metrics Bar */}
+        {/* Dynamic Key Metrics Bar - Reset to Pre-Launch 0 Stats */}
         <div className="mt-14 lg:mt-20">
           <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-asphalt-border shadow-2xl relative overflow-hidden">
             
@@ -118,7 +125,7 @@ export default function Hero({ metrics }: HeroProps) {
                     Route Progress Tracker
                   </h3>
                   <p className="text-xs text-parchment-muted font-mono">
-                    I-40 East ➔ I-44 ➔ I-70 Corridor
+                    I-40 East ➔ I-44 ➔ I-70 Corridor (Launching Oct 1st)
                   </p>
                 </div>
               </div>
@@ -137,7 +144,7 @@ export default function Hero({ metrics }: HeroProps) {
               </div>
             </div>
 
-            {/* 4 Metric Cards Grid */}
+            {/* 4 Metric Cards Grid - All set to 0 (Pre-Launch) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               
               {/* Metric 1: Miles Traveled */}
@@ -147,13 +154,13 @@ export default function Hero({ metrics }: HeroProps) {
                   <MapPin className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  {metrics.milesTraveled.toLocaleString()}
+                  {metrics.milesTraveled}
                   <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
                     / {metrics.totalMilesGoal.toLocaleString()} mi
                   </span>
                 </div>
-                <p className="text-[11px] text-sage mt-2 font-mono flex items-center gap-1">
-                  <span>🟢 Currently in Barstow, CA</span>
+                <p className="text-[11px] text-amber-desert mt-2 font-mono flex items-center gap-1">
+                  <span>🟡 Start Line: Los Angeles, CA</span>
                 </p>
               </div>
 
@@ -170,7 +177,7 @@ export default function Hero({ metrics }: HeroProps) {
                   </span>
                 </div>
                 <p className="text-[11px] text-parchment-muted mt-2 font-mono">
-                  Avg ride: ~68 miles
+                  Journey starts Oct 1st
                 </p>
               </div>
 
@@ -187,24 +194,24 @@ export default function Hero({ metrics }: HeroProps) {
                   </span>
                 </div>
                 <p className="text-[11px] text-parchment-muted mt-2 font-mono">
-                  Started late September
+                  Countdown active
                 </p>
               </div>
 
               {/* Metric 4: Stranger Generosity */}
-              <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-amber-desert/30 hover:border-amber-desert/60 transition-colors group shadow-inner">
+              <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-asphalt-border/70 hover:border-amber-desert/40 transition-colors group">
                 <div className="flex items-center justify-between text-parchment-muted mb-3">
                   <span className="text-xs font-mono font-medium uppercase tracking-wider text-amber-desert">Generosity Counter</span>
                   <Coffee className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
                 </div>
-                <div className="font-display font-black text-2xl sm:text-4xl text-gradient-amber">
+                <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
                   {metrics.generosityCounter}
                   <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
                     gifts
                   </span>
                 </div>
                 <p className="text-[11px] text-parchment-muted mt-2 font-mono">
-                  Coffees, snacks & meals bought
+                  Ready for the highway
                 </p>
               </div>
 

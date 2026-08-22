@@ -1,5 +1,5 @@
 {
-  "journeyTitle": "Trusting The Thumb: 2,000 Miles Across America",
+  "journeyTitle": "Trust The Thumb: 2,000 Miles Across America",
   "creators": {
     "lee": {
       "name": "Lee Parsons",
@@ -24,46 +24,47 @@
       }
     }
   },
+  "launchDate": "2026-10-01T00:00:00Z",
   "liveStatus": {
-    "state": "active",
-    "statusBadgeText": "On the Road: Barstow, CA",
-    "statusType": "on_road",
-    "currentCity": "Barstow, CA",
-    "currentCoordinates": [34.8958, -117.0173],
-    "lastUpdated": "2026-08-19T14:30:00Z",
-    "currentNote": "Waiting near Interstate 40 ramp with sign 'ANYWHERE EAST'. Hot sun, high spirits!"
+    "state": "pre_launch",
+    "statusBadgeText": "Launching Oct 1: Los Angeles, CA",
+    "statusType": "pre_launch",
+    "currentCity": "Los Angeles, CA (Start Line)",
+    "currentCoordinates": [34.0522, -118.2437],
+    "lastUpdated": "2026-08-22T00:00:00Z",
+    "currentNote": "Backpacks packed and signs painted. Launching October 1st from Los Angeles, CA to Columbus, OH!"
   },
   "metrics": {
-    "milesTraveled": 482,
+    "milesTraveled": 0,
     "totalMilesGoal": 2150,
-    "ridesCaught": 7,
-    "daysOnHighway": 4,
-    "generosityCounter": 14
+    "ridesCaught": 0,
+    "daysOnHighway": 0,
+    "generosityCounter": 0
   },
   "waypoints": [
     {
       "id": "la",
-      "name": "Los Angeles, CA",
+      "name": "Los Angeles, CA (Start Line)",
       "state": "CA",
       "coordinates": [34.0522, -118.2437],
-      "status": "completed",
+      "status": "current",
       "mileMarker": 0,
-      "dateCompleted": "Sept 20, 2026",
-      "storySnippet": "Started with $40 in our pockets, two 65L backpacks, and thumbs high on Santa Monica Blvd.",
-      "driverName": "Marcus (Construction Worker)",
-      "rideVehicle": "1998 Ford F-150"
+      "dateCompleted": null,
+      "storySnippet": "Official Start Line! Thumbs out on Santa Monica Blvd starting October 1st.",
+      "driverName": null,
+      "rideVehicle": null
     },
     {
       "id": "barstow",
       "name": "Barstow, CA",
       "state": "CA",
       "coordinates": [34.8958, -117.0173],
-      "status": "current",
+      "status": "upcoming",
       "mileMarker": 115,
-      "dateCompleted": "Sept 21, 2026",
-      "storySnippet": "Marcus drove us 115 miles across the High Desert. Bought us 2 cold Gatorades and wished us luck.",
-      "driverName": "Marcus & Elena",
-      "rideVehicle": "Ford F-150 / Dodge Van"
+      "dateCompleted": null,
+      "storySnippet": "First leg across the High Desert towards I-40 East.",
+      "driverName": null,
+      "rideVehicle": null
     },
     {
       "id": "flagstaff",
@@ -85,7 +86,7 @@
       "status": "upcoming",
       "mileMarker": 805,
       "dateCompleted": null,
-      "storySnippet": "Crossing into the Land of Enchantment. Hoping for a long-haul trucker ride.",
+      "storySnippet": "Crossing into the Land of Enchantment along the I-40 highway corridor.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -97,7 +98,7 @@
       "status": "upcoming",
       "mileMarker": 1092,
       "dateCompleted": null,
-      "storySnippet": "Panhandle plains ahead. Big skies and classic Texas hospitality.",
+      "storySnippet": "Panhandle plains ahead. Big skies and Texas highway stops.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -145,7 +146,7 @@
       "status": "upcoming",
       "mileMarker": 2150,
       "dateCompleted": null,
-      "storySnippet": "The finish line! Home state reunion after 2,000 miles of trusting thumbs and human kindness.",
+      "storySnippet": "The finish line! Reunion after 2,000 miles of trusting thumbs and human kindness.",
       "driverName": null,
       "rideVehicle": null
     }

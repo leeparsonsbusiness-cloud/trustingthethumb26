@@ -15,14 +15,14 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Trusting The Thumb | 2,000 Miles Across America with Lee & Jake",
+  title: "Trust The Thumb | 2,000 Miles Across America with Lee & Jake",
   description:
-    "Follow Lee and Jake Parsons as they hitchhike 2,000 miles from Los Angeles to Ohio with thumbs out, testing real-world American kindness and human connection.",
+    "Follow Lee and Jake Parsons as they hitchhike 2,000 miles from Los Angeles to Ohio starting October 1st, testing real-world American kindness and human connection.",
   keywords: [
     "hitchhiking america",
     "Lee Parsons",
     "Jake Parsons",
-    "Trusting The Thumb",
+    "Trust The Thumb",
     "cross country hitchhiking",
     "LA to Ohio road trip",
     "human kindness experiment",
@@ -33,17 +33,17 @@ export const metadata: Metadata = {
     { name: "Jake Parsons", url: "https://instagram.com/Jake_thedrummer26" },
   ],
   openGraph: {
-    title: "Trusting The Thumb: 2,000 Miles Across America",
+    title: "Trust The Thumb: 2,000 Miles Across America",
     description:
-      "The algorithm says be afraid. We're going to find the truth. Live real-time location tracker, trail notes, and brotherhood journey.",
-    url: "https://trustingthethumb.com",
-    siteName: "Trusting The Thumb",
+      "The algorithm says be afraid. We're going to find the truth. Live route map, countdown timer, and brotherhood journey launching October 1st.",
+    url: "https://trustthethumb.com",
+    siteName: "Trust The Thumb",
     images: [
       {
         url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
         width: 1200,
         height: 630,
-        alt: "Trusting The Thumb - 2,000 Miles Across America",
+        alt: "Trust The Thumb - 2,000 Miles Across America",
       },
     ],
     locale: "en_US",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trusting The Thumb: 2,000 Miles Across America",
+    title: "Trust The Thumb: 2,000 Miles Across America",
     description:
-      "Testing American kindness from LA to Ohio with thumbs out and open minds.",
+      "Testing American kindness from LA to Ohio with thumbs out and open minds launching Oct 1st.",
     creator: "@theleeparsons",
   },
 };
