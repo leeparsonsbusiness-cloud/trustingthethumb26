@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Compass, ShieldAlert, Youtube, Instagram, ArrowUp } from "lucide-react";
+import { Compass, ShieldAlert, Youtube, Instagram, ArrowUp, Building2, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -13,6 +14,31 @@ export default function Footer() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
+        {/* Brand Sponsor Callout Banner */}
+        <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-desert/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="flex items-center gap-4 text-center sm:text-left">
+            <div className="w-12 h-12 rounded-2xl bg-amber-desert/15 border border-amber-desert/30 flex items-center justify-center text-amber-desert shrink-0 shadow-amber-glow">
+              <Building2 className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-display font-bold text-lg text-parchment">
+                Brand Partnerships & Gear Sponsors
+              </h4>
+              <p className="text-xs text-parchment-muted mt-0.5">
+                Interested in putting gear through 2,000 miles of extreme highway testing? Submit your proposal on our dedicated sponsor page.
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/sponsors"
+            className="shrink-0 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-xs shadow-amber-glow hover:scale-105 transition-transform flex items-center gap-2"
+          >
+            <span>Visit Sponsor Hub</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           
@@ -47,24 +73,39 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#countdown" className="hover:text-amber-desert transition-colors">
+                <a href="/#countdown" className="hover:text-amber-desert transition-colors">
                   ➔ Launch Countdown
                 </a>
               </li>
               <li>
-                <a href="#live-tracker" className="hover:text-amber-desert transition-colors">
+                <a href="/#live-tracker" className="hover:text-amber-desert transition-colors">
                   ➔ Live Route Map
                 </a>
               </li>
               <li>
-                <a href="#the-mission" className="hover:text-amber-desert transition-colors">
+                <a href="/#the-mission" className="hover:text-amber-desert transition-colors">
                   ➔ The Mission Statement
                 </a>
               </li>
               <li>
-                <a href="#creators" className="hover:text-amber-desert transition-colors">
-                  ➔ Meet The Brothers
+                <a href="/#our-rules" className="hover:text-amber-desert transition-colors">
+                  ➔ Our Rules of the Road
                 </a>
+              </li>
+              <li>
+                <a href="/#bucket-list" className="hover:text-amber-desert transition-colors">
+                  ➔ Our Bucket List
+                </a>
+              </li>
+              <li>
+                <a href="/#hotline" className="hover:text-amber-desert transition-colors">
+                  ➔ Hitchhiker Hotline
+                </a>
+              </li>
+              <li>
+                <Link href="/sponsors" className="hover:text-amber-desert transition-colors font-bold text-amber-desert">
+                  ➔ Brand Partnerships (/sponsors)
+                </Link>
               </li>
             </ul>
           </div>

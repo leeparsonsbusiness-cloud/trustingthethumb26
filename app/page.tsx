@@ -5,6 +5,9 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RouteTracker from "@/components/RouteTracker";
 import Mission from "@/components/Mission";
+import OurRules from "@/components/OurRules";
+import BucketList from "@/components/BucketList";
+import Hotline from "@/components/Hotline";
 import Footer from "@/components/Footer";
 
 import initialTrackerConfig from "@/data/trackerConfig.json";
@@ -21,13 +24,13 @@ export default function HomePage() {
         currentCity={config.liveStatus.currentCity}
       />
 
-      {/* Hero Section with Official Logo & Live Oct 1 Countdown */}
+      {/* Hero Section with Logo & Launch Countdown */}
       <Hero 
         metrics={config.metrics} 
         launchDate={config.launchDate}
       />
 
-      {/* Interactive Route Map Tracker (Reset to LA Start Line) */}
+      {/* Interactive Route Map Tracker */}
       <RouteTracker
         waypoints={config.waypoints as any}
         liveStatus={config.liveStatus}
@@ -35,6 +38,15 @@ export default function HomePage() {
 
       {/* Deep Mission Statement & Creator Profiles */}
       <Mission />
+
+      {/* Our Rules of the Road */}
+      <OurRules />
+
+      {/* Our Bucket List */}
+      <BucketList />
+
+      {/* Hitchhiker Hotline */}
+      <Hotline />
 
       {/* Footer */}
       <Footer />

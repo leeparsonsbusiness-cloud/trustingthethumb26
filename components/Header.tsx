@@ -9,8 +9,12 @@ import {
   Youtube, 
   Instagram, 
   Clock,
-  UserCheck
+  ShieldCheck,
+  Trophy,
+  PhoneCall,
+  Building2
 } from "lucide-react";
+import Link from "next/link";
 
 interface HeaderProps {
   statusBadgeText?: string;
@@ -33,10 +37,12 @@ export default function Header({
   }, []);
 
   const navLinks = [
-    { name: "Countdown", href: "#countdown", icon: Clock },
-    { name: "Live Tracker", href: "#live-tracker", icon: MapPin },
-    { name: "The Mission", href: "#the-mission", icon: Compass },
-    { name: "The Creators", href: "#creators", icon: UserCheck },
+    { name: "Countdown", href: "/#countdown", icon: Clock },
+    { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
+    { name: "The Mission", href: "/#the-mission", icon: Compass },
+    { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
+    { name: "Bucket List", href: "/#bucket-list", icon: Trophy },
+    { name: "Hotline", href: "/#hotline", icon: PhoneCall },
   ];
 
   return (
@@ -51,8 +57,8 @@ export default function Header({
         <div className="flex items-center justify-between">
           
           {/* Brand Logo with Official Thumbs Up Image */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Trust The Thumb Home"
           >
@@ -71,23 +77,33 @@ export default function Header({
                 2,000 Miles Across America
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Center Nav Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-1 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-4 py-1.5 shadow-inner">
+          <nav className="hidden xl:flex items-center gap-1 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-4 py-1.5 shadow-inner">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
+                className="px-3 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
+            
+            <span className="text-asphalt-border mx-1 font-light">|</span>
+            
+            <Link
+              href="/sponsors"
+              className="px-3 py-1.5 text-xs font-bold text-amber-desert hover:text-sunset hover:bg-amber-desert/10 rounded-full transition-all duration-200 flex items-center gap-1"
+            >
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Sponsors</span>
+            </Link>
           </nav>
 
           {/* Right Action & Live Status Pill */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex xl:flex items-center gap-4">
             {/* Live Status Pill */}
             <div className="flex items-center gap-2.5 bg-asphalt-card/90 border border-amber-desert/40 px-3.5 py-1.5 rounded-full shadow-amber-glow">
               <span className="relative flex h-2.5 w-2.5">
@@ -145,8 +161,8 @@ export default function Header({
             </div>
           </div>
 
-          {/* Mobile Status Badge & Menu Trigger */}
-          <div className="flex lg:hidden items-center gap-2">
+          {/* Mobile Menu Trigger */}
+          <div className="flex xl:hidden items-center gap-2">
             <div className="flex items-center gap-1.5 bg-asphalt-card border border-amber-desert/40 px-2.5 py-1 rounded-full text-[11px] font-semibold text-amber-desert">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
@@ -169,7 +185,7 @@ export default function Header({
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-asphalt-darker/95 backdrop-blur-xl border-b border-asphalt-border px-4 pt-4 pb-6 mt-3 space-y-4 animate-in slide-in-from-top duration-200">
+        <div className="xl:hidden bg-asphalt-darker/95 backdrop-blur-xl border-b border-asphalt-border px-4 pt-4 pb-6 mt-3 space-y-4 animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const Icon = link.icon;
@@ -185,6 +201,15 @@ export default function Header({
                 </a>
               );
             })}
+
+            <Link
+              href="/sponsors"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-amber-desert/15 text-amber-desert text-sm font-bold border border-amber-desert/40 transition-colors"
+            >
+              <Building2 className="w-4 h-4" />
+              <span>Brand Partnerships & Sponsors Page</span>
+            </Link>
           </div>
 
           {/* Mobile Creator Handles */}

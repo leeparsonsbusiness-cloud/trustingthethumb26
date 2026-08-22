@@ -8,9 +8,6 @@ import {
   Clock, 
   Car, 
   Compass, 
-  Sparkles, 
-  CheckCircle2,
-  ChevronRight,
   Info
 } from "lucide-react";
 import type { Waypoint } from "./MapInner";
@@ -38,7 +35,7 @@ interface RouteTrackerProps {
 }
 
 export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProps) {
-  const currentWaypoint = waypoints.find((w) => w.status === "current") || waypoints[1];
+  const currentWaypoint = waypoints.find((w) => w.status === "current") || waypoints[0];
   const [selectedWaypoint, setSelectedWaypoint] = useState<Waypoint>(currentWaypoint);
 
   return (
@@ -60,28 +57,28 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               THE 2,000 MILE <span className="text-gradient-amber">CORRIDOR</span>
             </h2>
             <p className="text-base sm:text-lg text-parchment-muted">
-              Interactive map of Interstate 40 ➔ I-44 ➔ I-70. Click any waypoint to view ride snippets, driver notes, and roadside updates.
+              Interactive map of Interstate 40 ➔ I-44 ➔ I-70. Click any waypoint to view upcoming leg previews and roadside updates starting October 1st.
             </p>
           </div>
 
           {/* Current Live Status Card */}
           <div className="bg-asphalt-card/90 p-4 sm:p-5 rounded-2xl border border-amber-desert/30 shadow-amber-glow max-w-md w-full">
             <div className="flex items-center justify-between gap-3 mb-2">
-              <span className="flex items-center gap-2 text-xs font-bold font-mono text-sage">
+              <span className="flex items-center gap-2 text-xs font-bold font-mono text-amber-desert">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sage"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-desert"></span>
                 </span>
-                LIVE CURRENT LOCATION
+                LAUNCHING OCT 1, 2026
               </span>
               <span className="text-[11px] font-mono text-parchment-muted flex items-center gap-1">
                 <Clock className="w-3 h-3" />
-                Updated 1h ago
+                Pre-Launch Mode
               </span>
             </div>
             <div className="font-display font-bold text-xl text-parchment flex items-center justify-between">
               <span>{liveStatus.currentCity}</span>
-              <span className="text-xs font-mono text-amber-desert">Mile {currentWaypoint.mileMarker}</span>
+              <span className="text-xs font-mono text-amber-desert">Mile 0</span>
             </div>
             <p className="text-xs text-parchment-muted mt-1.5 italic bg-asphalt-darker/60 p-2.5 rounded-xl border border-asphalt-border/40">
               &quot;{liveStatus.currentNote}&quot;
@@ -104,15 +101,11 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
             <div className="absolute bottom-4 left-4 z-[1000] bg-asphalt-darker/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-asphalt-border text-[11px] font-mono text-parchment-muted flex items-center gap-4 shadow-lg">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-desert inline-block" />
-                <span>Current Pin</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-desert inline-block" />
-                <span>Completed</span>
+                <span>Start Line (LA)</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-sage inline-block" />
-                <span>Upcoming</span>
+                <span>Upcoming Stops</span>
               </div>
             </div>
           </div>
@@ -124,17 +117,11 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-amber-desert" />
                 <h3 className="font-display font-bold text-lg text-parchment">
-                  Waypoint Detail
+                  Waypoint Preview
                 </h3>
               </div>
-              <span className={`text-xs font-mono px-2.5 py-1 rounded-full font-bold uppercase ${
-                selectedWaypoint.status === "current"
-                  ? "bg-amber-desert/20 text-amber-desert border border-amber-desert/40"
-                  : selectedWaypoint.status === "completed"
-                  ? "bg-sage/20 text-sage"
-                  : "bg-asphalt-darker text-parchment-muted border border-asphalt-border"
-              }`}>
-                {selectedWaypoint.status}
+              <span className="text-xs font-mono px-2.5 py-1 rounded-full font-bold uppercase bg-amber-desert/20 text-amber-desert border border-amber-desert/40">
+                {selectedWaypoint.status === "current" ? "Start Point" : "Upcoming"}
               </span>
             </div>
 
@@ -145,9 +132,6 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               </div>
               <div className="text-xs font-mono text-parchment-muted mt-1 flex items-center gap-3">
                 <span>Mile Marker: {selectedWaypoint.mileMarker} mi</span>
-                {selectedWaypoint.dateCompleted && (
-                  <span>• {selectedWaypoint.dateCompleted}</span>
-                )}
               </div>
             </div>
 
@@ -168,14 +152,14 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
             ) : (
               <div className="bg-asphalt-darker/40 p-4 rounded-2xl border border-asphalt-border/40 text-xs text-parchment-muted flex items-center gap-2">
                 <Info className="w-4 h-4 text-amber-desert shrink-0" />
-                <span>Upcoming stretch on the highway. Updates will post live when the boys catch a ride!</span>
+                <span>Upcoming leg preview. Real-time updates post live as rides are caught starting Oct 1st!</span>
               </div>
             )}
 
             {/* Road Log Story Snippet */}
             <div>
               <div className="text-xs font-mono text-parchment-muted uppercase tracking-wider mb-2">
-                Road Story Log
+                Leg Overview
               </div>
               <p className="text-sm text-parchment/90 leading-relaxed bg-asphalt-darker/60 p-4 rounded-2xl border border-asphalt-border/60">
                 &quot;{selectedWaypoint.storySnippet}&quot;
@@ -184,50 +168,11 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
 
             {/* Quick Helper Note */}
             <div className="text-[11px] font-mono text-parchment-muted text-center pt-2 border-t border-asphalt-border/40">
-              💡 Creators update coordinates directly via <code className="text-amber-desert bg-asphalt-darker px-1.5 py-0.5 rounded">trackerConfig.json</code> from their mobile devices.
+              💡 Creators update GPS coordinates directly via <code className="text-amber-desert bg-asphalt-darker px-1.5 py-0.5 rounded">trackerConfig.json</code> from their mobile devices.
             </div>
 
           </div>
 
-        </div>
-
-        {/* Waypoint Timeline Carousel / Selector Strip */}
-        <div className="mt-8 pt-8 border-t border-asphalt-border/40">
-          <div className="text-xs font-mono text-parchment-muted uppercase tracking-wider mb-4 flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-sunset" />
-            Full Journey Waypoint Timeline
-          </div>
-
-          <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-asphalt-border">
-            {waypoints.map((wp) => {
-              const isSelected = wp.id === selectedWaypoint.id;
-              return (
-                <button
-                  key={wp.id}
-                  onClick={() => setSelectedWaypoint(wp)}
-                  className={`shrink-0 text-left p-3.5 rounded-2xl border transition-all duration-200 min-w-[170px] ${
-                    isSelected
-                      ? "bg-amber-desert/15 border-amber-desert shadow-amber-glow"
-                      : wp.status === "completed"
-                      ? "bg-asphalt-card/70 border-asphalt-border hover:border-parchment-muted/40"
-                      : wp.status === "current"
-                      ? "bg-asphalt-card border-sage/60"
-                      : "bg-asphalt-darker/60 border-asphalt-border/40 opacity-60 hover:opacity-100"
-                  }`}
-                >
-                  <div className="flex items-center justify-between text-[10px] font-mono mb-1">
-                    <span className={wp.status === "current" ? "text-sage font-bold" : "text-parchment-muted"}>
-                      Mi {wp.mileMarker}
-                    </span>
-                    {wp.status === "completed" && <CheckCircle2 className="w-3.5 h-3.5 text-sage" />}
-                    {wp.status === "current" && <span className="w-2 h-2 rounded-full bg-amber-desert animate-ping" />}
-                  </div>
-                  <div className="font-bold text-xs text-parchment truncate">{wp.name}</div>
-                  <div className="text-[11px] text-parchment-muted capitalize mt-0.5">{wp.status}</div>
-                </button>
-              );
-            })}
-          </div>
         </div>
 
       </div>
