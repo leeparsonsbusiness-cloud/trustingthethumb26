@@ -9,7 +9,6 @@ import {
   Youtube, 
   Instagram, 
   ShieldCheck,
-  Trophy,
   PhoneCall,
   Heart,
   Building2
@@ -40,7 +39,6 @@ export default function Header({
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
-    { name: "Bucket List", href: "/#bucket-list", icon: Trophy },
     { name: "Hotline", href: "/#hotline", icon: PhoneCall },
     { name: "Tip Jar", href: "/#tip-jar-section", icon: Heart },
   ];
@@ -80,12 +78,12 @@ export default function Header({
           </Link>
 
           {/* Center Nav Links (Desktop) */}
-          <nav className="hidden xl:flex items-center gap-1 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-4 py-1.5 shadow-inner">
+          <nav className="hidden xl:flex items-center gap-1.5 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-5 py-1.5 shadow-inner">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
+                className="px-3.5 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
               >
                 {link.name}
               </a>
@@ -95,7 +93,7 @@ export default function Header({
 
             <Link
               href="/sponsors"
-              className="px-3 py-1.5 text-xs font-bold text-amber-desert hover:text-sunset hover:bg-amber-desert/10 rounded-full transition-all duration-200 flex items-center gap-1"
+              className="px-3.5 py-1.5 text-xs font-bold text-amber-desert hover:text-sunset hover:bg-amber-desert/10 rounded-full transition-all duration-200 flex items-center gap-1"
             >
               <Building2 className="w-3.5 h-3.5" />
               <span>Sponsors</span>

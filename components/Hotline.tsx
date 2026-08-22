@@ -11,21 +11,12 @@ import {
   Send, 
   CheckCircle2, 
   Sparkles,
-  MessageSquare,
-  User,
-  Phone
+  Flame,
+  AlertCircle
 } from "lucide-react";
 import { submitHotlineEntry } from "@/app/actions/submitHotline";
 
 export default function Hotline() {
-  const offerTypes = [
-    { id: "ride", title: "Offer a Ride", icon: Car, emoji: "🚗", desc: "Can give the boys a lift along I-40 / I-44 / I-70" },
-    { id: "shelter", title: "Offer Shelter / Couch", icon: Home, emoji: "🏠", desc: "A warm place to crash, shower, or pitch a tent" },
-    { id: "food", title: "Buy a Meal / Coffee", icon: Utensils, emoji: "🥪", desc: "Meet at a roadside diner or buy gas station snacks" },
-    { id: "spot", title: "Recommend a Cool Spot", icon: MapPin, emoji: "📍", desc: "Hidden local gems, Route 66 stops, or scenery" },
-    { id: "meetup", title: "Meet Up & Say Hi", icon: Users, emoji: "🤝", desc: "Come say hello on the highway or take a photo" },
-  ];
-
   const [selectedOffer, setSelectedOffer] = useState("ride");
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
@@ -35,6 +26,44 @@ export default function Hotline() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const offerTypes = [
+    {
+      id: "ride",
+      title: "Offer a Ride",
+      emoji: "🚗",
+      icon: Car,
+      desc: "Going our direction along I-40 / I-44 / I-70? Give us a lift for 10 miles or 300 miles!",
+    },
+    {
+      id: "shelter",
+      title: "Couch or Yard for Camping",
+      emoji: "⛺",
+      icon: Home,
+      desc: "Have a spare room, couch, or backyard grass to pop our tents for a night?",
+    },
+    {
+      id: "meal",
+      title: "Diner Meal or Water Refill",
+      emoji: "🍔",
+      icon: Utensils,
+      desc: "Meet at a highway diner, truck stop, or rest station for coffee and a meal.",
+    },
+    {
+      id: "spot",
+      title: "Local Spot Recommendation",
+      emoji: "🗺️",
+      icon: MapPin,
+      desc: "Know an unforgettable roadside diner, scenic vista, or hidden gem along the way?",
+    },
+    {
+      id: "meet",
+      title: "Meet Up & Say Hello",
+      emoji: "🤝",
+      icon: Users,
+      desc: "Just want to meet Lee and Jake, share a highway story, or snap a photo!",
+    },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,14 +112,30 @@ export default function Hotline() {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-desert/15 border border-amber-desert/40 text-amber-desert text-xs font-mono font-bold uppercase shadow-amber-glow">
             <PhoneCall className="w-4 h-4" />
-            Direct Highway Line
+            Hitchhiker Hotline
           </div>
-          <h2 className="font-display text-4xl sm:text-6xl font-black text-parchment">
-            HITCHHIKER <span className="text-gradient-amber">HOTLINE</span>
+
+          <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-parchment leading-tight">
+            ARE YOU NEAR US & WOULD LIKE TO <span className="text-gradient-amber">HELP SUPPORT?</span>
           </h2>
+          
           <p className="text-base sm:text-lg text-parchment-muted leading-relaxed">
-            Along the 2,000-mile route? Offer a ride, shelter, meal, recommend must-see roadside spots, or meet up with Lee and Jake!
+            Check our current live highway location below! Please reach out if you&apos;re around the same area or highway corridor.
           </p>
+
+          {/* Live Location Badge Card */}
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-asphalt-card/90 border border-amber-desert/50 shadow-amber-glow text-left mt-2">
+            <div className="p-2 rounded-xl bg-amber-desert/20 text-amber-desert shrink-0">
+              <MapPin className="w-5 h-5 text-amber-desert animate-bounce" />
+            </div>
+            <div>
+              <div className="text-[11px] font-mono uppercase text-amber-desert font-bold">Current Active Location</div>
+              <div className="text-sm font-display font-bold text-parchment flex items-center gap-2">
+                <span>📍 Los Angeles, CA (Start Line)</span>
+                <span className="text-xs text-parchment-muted font-normal">• Launching Oct 1st</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Offer Selector Cards & Submission Form Grid */}
@@ -133,126 +178,90 @@ export default function Hotline() {
             })}
           </div>
 
-          {/* Right: Submission Form Card (7 Cols) */}
-          <div className="lg:col-span-7 bg-asphalt-card rounded-3xl p-6 sm:p-8 border border-asphalt-border shadow-2xl space-y-6">
-            
-            <div className="flex items-center justify-between pb-4 border-b border-asphalt-border/60">
-              <div>
-                <h3 className="font-display font-bold text-xl text-parchment">
-                  Submit Hotline Message
-                </h3>
-                <p className="text-xs text-parchment-muted mt-0.5">
-                  Lee & Jake receive hotline submissions directly on their phones.
+          {/* Right: Submission Form (7 Cols) */}
+          <div className="lg:col-span-7 bg-asphalt-card/90 p-6 sm:p-8 rounded-3xl border border-asphalt-border shadow-2xl relative">
+            <h3 className="font-display font-bold text-2xl text-parchment mb-2">
+              Send Your Offer to Lee & Jake
+            </h3>
+            <p className="text-xs text-parchment-muted mb-6">
+              Submissions send an instant alert directly to our phones on the road.
+            </p>
+
+            {success ? (
+              <div className="p-8 rounded-2xl bg-sage/15 border border-sage/40 text-center space-y-3 animate-in fade-in duration-300">
+                <CheckCircle2 className="w-12 h-12 text-sage mx-auto" />
+                <h4 className="font-display font-bold text-2xl text-parchment">Message Received!</h4>
+                <p className="text-sm text-parchment-muted">
+                  Thank you! Lee and Jake will check their hotline messages as soon as they get cell service at the next exit.
                 </p>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {errorMsg && (
+                  <div className="p-3 rounded-xl bg-sunset/20 border border-sunset/40 text-xs font-mono text-sunset flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{errorMsg}</span>
+                  </div>
+                )}
 
-              <span className="px-3 py-1 rounded-xl bg-amber-desert/10 border border-amber-desert/30 text-amber-desert font-mono text-xs font-bold">
-                {offerTypes.find((o) => o.id === selectedOffer)?.emoji} {offerTypes.find((o) => o.id === selectedOffer)?.title}
-              </span>
-            </div>
-
-            {success && (
-              <div className="p-4 rounded-2xl bg-sage/20 border border-sage/50 text-sage text-sm font-semibold flex items-center gap-3 animate-in fade-in">
-                <CheckCircle2 className="w-5 h-5 shrink-0" />
-                <span>🎉 Hotline offer sent! Lee & Jake have received your message.</span>
-              </div>
-            )}
-
-            {errorMsg && (
-              <div className="p-4 rounded-2xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs font-semibold">
-                {errorMsg}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-mono text-parchment-muted uppercase tracking-wider mb-1.5">
-                    Your Name or Handle *
-                  </label>
-                  <div className="relative">
-                    <User className="w-4 h-4 text-parchment-muted absolute left-3.5 top-3" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-parchment mb-1">Your Name</label>
                     <input
                       type="text"
-                      required
-                      placeholder="e.g. Marcus Miller / @marcus_drive"
+                      placeholder="e.g. Sarah J."
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:outline-none focus:border-amber-desert transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:border-amber-desert focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-parchment mb-1">Your City / Highway Exit</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Barstow, CA / Exit 184"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:border-amber-desert focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-parchment-muted uppercase tracking-wider mb-1.5">
-                    Your City & State / Highway Exit *
-                  </label>
-                  <div className="relative">
-                    <MapPin className="w-4 h-4 text-parchment-muted absolute left-3.5 top-3" />
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Barstow, CA (Exit 144)"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:outline-none focus:border-amber-desert transition-colors"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono text-parchment-muted uppercase tracking-wider mb-1.5">
-                  Phone Number, Email, or IG Handle (Private to Creators) *
-                </label>
-                <div className="relative">
-                  <Phone className="w-4 h-4 text-parchment-muted absolute left-3.5 top-3" />
+                  <label className="block text-xs font-mono font-bold text-parchment mb-1">Phone Number or Instagram Handle *</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. (555) 234-5678 or @myhandle"
+                    placeholder="e.g. (555) 234-5678 or @yourname"
                     value={contactInfo}
                     onChange={(e) => setContactInfo(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:outline-none focus:border-amber-desert transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:border-amber-desert focus:outline-none"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-xs font-mono text-parchment-muted uppercase tracking-wider mb-1.5">
-                  Offer Details / Message *
-                </label>
-                <div className="relative">
-                  <MessageSquare className="w-4 h-4 text-parchment-muted absolute left-3.5 top-3" />
+                <div>
+                  <label className="block text-xs font-mono font-bold text-parchment mb-1">Details & Message *</label>
                   <textarea
                     required
                     rows={4}
-                    placeholder="Tell the brothers what you're offering (e.g. I can give you a lift from Barstow to Flagstaff, or check out this diner on Exit 82!)..."
+                    placeholder="Tell us what you can offer, when you'll be around, or details about the ride/spot..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:outline-none focus:border-amber-desert transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-asphalt-darker border border-asphalt-border text-parchment text-sm focus:border-amber-desert focus:outline-none"
                   />
                 </div>
-              </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-base shadow-amber-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2.5 disabled:opacity-50"
-              >
-                {isSubmitting ? (
-                  <span>Sending Hotline Offer...</span>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 stroke-[2.5]" />
-                    <span>Send Offer To Hitchhiker Hotline</span>
-                  </>
-                )}
-              </button>
-
-            </form>
-
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-sm shadow-amber-glow hover:opacity-95 transition-opacity flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>{isSubmitting ? "Sending to Highway Line..." : "Send Hotline Message"}</span>
+                </button>
+              </form>
+            )}
           </div>
 
         </div>

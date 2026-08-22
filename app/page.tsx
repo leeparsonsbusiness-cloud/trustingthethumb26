@@ -7,10 +7,8 @@ import RouteTracker from "@/components/RouteTracker";
 import OurStats from "@/components/OurStats";
 import Mission from "@/components/Mission";
 import OurRules from "@/components/OurRules";
-import BucketList from "@/components/BucketList";
 import Hotline from "@/components/Hotline";
 import TipJarSection from "@/components/TipJarSection";
-import SponsorsSection from "@/components/SponsorsSection";
 import Footer from "@/components/Footer";
 
 import initialTrackerConfig from "@/data/trackerConfig.json";
@@ -48,19 +46,13 @@ export default function HomePage() {
       {/* Our Rules of the Road */}
       <OurRules />
 
-      {/* Our Bucket List */}
-      <BucketList />
-
-      {/* Hitchhiker Hotline */}
+      {/* Hitchhiker Hotline (Are you near us & would like to help support?) */}
       <Hotline />
 
       {/* Supporter Tip Jar Section */}
       <TipJarSection />
 
-      {/* Brand Sponsors Showcase Section */}
-      <SponsorsSection />
-
-      {/* Footer */}
+      {/* Footer (Includes small Brand Sponsorship Banner linking to /sponsors) */}
       <Footer />
 
     </main>

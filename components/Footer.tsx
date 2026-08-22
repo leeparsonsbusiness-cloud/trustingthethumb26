@@ -94,11 +94,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/#bucket-list" className="hover:text-amber-desert transition-colors">
-                  ➔ Our Bucket List
-                </a>
-              </li>
-              <li>
                 <a href="/#hotline" className="hover:text-amber-desert transition-colors">
                   ➔ Hitchhiker Hotline
                 </a>
