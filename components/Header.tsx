@@ -8,11 +8,9 @@ import {
   X, 
   Youtube, 
   Instagram, 
-  Clock,
   ShieldCheck,
   Trophy,
-  PhoneCall,
-  Activity
+  PhoneCall
 } from "lucide-react";
 import Link from "next/link";
 
@@ -37,9 +35,7 @@ export default function Header({
   }, []);
 
   const navLinks = [
-    { name: "Countdown", href: "/#countdown", icon: Clock },
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
-    { name: "Our Stats", href: "/#our-stats", icon: Activity },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
     { name: "Bucket List", href: "/#bucket-list", icon: Trophy },
@@ -81,12 +77,12 @@ export default function Header({
           </Link>
 
           {/* Center Nav Links (Desktop) */}
-          <nav className="hidden xl:flex items-center gap-1 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-4 py-1.5 shadow-inner">
+          <nav className="hidden xl:flex items-center gap-1.5 bg-asphalt-card/60 backdrop-blur-sm border border-asphalt-border/60 rounded-full px-5 py-1.5 shadow-inner">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
+                className="px-4 py-1.5 text-xs font-semibold text-parchment-muted hover:text-parchment hover:bg-asphalt-border/40 rounded-full transition-all duration-200"
               >
                 {link.name}
               </a>
