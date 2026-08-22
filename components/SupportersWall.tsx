@@ -108,7 +108,7 @@ export default function SupportersWall({ initialNotes }: SupportersWallProps) {
                           {note.name}
                         </span>
                         {note.verified && (
-                          <CheckCircle2 className="w-4 h-4 text-sage shrink-0" title="Verified Road Supporter" />
+                          <span title="Verified Road Supporter"><CheckCircle2 className="w-4 h-4 text-sage shrink-0" /></span>
                         )}
                       </div>
                       {note.handle && (
