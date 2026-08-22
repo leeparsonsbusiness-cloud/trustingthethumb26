@@ -13,12 +13,17 @@ import {
 } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 
-interface MetricsData {
+export interface MetricsData {
   milesTraveled: number;
   totalMilesGoal: number;
-  ridesCaught: number;
-  daysOnHighway: number;
-  generosityCounter: number;
+  peopleMet?: number;
+  ridesTaken?: number;
+  mealsShared?: number;
+  placesStayed?: number;
+  moneySpent?: number;
+  ridesCaught?: number;
+  daysOnHighway?: number;
+  generosityCounter?: number;
 }
 
 interface HeroProps {
@@ -31,6 +36,10 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
     Math.round((metrics.milesTraveled / metrics.totalMilesGoal) * 100),
     100
   );
+
+  const rides = metrics.ridesTaken ?? metrics.ridesCaught ?? 0;
+  const days = metrics.daysOnHighway ?? 0;
+  const generosity = metrics.generosityCounter ?? metrics.mealsShared ?? 0;
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-asphalt-darker">
@@ -171,7 +180,7 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
                   <Car className="w-4 h-4 text-sunset group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  {metrics.ridesCaught}
+                  {rides}
                   <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
                     drivers
                   </span>
@@ -188,7 +197,7 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
                   <Calendar className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  Day {metrics.daysOnHighway}
+                  Day {days}
                   <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
                     / ~14
                   </span>
@@ -201,11 +210,11 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
               {/* Metric 4: Stranger Generosity */}
               <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-asphalt-border/70 hover:border-amber-desert/40 transition-colors group">
                 <div className="flex items-center justify-between text-parchment-muted mb-3">
-                  <span className="text-xs font-mono font-medium uppercase tracking-wider text-amber-desert">Generosity Counter</span>
+                  <span className="text-xs font-mono font-medium uppercase tracking-wider text-amber-desert font-bold">Generosity Counter</span>
                   <Coffee className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  {metrics.generosityCounter}
+                  {generosity}
                   <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
                     gifts
                   </span>
