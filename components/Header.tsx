@@ -11,7 +11,6 @@ import {
   ShieldCheck,
   Trophy,
   PhoneCall,
-  Car,
   Heart,
   Building2
 } from "lucide-react";
@@ -40,7 +39,6 @@ export default function Header({
   const navLinks = [
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
-    { name: "Driver Stories", href: "/#driver-stories", icon: Car },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
     { name: "Bucket List", href: "/#bucket-list", icon: Trophy },
     { name: "Hotline", href: "/#hotline", icon: PhoneCall },
