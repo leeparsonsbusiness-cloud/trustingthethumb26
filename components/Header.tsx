@@ -12,7 +12,8 @@ import {
   ShieldCheck,
   Trophy,
   PhoneCall,
-  Building2
+  Building2,
+  Activity
 } from "lucide-react";
 import Link from "next/link";
 
@@ -39,6 +40,7 @@ export default function Header({
   const navLinks = [
     { name: "Countdown", href: "/#countdown", icon: Clock },
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
+    { name: "Our Stats", href: "/#our-stats", icon: Activity },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
     { name: "Bucket List", href: "/#bucket-list", icon: Trophy },

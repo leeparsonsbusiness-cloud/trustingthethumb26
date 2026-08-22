@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RouteTracker from "@/components/RouteTracker";
+import OurStats from "@/components/OurStats";
 import Mission from "@/components/Mission";
 import OurRules from "@/components/OurRules";
 import BucketList from "@/components/BucketList";
@@ -35,6 +36,9 @@ export default function HomePage() {
         waypoints={config.waypoints as any}
         liveStatus={config.liveStatus}
       />
+
+      {/* Dedicated Journey Stats & Live Metrics Section */}
+      <OurStats metrics={config.metrics} />
 
       {/* Deep Mission Statement & Creator Profiles */}
       <Mission />

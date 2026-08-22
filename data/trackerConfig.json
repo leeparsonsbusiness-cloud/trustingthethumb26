@@ -37,9 +37,11 @@
   "metrics": {
     "milesTraveled": 0,
     "totalMilesGoal": 2150,
-    "ridesCaught": 0,
-    "daysOnHighway": 0,
-    "generosityCounter": 0
+    "peopleMet": 0,
+    "ridesTaken": 0,
+    "mealsShared": 0,
+    "placesStayed": 0,
+    "moneySpent": 0
   },
   "waypoints": [
     {
