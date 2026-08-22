@@ -28,7 +28,7 @@ interface RouteTrackerProps {
   liveStatus: {
     statusBadgeText: string;
     currentCity: string;
-    currentCoordinates: [number, number];
+    currentCoordinates: [number, number] | number[] | any;
     lastUpdated: string;
     currentNote: string;
   };

@@ -34,7 +34,7 @@ export default function HomePage() {
       {/* Interactive Route Map Tracker */}
       <RouteTracker
         waypoints={config.waypoints as any}
-        liveStatus={config.liveStatus}
+        liveStatus={config.liveStatus as any}
       />
 
       {/* Dedicated Journey Stats & Live Metrics Section */}
