@@ -32,3 +32,4 @@ next-env.d.ts
 # OS / Editor
 .DS_Store
 *.pem
+.env*

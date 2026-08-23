@@ -14,25 +14,43 @@ export async function sendEmailNotification({
   senderEmail?: string;
   senderName?: string;
 }) {
-  const recipient = "leeparsonsbusiness@gmail.com";
+  const primaryRecipient = "leeparsonsbusiness@gmail.com";
+  const secondaryRecipient = "parsonsjacob30@gmail.com";
+  const allRecipients = [primaryRecipient, secondaryRecipient];
 
-  console.log(`[Notification to ${recipient}]: ${subject}`);
+  console.log(`[Notification to ${allRecipients.join(", ")}]: ${subject}`);
   console.log(`Body:\n${text}`);
 
-  // 1. Try Resend API if RESEND_API_KEY is set in Vercel environment variables
+  // 1. Try Resend API if RESEND_API_KEY is set in environment
   const resendApiKey = process.env.RESEND_API_KEY;
   if (resendApiKey) {
     try {
       const resend = new Resend(resendApiKey);
-      await resend.emails.send({
+      
+      // Attempt sending to both recipients
+      const res = await resend.emails.send({
         from: "Trust The Thumb <onboarding@resend.dev>",
-        to: [recipient],
-        replyTo: senderEmail || recipient,
+        to: allRecipients,
+        replyTo: senderEmail || primaryRecipient,
         subject,
         html,
         text,
       });
-      console.log("Email dispatched via Resend API to", recipient);
+
+      if (res.error && res.error.name === "validation_error") {
+        // Fallback for Resend unverified domain testing mode (sends to primary owner)
+        console.log("Resend testing mode active - routing email to primary inbox:", primaryRecipient);
+        await resend.emails.send({
+          from: "Trust The Thumb <onboarding@resend.dev>",
+          to: [primaryRecipient],
+          replyTo: senderEmail || primaryRecipient,
+          subject,
+          html,
+          text,
+        });
+      }
+
+      console.log("Email dispatched via Resend API!");
       return { success: true, provider: "resend" };
     } catch (resendErr) {
       console.error("Resend error:", resendErr);
@@ -47,13 +65,13 @@ export async function sendEmailNotification({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: senderEmail || recipient,
+          email: senderEmail || primaryRecipient,
           name: senderName || "Trust The Thumb Supporter",
           subject,
           message: text,
         }),
       });
-      console.log("Email dispatched via Formspree to", recipient);
+      console.log("Email dispatched via Formspree!");
       return { success: true, provider: "formspree" };
     } catch (formspreeErr) {
       console.error("Formspree error:", formspreeErr);
@@ -63,7 +81,7 @@ export async function sendEmailNotification({
   // 3. Try Nodemailer if SMTP_PASS is set in environment
   const host = process.env.SMTP_HOST || "smtp.gmail.com";
   const port = Number(process.env.SMTP_PORT) || 587;
-  const user = process.env.SMTP_USER || "leeparsonsbusiness@gmail.com";
+  const user = process.env.SMTP_USER || primaryRecipient;
   const pass = process.env.SMTP_PASS || "";
 
   if (pass) {
@@ -77,14 +95,14 @@ export async function sendEmailNotification({
 
       await transporter.sendMail({
         from: `"Trust The Thumb Web" <${user}>`,
-        to: recipient,
-        replyTo: senderEmail || recipient,
+        to: allRecipients.join(", "),
+        replyTo: senderEmail || primaryRecipient,
         subject,
         text,
         html,
       });
 
-      console.log("Email dispatched via SMTP to", recipient);
+      console.log("Email dispatched via SMTP to both recipients!");
       return { success: true, provider: "smtp" };
     } catch (smtpErr) {
       console.error("Nodemailer error:", smtpErr);
@@ -109,6 +127,5 @@ export async function sendEmailNotification({
     }
   }
 
-  console.log("Note: Add RESEND_API_KEY or SMTP_PASS to Vercel Environment Variables to route directly to Gmail inbox.");
   return { success: true, logged: true };
 }
