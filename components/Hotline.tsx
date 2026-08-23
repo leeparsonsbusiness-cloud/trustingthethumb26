@@ -11,7 +11,6 @@ import {
   Send, 
   CheckCircle2, 
   Sparkles,
-  Flame,
   AlertCircle
 } from "lucide-react";
 import { submitHotlineEntry } from "@/app/actions/submitHotline";
@@ -78,17 +77,46 @@ export default function Hotline() {
     const offerObj = offerTypes.find((o) => o.id === selectedOffer);
     const offerTitle = offerObj ? `${offerObj.emoji} ${offerObj.title}` : "Location Recommendation";
 
-    const res = await submitHotlineEntry({
+    const payload = {
       offerType: offerTitle,
-      name: name || "Road Friend",
-      city: city || "USA",
-      contactInfo,
-      message,
-    });
+      name: name.trim() || "Road Friend",
+      city: city.trim() || "USA",
+      contactInfo: contactInfo.trim(),
+      message: message.trim(),
+    };
+
+    let isSuccess = false;
+    let errMessage = "";
+
+    try {
+      const res = await submitHotlineEntry(payload);
+      if (res && res.success) {
+        isSuccess = true;
+      } else {
+        errMessage = res?.error || "Submission failed.";
+      }
+    } catch {
+      // Fallback via API route
+      try {
+        const apiRes = await fetch("/api/hotline-inquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await apiRes.json();
+        if (data && data.success) {
+          isSuccess = true;
+        } else {
+          errMessage = data?.error || "Submission failed.";
+        }
+      } catch (err) {
+        errMessage = String(err);
+      }
+    }
 
     setIsSubmitting(false);
 
-    if (res.success) {
+    if (isSuccess) {
       setSuccess(true);
       setName("");
       setCity("");
@@ -96,7 +124,7 @@ export default function Hotline() {
       setMessage("");
       setTimeout(() => setSuccess(false), 7000);
     } else {
-      setErrorMsg(res.error || "Submission failed. Please try again!");
+      setErrorMsg(errMessage || "Submission failed. Please try again!");
     }
   };
 
@@ -184,7 +212,7 @@ export default function Hotline() {
               Send Your Offer to Lee & Jake
             </h3>
             <p className="text-xs text-parchment-muted mb-6">
-              Submissions send an instant alert directly to our phones on the road.
+              Submissions send an instant alert directly to leeparsonsbusiness@gmail.com.
             </p>
 
             {success ? (

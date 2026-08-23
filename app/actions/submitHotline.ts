@@ -25,26 +25,40 @@ export async function submitHotlineEntry(formData: {
   message: string;
 }) {
   try {
-    let submissions: HotlineSubmission[] = [];
-    try {
-      const rawData = await fs.readFile(DATA_FILE, "utf-8");
-      submissions = JSON.parse(rawData);
-    } catch {
-      submissions = [];
+    const offerType = formData.offerType || "Location Recommendation";
+    const name = (formData.name || "").trim() || "Road Friend";
+    const city = (formData.city || "").trim() || "USA";
+    const contactInfo = (formData.contactInfo || "").trim();
+    const message = (formData.message || "").trim();
+
+    if (!contactInfo || !message) {
+      return { success: false, error: "Please provide your contact info and message details." };
     }
 
     const newEntry: HotlineSubmission = {
       id: `hotline-${Date.now()}`,
-      offerType: formData.offerType || "Location Recommendation",
-      name: formData.name.trim() || "Road Friend",
-      city: formData.city.trim() || "USA",
-      contactInfo: formData.contactInfo.trim(),
-      message: formData.message.trim(),
+      offerType,
+      name,
+      city,
+      contactInfo,
+      message,
       timestamp: new Date().toISOString(),
     };
 
-    submissions.unshift(newEntry);
-    await fs.writeFile(DATA_FILE, JSON.stringify(submissions, null, 2), "utf-8");
+    // Safely attempt local JSON disk storage (gracefully handles read-only serverless disk on Vercel)
+    try {
+      let submissions: HotlineSubmission[] = [];
+      try {
+        const rawData = await fs.readFile(DATA_FILE, "utf-8");
+        submissions = JSON.parse(rawData);
+      } catch {
+        submissions = [];
+      }
+      submissions.unshift(newEntry);
+      await fs.writeFile(DATA_FILE, JSON.stringify(submissions, null, 2), "utf-8");
+    } catch (diskErr) {
+      console.log("Local disk save bypassed (serverless environment):", diskErr);
+    }
 
     // Email Notification to leeparsonsbusiness@gmail.com
     const subject = `📞 New Hitchhiker Hotline Offer from ${newEntry.name} (${newEntry.city})`;
@@ -75,9 +89,20 @@ ${newEntry.message}
       </div>
     `;
 
-    await sendEmailNotification({ subject, text, html });
+    await sendEmailNotification({
+      subject,
+      text,
+      html,
+      senderEmail: contactInfo.includes("@") ? contactInfo : undefined,
+      senderName: name,
+    });
 
-    revalidatePath("/");
+    try {
+      revalidatePath("/");
+    } catch (revalErr) {
+      console.log("Revalidation skipped:", revalErr);
+    }
+
     return { success: true, entry: newEntry };
   } catch (error) {
     console.error("Error submitting hotline entry:", error);

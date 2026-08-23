@@ -25,26 +25,40 @@ export async function submitSponsorInquiry(formData: {
   message: string;
 }) {
   try {
-    let inquiries: SponsorInquiry[] = [];
-    try {
-      const rawData = await fs.readFile(SPONSOR_FILE, "utf-8");
-      inquiries = JSON.parse(rawData);
-    } catch {
-      inquiries = [];
+    const companyName = (formData.companyName || "").trim();
+    const contactName = (formData.contactName || "").trim();
+    const email = (formData.email || "").trim();
+    const partnershipType = formData.partnershipType || "Product & Financial";
+    const message = (formData.message || "").trim();
+
+    if (!companyName || !email) {
+      return { success: false, error: "Company name and email are required." };
     }
 
     const newInquiry: SponsorInquiry = {
       id: `sponsor-${Date.now()}`,
-      companyName: formData.companyName.trim(),
-      contactName: formData.contactName.trim(),
-      email: formData.email.trim(),
-      partnershipType: formData.partnershipType || "Product & Financial",
-      message: formData.message.trim(),
+      companyName,
+      contactName,
+      email,
+      partnershipType,
+      message,
       timestamp: new Date().toISOString(),
     };
 
-    inquiries.unshift(newInquiry);
-    await fs.writeFile(SPONSOR_FILE, JSON.stringify(inquiries, null, 2), "utf-8");
+    // Safely attempt local JSON disk storage (gracefully handles read-only serverless disk on Vercel)
+    try {
+      let inquiries: SponsorInquiry[] = [];
+      try {
+        const rawData = await fs.readFile(SPONSOR_FILE, "utf-8");
+        inquiries = JSON.parse(rawData);
+      } catch {
+        inquiries = [];
+      }
+      inquiries.unshift(newInquiry);
+      await fs.writeFile(SPONSOR_FILE, JSON.stringify(inquiries, null, 2), "utf-8");
+    } catch (diskErr) {
+      console.log("Local disk save bypassed (serverless environment):", diskErr);
+    }
 
     // Email Notification to leeparsonsbusiness@gmail.com
     const subject = `🚀 New Sponsor Inquiry: ${newInquiry.companyName}`;
@@ -75,10 +89,21 @@ ${newInquiry.message || "No additional message details provided."}
       </div>
     `;
 
-    await sendEmailNotification({ subject, text, html });
+    await sendEmailNotification({
+      subject,
+      text,
+      html,
+      senderEmail: email,
+      senderName: contactName || companyName,
+    });
 
-    revalidatePath("/sponsors");
-    revalidatePath("/");
+    try {
+      revalidatePath("/sponsors");
+      revalidatePath("/");
+    } catch (revalErr) {
+      console.log("Revalidation skipped:", revalErr);
+    }
+
     return { success: true, inquiry: newInquiry };
   } catch (error) {
     console.error("Error submitting sponsor inquiry:", error);

@@ -33,7 +33,7 @@ export default function SponsorsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!companyName || !email) {
+    if (!companyName.trim() || !email.trim()) {
       setErrorMsg("Please fill in your company name and official contact email.");
       return;
     }
@@ -41,24 +41,52 @@ export default function SponsorsPage() {
     setIsSubmitting(true);
     setErrorMsg("");
 
-    const res = await submitSponsorInquiry({
-      companyName,
-      contactName,
-      email,
-      partnershipType,
-      message,
-    });
+    let isSuccess = false;
+    let errMessage = "";
+
+    try {
+      const res = await submitSponsorInquiry({
+        companyName,
+        contactName,
+        email,
+        partnershipType,
+        message,
+      });
+
+      if (res && res.success) {
+        isSuccess = true;
+      } else {
+        errMessage = res?.error || "Submission failed.";
+      }
+    } catch {
+      // Fallback via API route
+      try {
+        const apiRes = await fetch("/api/sponsor-inquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ companyName, contactName, email, partnershipType, message }),
+        });
+        const data = await apiRes.json();
+        if (data && data.success) {
+          isSuccess = true;
+        } else {
+          errMessage = data?.error || "Submission failed.";
+        }
+      } catch (err) {
+        errMessage = String(err);
+      }
+    }
 
     setIsSubmitting(false);
 
-    if (res.success) {
+    if (isSuccess) {
       setSuccess(true);
       setCompanyName("");
       setContactName("");
       setEmail("");
       setMessage("");
     } else {
-      setErrorMsg(res.error || "Submission failed. Please try again.");
+      setErrorMsg(errMessage || "Submission failed. Please try again.");
     }
   };
 
@@ -122,7 +150,7 @@ export default function SponsorsPage() {
                 Submit Brand Partnership Inquiry
               </h3>
               <p className="text-xs text-parchment-muted font-mono">
-                Direct line to Lee & Jake&apos;s management. Responded within 24h.
+                Direct line to Lee & Jake&apos;s email (leeparsonsbusiness@gmail.com).
               </p>
             </div>
 
