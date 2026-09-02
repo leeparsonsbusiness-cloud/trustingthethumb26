@@ -9,7 +9,6 @@ import {
   Youtube, 
   Instagram, 
   ShieldCheck,
-  PhoneCall,
   Heart,
   Building2
 } from "lucide-react";
@@ -21,7 +20,7 @@ interface HeaderProps {
 }
 
 export default function Header({
-  statusBadgeText = "Launching Oct 1: Los Angeles, CA",
+  statusBadgeText = "Launching Sept 8: Los Angeles, CA",
   currentCity = "Los Angeles, CA",
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +38,6 @@ export default function Header({
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
-    { name: "Hotline", href: "/#hotline", icon: PhoneCall },
     { name: "Tip Jar", href: "/#tip-jar-section", icon: Heart },
   ];
 
@@ -121,7 +119,7 @@ export default function Header({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-desert"></span>
               </span>
-              <span>Oct 1 Start</span>
+              <span>Sept 8 Start</span>
             </div>
 
             <button

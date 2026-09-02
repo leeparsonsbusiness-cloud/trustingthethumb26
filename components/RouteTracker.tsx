@@ -57,7 +57,7 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               THE 2,000 MILE <span className="text-gradient-amber">CORRIDOR</span>
             </h2>
             <p className="text-base sm:text-lg text-parchment-muted">
-              Interactive map of Interstate 40 ➔ I-44 ➔ I-70. Click any waypoint to view upcoming leg previews and roadside updates starting October 1st.
+              Interactive map of Interstate 40 ➔ I-44 ➔ I-70. Click any waypoint to view upcoming leg previews and roadside updates starting September 8th.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-desert"></span>
                 </span>
-                LAUNCHING OCT 1, 2026
+                LAUNCHING SEPT 8, 2026
               </span>
               <span className="text-[11px] font-mono text-parchment-muted flex items-center gap-1">
                 <Clock className="w-3 h-3" />
@@ -152,7 +152,7 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
             ) : (
               <div className="bg-asphalt-darker/40 p-4 rounded-2xl border border-asphalt-border/40 text-xs text-parchment-muted flex items-center gap-2">
                 <Info className="w-4 h-4 text-amber-desert shrink-0" />
-                <span>Upcoming leg preview. Real-time updates post live as rides are caught starting Oct 1st!</span>
+                <span>Upcoming leg preview. Real-time updates post live as rides are caught starting Sept 8th!</span>
               </div>
             )}
 

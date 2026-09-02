@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Heart, ExternalLink, Copy, Check, Coffee } from "lucide-react";
+import { Heart, ExternalLink, Copy, Check, Utensils } from "lucide-react";
 
 export default function TipJarSection() {
   const [copiedVenmo, setCopiedVenmo] = useState(false);
@@ -33,7 +33,7 @@ export default function TipJarSection() {
             Support The Journey
           </div>
           <h2 className="font-display text-4xl sm:text-6xl font-black text-parchment">
-            BUY THE BROTHERS A <span className="text-gradient-amber">MEAL OR COFFEE</span>
+            BUY THE BROTHERS A <span className="text-gradient-amber">MEAL</span>
           </h2>
           <p className="text-base sm:text-lg text-parchment-muted leading-relaxed">
             Back Lee and Jake on the road! 100% of supporter contributions go straight to roadside diner breakfasts, water refills, and emergency supplies.
@@ -48,7 +48,7 @@ export default function TipJarSection() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-2xl bg-[#008CFF]/15 border border-[#008CFF]/30 flex items-center justify-center text-[#008CFF]">
-                  <Coffee className="w-6 h-6" />
+                  <Utensils className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-2xl text-parchment">Venmo Tip Jar</h3>
@@ -58,7 +58,7 @@ export default function TipJarSection() {
             </div>
 
             <p className="text-xs text-parchment-muted leading-relaxed">
-              Send a coffee or warm diner meal directly to Lee Parsons on Venmo.
+              Send a warm diner meal directly to Lee Parsons on Venmo.
             </p>
 
             <div className="flex items-center gap-3 pt-2">

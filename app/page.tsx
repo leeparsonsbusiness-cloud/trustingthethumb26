@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import RouteTracker from "@/components/RouteTracker";
 import Mission from "@/components/Mission";
 import OurRules from "@/components/OurRules";
-import Hotline from "@/components/Hotline";
 import TipJarSection from "@/components/TipJarSection";
 import Footer from "@/components/Footer";
 
@@ -41,9 +40,6 @@ export default function HomePage() {
 
       {/* Our Rules of the Road */}
       <OurRules />
-
-      {/* Hitchhiker Hotline (Are you near us & would like to help support?) */}
-      <Hotline />
 
       {/* Supporter Tip Jar Section */}
       <TipJarSection />

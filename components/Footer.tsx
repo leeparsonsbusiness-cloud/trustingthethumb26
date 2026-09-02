@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Compass, ShieldAlert, Youtube, Instagram, ArrowUp, Building2, ExternalLink } from "lucide-react";
+import { ShieldAlert, Youtube, Instagram, ArrowUp, Building2, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import ViewCounter from "./ViewCounter";
 
@@ -59,7 +59,7 @@ export default function Footer() {
             </div>
             
             <p className="text-xs text-parchment-muted leading-relaxed max-w-sm">
-              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds starting October 1st, 2026.
+              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds starting September 8th, 2026.
             </p>
 
             <div className="text-xs font-mono text-amber-desert">
@@ -91,11 +91,6 @@ export default function Footer() {
               <li>
                 <a href="/#our-rules" className="hover:text-amber-desert transition-colors">
                   ➔ Our Rules of the Road
-                </a>
-              </li>
-              <li>
-                <a href="/#hotline" className="hover:text-amber-desert transition-colors">
-                  ➔ Hitchhiker Hotline
                 </a>
               </li>
               <li>

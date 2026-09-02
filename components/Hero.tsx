@@ -3,10 +3,6 @@
 import React from "react";
 import { 
   MapPin, 
-  Car, 
-  Calendar, 
-  Coffee, 
-  Route, 
   Sparkles,
   Flame
 } from "lucide-react";
@@ -30,18 +26,9 @@ interface HeroProps {
   launchDate?: string;
 }
 
-export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: HeroProps) {
-  const milesProgress = Math.min(
-    Math.round((metrics.milesTraveled / metrics.totalMilesGoal) * 100),
-    100
-  );
-
-  const rides = metrics.ridesTaken ?? metrics.ridesCaught ?? 0;
-  const days = metrics.daysOnHighway ?? 0;
-  const generosity = metrics.generosityCounter ?? metrics.mealsShared ?? 0;
-
+export default function Hero({ metrics, launchDate = "2026-09-08T00:00:00Z" }: HeroProps) {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-asphalt-darker">
+    <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-asphalt-darker">
       {/* Background Ambient Glows */}
       <div 
         className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity bg-cover bg-center pointer-events-none"
@@ -116,116 +103,6 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
             </a>
           </div>
 
-        </div>
-
-        {/* Dynamic Key Metrics Bar */}
-        <div className="mt-14 lg:mt-20">
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-asphalt-border shadow-2xl relative overflow-hidden">
-            
-            {/* Top Progress Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-6 border-b border-asphalt-border/60">
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-amber-desert/10 border border-amber-desert/30 text-amber-desert">
-                  <Route className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-lg text-parchment">
-                    Route Progress Tracker
-                  </h3>
-                  <p className="text-xs text-parchment-muted font-mono">
-                    I-40 East ➔ I-44 ➔ I-70 Corridor (Launching Oct 1st)
-                  </p>
-                </div>
-              </div>
-
-              {/* Progress Bar Label */}
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-mono font-semibold text-amber-desert">
-                  {milesProgress}% Completed
-                </span>
-                <div className="w-36 h-3 bg-asphalt-darker rounded-full overflow-hidden border border-asphalt-border p-0.5">
-                  <div 
-                    className="h-full bg-gradient-to-r from-amber-desert to-sunset rounded-full transition-all duration-1000 shadow-amber-glow"
-                    style={{ width: `${milesProgress}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* 4 Metric Cards Grid - All set to 0 (Pre-Launch) */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              
-              {/* Metric 1: Miles Traveled */}
-              <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-asphalt-border/70 hover:border-amber-desert/40 transition-colors group">
-                <div className="flex items-center justify-between text-parchment-muted mb-3">
-                  <span className="text-xs font-mono font-medium uppercase tracking-wider">Miles Traveled</span>
-                  <MapPin className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
-                </div>
-                <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  {metrics.milesTraveled}
-                  <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
-                    / {metrics.totalMilesGoal.toLocaleString()} mi
-                  </span>
-                </div>
-                <p className="text-[11px] text-amber-desert mt-2 font-mono flex items-center gap-1">
-                  <span>🟡 Start Line: Los Angeles, CA</span>
-                </p>
-              </div>
-
-              {/* Metric 2: Rides Caught */}
-              <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-asphalt-border/70 hover:border-amber-desert/40 transition-colors group">
-                <div className="flex items-center justify-between text-parchment-muted mb-3">
-                  <span className="text-xs font-mono font-medium uppercase tracking-wider">Rides Caught</span>
-                  <Car className="w-4 h-4 text-sunset group-hover:scale-110 transition-transform" />
-                </div>
-                <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  {rides}
-                  <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
-                    drivers
-                  </span>
-                </div>
-                <p className="text-[11px] text-parchment-muted mt-2 font-mono">
-                  Journey starts Oct 1st
-                </p>
-              </div>
-
-              {/* Metric 3: Days on Highway */}
-              <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-asphalt-border/70 hover:border-amber-desert/40 transition-colors group">
-                <div className="flex items-center justify-between text-parchment-muted mb-3">
-                  <span className="text-xs font-mono font-medium uppercase tracking-wider">Days On Highway</span>
-                  <Calendar className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
-                </div>
-                <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  Day {days}
-                  <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
-                    / ~14
-                  </span>
-                </div>
-                <p className="text-[11px] text-parchment-muted mt-2 font-mono">
-                  Countdown active
-                </p>
-              </div>
-
-              {/* Metric 4: Stranger Generosity */}
-              <div className="bg-asphalt-card/80 p-5 rounded-2xl border border-asphalt-border/70 hover:border-amber-desert/40 transition-colors group">
-                <div className="flex items-center justify-between text-parchment-muted mb-3">
-                  <span className="text-xs font-mono font-medium uppercase tracking-wider text-amber-desert font-bold">Generosity Counter</span>
-                  <Coffee className="w-4 h-4 text-amber-desert group-hover:scale-110 transition-transform" />
-                </div>
-                <div className="font-display font-black text-2xl sm:text-4xl text-parchment">
-                  {generosity}
-                  <span className="text-sm sm:text-base font-normal text-parchment-muted font-mono ml-1.5">
-                    gifts
-                  </span>
-                </div>
-                <p className="text-[11px] text-parchment-muted mt-2 font-mono">
-                  Ready for the highway
-                </p>
-              </div>
-
-            </div>
-
-          </div>
         </div>
 
       </div>

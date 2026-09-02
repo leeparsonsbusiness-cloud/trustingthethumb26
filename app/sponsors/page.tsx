@@ -129,7 +129,7 @@ export default function SponsorsPage() {
             </h1>
             
             <p className="text-base sm:text-lg text-parchment-muted leading-relaxed">
-              Partner with Lee and Jake as they hitchhike 2,000 miles across America starting October 1st, 2026.
+              Partner with Lee and Jake as they hitchhike 2,000 miles across America starting September 8th, 2026.
             </p>
 
             <div className="pt-2">
