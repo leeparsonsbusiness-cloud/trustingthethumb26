@@ -26,7 +26,7 @@ interface HeroProps {
   launchDate?: string;
 }
 
-export default function Hero({ metrics, launchDate = "2026-09-08T00:00:00Z" }: HeroProps) {
+export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: HeroProps) {
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-asphalt-darker">
       {/* Background Ambient Glows */}

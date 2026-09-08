@@ -59,7 +59,7 @@ export default function Mission() {
                 <strong className="text-parchment font-semibold">We refuse to accept that story.</strong>
               </p>
               <p>
-                Starting September 8th, 2026, two brothers—Lee (23) and Jake (20)—are stepping into the unknown with only backpacks, thumbs out, and open minds. 2,000 miles from Los Angeles, California to Columbus, Ohio with zero booked rides, zero hotel reservations, and zero safety net.
+                Starting October 1st, 2026, two brothers—Lee (23) and Jake (20)—are stepping into the unknown with only backpacks, thumbs out, and open minds. 2,000 miles from Los Angeles, California to Columbus, Ohio with zero booked rides, zero hotel reservations, and zero safety net.
               </p>
               <p>
                 This isn&apos;t just a road trip—it&apos;s a live sociological experiment in real-world human kindness. We are testing whether everyday Americans across truck stops, desert highways, and heartland towns are as divided as the internet makes them seem, or whether generosity, warmth, and brotherhood still thrive in the heart of our country.

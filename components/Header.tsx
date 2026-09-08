@@ -20,7 +20,7 @@ interface HeaderProps {
 }
 
 export default function Header({
-  statusBadgeText = "Launching Sept 8: Los Angeles, CA",
+  statusBadgeText = "Launching Oct 1: Los Angeles, CA",
   currentCity = "Los Angeles, CA",
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -119,7 +119,7 @@ export default function Header({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-desert"></span>
               </span>
-              <span>Sept 8 Start</span>
+              <span>Oct 1 Start</span>
             </div>
 
             <button

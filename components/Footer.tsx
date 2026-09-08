@@ -59,7 +59,7 @@ export default function Footer() {
             </div>
             
             <p className="text-xs text-parchment-muted leading-relaxed max-w-sm">
-              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds starting September 8th, 2026.
+              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds starting October 1st, 2026.
             </p>
 
             <div className="text-xs font-mono text-amber-desert">
