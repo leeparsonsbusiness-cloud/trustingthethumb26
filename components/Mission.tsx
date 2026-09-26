@@ -27,7 +27,7 @@ export default function Mission() {
             The Experiment & Core Thesis
           </div>
           <h2 className="font-display text-3xl sm:text-5xl font-black text-parchment tracking-tight">
-            THE MISSION STATEMENT
+            THE MISSION
           </h2>
         </div>
 

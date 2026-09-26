@@ -9,8 +9,7 @@ import {
   Youtube, 
   Instagram, 
   ShieldCheck,
-  Heart,
-  Building2
+  ShoppingBag
 } from "lucide-react";
 import Link from "next/link";
 
@@ -38,7 +37,7 @@ export default function Header({
     { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
-    { name: "Tip Jar", href: "/#tip-jar-section", icon: Heart },
+    { name: "Merch", href: "/#merch", icon: ShoppingBag },
   ];
 
   return (
@@ -86,16 +85,6 @@ export default function Header({
                 {link.name}
               </a>
             ))}
-
-            <span className="text-asphalt-border mx-1 font-light">|</span>
-
-            <Link
-              href="/sponsors"
-              className="px-3.5 py-1.5 text-xs font-bold text-amber-desert hover:text-sunset hover:bg-amber-desert/10 rounded-full transition-all duration-200 flex items-center gap-1"
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Sponsors</span>
-            </Link>
           </nav>
 
           {/* Right Action & Live Status Pill */}
@@ -152,15 +141,6 @@ export default function Header({
                 </a>
               );
             })}
-
-            <Link
-              href="/sponsors"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-amber-desert/15 text-amber-desert text-sm font-bold border border-amber-desert/40 transition-colors"
-            >
-              <Building2 className="w-4 h-4" />
-              <span>Brand Partnerships & Sponsors Page</span>
-            </Link>
           </div>
 
           {/* Mobile Creator Handles */}

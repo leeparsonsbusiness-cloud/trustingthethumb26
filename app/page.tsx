@@ -6,7 +6,7 @@ import Hero from "@/components/Hero";
 import RouteTracker from "@/components/RouteTracker";
 import Mission from "@/components/Mission";
 import OurRules from "@/components/OurRules";
-import TipJarSection from "@/components/TipJarSection";
+import MerchSection from "@/components/MerchSection";
 import Footer from "@/components/Footer";
 
 import initialTrackerConfig from "@/data/trackerConfig.json";
@@ -35,18 +35,19 @@ export default function HomePage() {
         liveStatus={config.liveStatus as any}
       />
 
-      {/* Deep Mission Statement & Creator Profiles */}
+      {/* The Mission & Creator Profiles */}
       <Mission />
 
       {/* Our Rules of the Road */}
       <OurRules />
 
-      {/* Supporter Tip Jar Section */}
-      <TipJarSection />
+      {/* Official Merch Section */}
+      <MerchSection />
 
-      {/* Footer (Includes small Brand Sponsorship Banner linking to /sponsors) */}
+      {/* Global Footer */}
       <Footer />
 
     </main>
   );
 }
+
