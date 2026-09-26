@@ -49,14 +49,14 @@ const PRODUCTS: Product[] = [
     ],
     variants: [
       {
-        colorName: "Desert Sand",
-        colorHex: "#C2A888",
-        image: "/merch/tee-cardboard-sand.jpg"
+        colorName: "Off-White Cream",
+        colorHex: "#ECE5D8",
+        image: "/merch/IMG_4958.JPG"
       },
       {
         colorName: "Highway Black",
         colorHex: "#1E1E1E",
-        image: "/merch/tee-cardboard-black.jpg"
+        image: "/merch/IMG_4957.JPG"
       }
     ]
   },
@@ -76,19 +76,14 @@ const PRODUCTS: Product[] = [
     ],
     variants: [
       {
-        colorName: "Desert Sand",
-        colorHex: "#C2A888",
-        image: "/merch/tee-somewhere-sand.jpg"
+        colorName: "Off-White Cream",
+        colorHex: "#ECE5D8",
+        image: "/merch/IMG_4954.JPG"
       },
       {
         colorName: "Highway Black",
         colorHex: "#1E1E1E",
-        image: "/merch/tee-somewhere-black.jpg"
-      },
-      {
-        colorName: "Vintage Wash",
-        colorHex: "#B8A793",
-        image: "/merch/tee-vintage-sand.png"
+        image: "/merch/IMG_4953.JPG"
       }
     ]
   },
@@ -108,14 +103,14 @@ const PRODUCTS: Product[] = [
     ],
     variants: [
       {
-        colorName: "Desert Camel",
-        colorHex: "#A9855B",
-        image: "/merch/hoodie-cardboard-camel.jpg"
+        colorName: "Off-White Cream",
+        colorHex: "#ECE5D8",
+        image: "/merch/IMG_4959.JPG"
       },
       {
         colorName: "Highway Black",
         colorHex: "#1E1E1E",
-        image: "/merch/hoodie-cardboard-black.jpg"
+        image: "/merch/IMG_4960.JPG"
       }
     ]
   },
@@ -137,12 +132,12 @@ const PRODUCTS: Product[] = [
       {
         colorName: "Off-White Cream",
         colorHex: "#ECE5D8",
-        image: "/merch/hoodie-somewhere-cream.jpg"
+        image: "/merch/IMG_4955.JPG"
       },
       {
         colorName: "Highway Black",
         colorHex: "#1E1E1E",
-        image: "/merch/hoodie-somewhere-black.jpg"
+        image: "/merch/IMG_4956.JPG"
       }
     ]
   }
