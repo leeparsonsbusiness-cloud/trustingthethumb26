@@ -202,10 +202,20 @@ export default function MerchSection() {
     setCheckoutError(null);
   };
 
+  const STRIPE_LINKS = {
+    shirt: process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK_SHIRT || "https://buy.stripe.com/8x214g5wEa2Rc717C09IQ01",
+    hoodie: process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK_HOODIE || "https://buy.stripe.com/6oU9AMgbib6V2wr6xW9IQ02",
+  };
+
   const handleProceedToStripe = async () => {
     if (!checkoutProduct) return;
     setIsLoadingCheckout(true);
     setCheckoutError(null);
+
+    // Direct Stripe payment link based on product type
+    const directLink = checkoutProduct.product.type === "hoodie" 
+      ? STRIPE_LINKS.hoodie 
+      : STRIPE_LINKS.shirt;
 
     try {
       const res = await fetch("/api/checkout", {
@@ -227,16 +237,19 @@ export default function MerchSection() {
       const data = await res.json();
 
       if (data.url) {
-        // Redirect directly to Stripe Checkout
         window.location.href = data.url;
-      } else if (data.mockCheckout) {
-        // Stripe keys need to be pasted into environment
-        setCheckoutError("Stripe keys or payment links are ready to be linked! Enter your email below to reserve your drop immediately.");
+      } else if (directLink) {
+        window.location.href = directLink;
       } else {
-        setCheckoutError(data.error || "Unable to reach Stripe checkout.");
+        setCheckoutError("Redirecting to checkout...");
+        window.location.href = directLink;
       }
     } catch (err: any) {
-      setCheckoutError(err.message || "Failed to connect to checkout.");
+      if (directLink) {
+        window.location.href = directLink;
+      } else {
+        setCheckoutError(err.message || "Failed to connect to checkout.");
+      }
     } finally {
       setIsLoadingCheckout(false);
     }
