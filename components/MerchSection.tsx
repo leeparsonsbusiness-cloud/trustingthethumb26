@@ -169,6 +169,8 @@ export default function MerchSection() {
     size: string;
   } | null>(null);
 
+  const [isLoadingCheckout, setIsLoadingCheckout] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [waitlistEmail, setWaitlistEmail] = useState("");
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);
 
@@ -197,6 +199,47 @@ export default function MerchSection() {
     const size = selectedSizes[product.id] || "L";
     setCheckoutProduct({ product, variant, size });
     setWaitlistSubmitted(false);
+    setCheckoutError(null);
+  };
+
+  const handleProceedToStripe = async () => {
+    if (!checkoutProduct) return;
+    setIsLoadingCheckout(true);
+    setCheckoutError(null);
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: checkoutProduct.product.id,
+          productName: checkoutProduct.product.name,
+          type: checkoutProduct.product.type,
+          price: checkoutProduct.product.type === "hoodie" ? 49.99 : 29.99,
+          size: checkoutProduct.size,
+          color: checkoutProduct.variant.colorName,
+          image: checkoutProduct.variant.image,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        // Redirect directly to Stripe Checkout
+        window.location.href = data.url;
+      } else if (data.mockCheckout) {
+        // Stripe keys need to be pasted into environment
+        setCheckoutError("Stripe keys or payment links are ready to be linked! Enter your email below to reserve your drop immediately.");
+      } else {
+        setCheckoutError(data.error || "Unable to reach Stripe checkout.");
+      }
+    } catch (err: any) {
+      setCheckoutError(err.message || "Failed to connect to checkout.");
+    } finally {
+      setIsLoadingCheckout(false);
+    }
   };
 
   const handleWaitlistSubmit = (e: React.FormEvent) => {
@@ -520,50 +563,62 @@ export default function MerchSection() {
               </p>
             </div>
 
-            {/* Email pre-order / connect store prompt */}
-            {!waitlistSubmitted ? (
-              <form onSubmit={handleWaitlistSubmit} className="space-y-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-mono text-parchment-muted">
-                    Enter email for instant checkout & tracking:
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={waitlistEmail}
-                    onChange={(e) => setWaitlistEmail(e.target.value)}
-                    placeholder="your.email@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-asphalt-card border border-asphalt-border focus:border-amber-desert focus:outline-none text-parchment text-sm font-mono placeholder:text-parchment-muted/50"
-                  />
-                </div>
+            {/* Stripe Checkout Action & Pre-order Option */}
+            <div className="space-y-4">
+              <button
+                type="button"
+                onClick={handleProceedToStripe}
+                disabled={isLoadingCheckout}
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-black text-sm shadow-amber-glow hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              >
+                {isLoadingCheckout ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-asphalt-darker border-t-transparent rounded-full animate-spin" />
+                    <span>Connecting to Stripe...</span>
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag className="w-4 h-4 stroke-[2.5]" />
+                    <span>Proceed to Stripe Checkout — {checkoutProduct.product.price}</span>
+                  </>
+                )}
+              </button>
 
-                <button
-                  type="submit"
-                  className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-black text-sm shadow-amber-glow hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-                >
-                  <ShoppingBag className="w-4 h-4 stroke-[2.5]" />
-                  <span>Continue to Secure Checkout</span>
-                </button>
-              </form>
-            ) : (
-              <div className="p-4 rounded-2xl bg-sage/15 border border-sage/30 text-sage space-y-2 text-center animate-in fade-in">
-                <div className="w-10 h-10 rounded-full bg-sage/20 border border-sage/40 flex items-center justify-center mx-auto text-sage">
-                  <Check className="w-5 h-5 stroke-[2.5]" />
+              {checkoutError && (
+                <div className="p-3 rounded-xl bg-asphalt-card border border-amber-desert/30 text-amber-desert text-xs font-mono">
+                  {checkoutError}
                 </div>
-                <div className="font-bold font-display text-base text-parchment">
-                  You&apos;re Locked In!
+              )}
+
+              {/* Email backup reservation */}
+              {!waitlistSubmitted ? (
+                <form onSubmit={handleWaitlistSubmit} className="pt-2 border-t border-asphalt-border/50 space-y-3">
+                  <div className="text-[11px] font-mono text-parchment-muted">
+                    Or get notified with exclusive drop link & receipt:
+                  </div>
+                  <div className="flex gap-2">
+                    <input
+                      type="email"
+                      required
+                      value={waitlistEmail}
+                      onChange={(e) => setWaitlistEmail(e.target.value)}
+                      placeholder="your.email@example.com"
+                      className="flex-1 px-3.5 py-2.5 rounded-xl bg-asphalt-card border border-asphalt-border focus:border-amber-desert focus:outline-none text-parchment text-xs font-mono placeholder:text-parchment-muted/50"
+                    />
+                    <button
+                      type="submit"
+                      className="px-4 py-2.5 rounded-xl bg-asphalt-card border border-asphalt-border hover:border-amber-desert/50 text-parchment text-xs font-mono font-bold transition-all"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="p-3 rounded-xl bg-sage/15 border border-sage/30 text-sage text-xs text-center">
+                  Reservation saved for {waitlistEmail}!
                 </div>
-                <p className="text-xs text-parchment-muted">
-                  We saved your reservation for the <strong>{checkoutProduct.product.name} ({checkoutProduct.size})</strong>. Check your inbox ({waitlistEmail}) for your order confirmation and direct link!
-                </p>
-                <button
-                  onClick={() => setCheckoutProduct(null)}
-                  className="mt-3 px-5 py-2 rounded-xl bg-asphalt-card border border-asphalt-border text-parchment text-xs font-mono hover:bg-asphalt-border/40"
-                >
-                  Back to Merch
-                </button>
-              </div>
-            )}
+              )}
+            </div>
 
           </div>
         </div>
