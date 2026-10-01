@@ -21,10 +21,11 @@ import { insertWaypoint, getTripStats } from '../lib/db';
 import { TelegramWebhookUpdate } from '../types';
 
 const TELEGRAM_API_BASE = 'https://api.telegram.org';
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const ALLOWED_USER_ID = process.env.TELEGRAM_ALLOWED_USER_ID
-  ? parseInt(process.env.TELEGRAM_ALLOWED_USER_ID, 10)
-  : null;
+const ALLOWED_USER_IDS: number[] = process.env.TELEGRAM_ALLOWED_USER_ID
+  ? process.env.TELEGRAM_ALLOWED_USER_ID.split(/[,\s]+/)
+      .map((s) => parseInt(s.trim(), 10))
+      .filter((n) => !isNaN(n))
+  : [];
 
 if (!BOT_TOKEN) {
   console.error('❌ Error: TELEGRAM_BOT_TOKEN is not set in .env.local');
@@ -37,7 +38,7 @@ async function pollUpdates() {
   console.log('====================================================');
   console.log('📡 Trust The Thumb — Local Live Dispatcher Polling');
   console.log(`🤖 Connected to Bot: @Leesdspbot`);
-  console.log(`👤 Whitelisted User ID: ${ALLOWED_USER_ID || 'Any'}`);
+  console.log(`👤 Whitelisted User IDs: ${ALLOWED_USER_IDS.length > 0 ? ALLOWED_USER_IDS.join(', ') : 'Any'}`);
   console.log('✨ Waiting for messages from your phone...');
   console.log('====================================================\n');
 
@@ -62,7 +63,7 @@ async function pollUpdates() {
           console.log(`\n📨 Received message from ${senderName} (ID: ${senderId})`);
 
           // 1. Authorization check
-          if (ALLOWED_USER_ID && senderId !== ALLOWED_USER_ID) {
+          if (ALLOWED_USER_IDS.length > 0 && senderId && !ALLOWED_USER_IDS.includes(senderId)) {
             console.warn(`⛔ Unauthorized access attempt from ID: ${senderId}`);
             await sendTelegramMessage(
               chatId,

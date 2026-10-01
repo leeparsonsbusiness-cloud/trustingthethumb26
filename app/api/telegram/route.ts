@@ -46,17 +46,21 @@ export async function POST(request: NextRequest) {
     const chatId = message.chat.id;
     const senderId = message.from?.id;
 
-    // 3. User Authorization Check
+    // 3. User Authorization Check (supports multiple comma-separated IDs)
     const allowedUserIdStr = process.env.TELEGRAM_ALLOWED_USER_ID;
     if (allowedUserIdStr) {
-      const allowedUserId = parseInt(allowedUserIdStr, 10);
-      if (senderId !== allowedUserId) {
-        console.warn(`Forbidden: Message from unauthorized user ID ${senderId} (Expected: ${allowedUserId})`);
+      const allowedUserIds = allowedUserIdStr
+        .split(/[,\s]+/)
+        .map((s) => parseInt(s.trim(), 10))
+        .filter((n) => !isNaN(n));
 
-        // Send a polite unauthorized notice to the sender
+      if (allowedUserIds.length > 0 && senderId && !allowedUserIds.includes(senderId)) {
+        console.warn(`Forbidden: Message from unauthorized user ID ${senderId} (Allowed: ${allowedUserIds.join(', ')})`);
+
+        // Send a polite unauthorized notice to the sender with their ID so it can be added to the whitelist
         await sendTelegramMessage(
           chatId,
-          `⛔ *Access Denied*\nYour Telegram User ID (\`${senderId}\`) is not authorized to update Trust The Thumb.`
+          `⛔ *Access Denied*\nYour Telegram User ID (\`${senderId}\`) is not authorized to update Trust The Thumb.\n\nTo authorize your phone, add \`${senderId}\` to \`TELEGRAM_ALLOWED_USER_ID\` in Vercel settings!`
         );
 
         return NextResponse.json(
