@@ -27,6 +27,8 @@ const ALLOWED_USER_IDS: number[] = process.env.TELEGRAM_ALLOWED_USER_ID
       .filter((n) => !isNaN(n))
   : [];
 
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+
 if (!BOT_TOKEN) {
   console.error('❌ Error: TELEGRAM_BOT_TOKEN is not set in .env.local');
   process.exit(1);

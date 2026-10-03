@@ -295,8 +295,13 @@ export function formatStatsReply(stats: TripStatsRecord): string {
  * Builds the Telegram reply message for /help or /start
  */
 export function formatHelpReply(): string {
-  return `👍 *Trust The Thumb — Mobile Dispatcher*\n\n` +
-    `Send structured road updates directly from Telegram. Tap to copy the template below:\n\n` +
+  return `👍 *Trust The Thumb — Highway Dispatcher*\n\n` +
+    `Update your live website map directly from your phone!\n\n` +
+    `📍 *1. Quick Location & Note:*\n` +
+    `\`/location Barstow, CA | Caught a ride with Dave in an F-150!\`\n\n` +
+    `🚗 *2. Advance Waypoint:*\n` +
+    `\`/waypoint barstow | Dave | 1998 Ford F-150 | Cruising east\`\n\n` +
+    `🛣️ *3. Full Ride Log (Multi-field):*\n` +
     `\`\`\`\n` +
     `/update\n` +
     `loc: Flagstaff, AZ\n` +
@@ -305,11 +310,9 @@ export function formatHelpReply(): string {
     `quote: Keep following the sunset\n` +
     `gifts: 2 hot coffees\n` +
     `\`\`\`\n\n` +
-    `*Commands:*\n` +
-    `• \`/update\` - Log a new ride/waypoint (with optional photo)\n` +
-    `• \`/stats\` - View cumulative miles, rides, and gifts\n` +
-    `• \`/help\` - Show this template & instructions\n\n` +
-    `💡 *Tip:* You can attach a photo with the \`/update\` caption to automatically add the driver to the Wall of Fame!`;
+    `📊 *4. Check Website Status:*\n` +
+    `\`/status\`\n\n` +
+    `💡 *Tip:* You can attach a photo with any \`/update\` caption to log the moment!`;
 }
 
 /**
@@ -324,9 +327,11 @@ export async function registerBotCommands(
   }
 
   const commands = [
-    { command: 'update', description: 'Log new ride & waypoint (text/photo)' },
-    { command: 'stats', description: 'View total miles, rides & generosity index' },
-    { command: 'help', description: 'Get tap-to-copy update template' },
+    { command: 'location', description: 'Quick update: /location City, State | Note' },
+    { command: 'status', description: 'View current website live status' },
+    { command: 'update', description: 'Log ride with miles, driver, photo' },
+    { command: 'waypoint', description: 'Advance to waypoint (barstow, etc.)' },
+    { command: 'help', description: 'Show all update templates & tips' },
   ];
 
   try {

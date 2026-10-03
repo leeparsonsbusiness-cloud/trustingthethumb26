@@ -51,6 +51,30 @@ def send_telegram_message(bot_token, chat_id, text):
     except Exception as e:
         print(f"Error sending Telegram message: {e}")
 
+def load_env_local():
+    env_file = os.path.join(PROJECT_DIR, ".env.local")
+    if os.path.exists(env_file):
+        with open(env_file, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, val = line.split("=", 1)
+                    key = key.strip()
+                    val = val.strip().strip("'\"")
+                    if key not in os.environ:
+                        os.environ[key] = val
+
+def delete_webhook(bot_token):
+    url = f"https://api.telegram.org/bot{bot_token}/deleteWebhook"
+    req = urllib.request.Request(url)
+    try:
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            return data.get("ok", False)
+    except Exception as e:
+        print(f"Error deleting webhook: {e}")
+        return False
+
 def get_updates(bot_token, offset=None):
     url = f"https://api.telegram.org/bot{bot_token}/getUpdates?timeout=30"
     if offset:
@@ -60,6 +84,16 @@ def get_updates(bot_token, offset=None):
         with urllib.request.urlopen(req) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             return data.get("result", [])
+    except urllib.error.HTTPError as he:
+        if he.code == 409:
+            print("⚠️ Webhook is currently active on Vercel handling messages 24/7!")
+            print("   Your bot is already online via https://www.trustthethumb.com/api/telegram.")
+            print("   To run local polling instead, pass: python3 scripts/telegram_highway_bot.py --clear-webhook")
+            time.sleep(15)
+        else:
+            print(f"HTTP Error {he.code}: {he.reason}")
+            time.sleep(5)
+        return []
     except Exception as e:
         print(f"Error fetching updates: {e}")
         return []
@@ -153,15 +187,23 @@ def process_message(bot_token, msg):
             send_telegram_message(bot_token, chat_id, f"❌ Waypoint ID '{wp_id}' not found. Valid IDs: la, barstow, flagstaff, albuquerque, amarillo, okc, stlouis, indianapolis, ohio")
 
 def main():
+    load_env_local()
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
-    if len(sys.argv) > 1 and sys.argv[1].startswith("re_") or "--token" in sys.argv:
+    if len(sys.argv) > 1 and sys.argv[1].startswith("87") or "--token" in sys.argv:
         for i, arg in enumerate(sys.argv):
             if arg == "--token" and i + 1 < len(sys.argv):
                 token = sys.argv[i+1]
 
+    if "--clear-webhook" in sys.argv and token:
+        print("Clearing active webhook to switch to polling...")
+        if delete_webhook(token):
+            print("✅ Webhook cleared successfully! Polling enabled.")
+        else:
+            print("⚠️ Failed to delete webhook.")
+
     if not token:
-        print("Usage: python3 scripts/telegram_highway_bot.py --token YOUR_TELEGRAM_BOT_TOKEN")
-        print("Or export TELEGRAM_BOT_TOKEN in your environment.")
+        print("Usage: python3 scripts/telegram_highway_bot.py [--token YOUR_TELEGRAM_BOT_TOKEN] [--clear-webhook]")
+        print("Or set TELEGRAM_BOT_TOKEN in .env.local")
         return
 
     print("🤖 Trust The Thumb Telegram Bot Listening for Highway Messages...")
