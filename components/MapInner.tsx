@@ -41,11 +41,24 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
         zoomControl: true,
       });
 
-      // CartoDB Dark Matter Tile Layer
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        maxZoom: 19,
-      }).addTo(map);
+      // Dark theme map tile layer (ESRI Dark Gray Canvas - free, clean, dark aesthetic with no watermark or API key required)
+      const cartoKey = process.env.NEXT_PUBLIC_CARTO_API_KEY;
+      if (cartoKey) {
+        L.tileLayer(`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?api_key=${cartoKey}`, {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          maxZoom: 19,
+        }).addTo(map);
+      } else {
+        L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+          attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+          maxZoom: 16,
+        }).addTo(map);
+
+        L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+          attribution: '',
+          maxZoom: 16,
+        }).addTo(map);
+      }
 
       mapInstanceRef.current = map;
     }
