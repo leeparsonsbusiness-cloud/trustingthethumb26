@@ -26,6 +26,7 @@ const MapInner = dynamic(() => import("./MapInner"), {
 interface RouteTrackerProps {
   waypoints: Waypoint[];
   liveStatus: {
+    state?: string;
     statusBadgeText: string;
     currentCity: string;
     currentCoordinates: [number, number] | number[] | any;
@@ -69,16 +70,16 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-desert"></span>
                 </span>
-                LAUNCHING OCT 1, 2026
+                {liveStatus.state === "active" ? "LIVE ON HIGHWAY" : "LAUNCHING OCT 1, 2026"}
               </span>
               <span className="text-[11px] font-mono text-parchment-muted flex items-center gap-1">
                 <Clock className="w-3 h-3" />
-                Pre-Launch Mode
+                {liveStatus.state === "active" ? "Active Road Leg" : "Pre-Launch Mode"}
               </span>
             </div>
             <div className="font-display font-bold text-xl text-parchment flex items-center justify-between">
               <span>{liveStatus.currentCity}</span>
-              <span className="text-xs font-mono text-amber-desert">Mile 0</span>
+              <span className="text-xs font-mono text-amber-desert">Mile {currentWaypoint.mileMarker}</span>
             </div>
             <p className="text-xs text-parchment-muted mt-1.5 italic bg-asphalt-darker/60 p-2.5 rounded-xl border border-asphalt-border/40">
               &quot;{liveStatus.currentNote}&quot;
