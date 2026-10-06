@@ -143,17 +143,34 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
 
             {/* Driver / Ride Story Info */}
             {selectedWaypoint.driverName ? (
-              <div className="bg-asphalt-darker/80 p-4 rounded-2xl border border-asphalt-border space-y-2">
-                <div className="text-xs font-mono uppercase text-sunset font-semibold flex items-center gap-1.5">
-                  <Car className="w-3.5 h-3.5" />
-                  Ride Hero Spotlight
+              <div className="bg-asphalt-darker/80 p-5 rounded-2xl border border-amber-desert/40 space-y-3 shadow-lg">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-mono uppercase text-sunset font-bold flex items-center gap-1.5">
+                    <Car className="w-4 h-4 text-sunset" />
+                    Ride Hero Spotlight
+                  </div>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-amber-desert/15 text-amber-desert font-bold">
+                    Highway Hero
+                  </span>
                 </div>
-                <div className="text-sm font-bold text-parchment">
-                  {selectedWaypoint.driverName}
+                <div>
+                  <div className="text-xl font-display font-black text-parchment">
+                    {selectedWaypoint.driverName}
+                  </div>
+                  {selectedWaypoint.rideVehicle && (
+                    <p className="text-xs font-mono text-amber-desert mt-0.5">
+                      Ride: <span className="text-parchment">{selectedWaypoint.rideVehicle}</span>
+                    </p>
+                  )}
                 </div>
-                <p className="text-xs text-parchment-muted">
-                  Vehicle: <span className="text-parchment">{selectedWaypoint.rideVehicle || "Standard vehicle"}</span>
-                </p>
+                <div className="pt-2 border-t border-asphalt-border/50 space-y-1.5">
+                  <div className="text-[11px] font-mono text-parchment-muted uppercase tracking-wider">
+                    Story & Description
+                  </div>
+                  <p className="text-xs sm:text-sm text-parchment/90 leading-relaxed italic bg-asphalt-card/60 p-3.5 rounded-xl border border-asphalt-border/60">
+                    &quot;{selectedWaypoint.storySnippet}&quot;
+                  </p>
+                </div>
               </div>
             ) : selectedWaypoint.id === "phoenix" ? (
               <div className="bg-amber-desert/10 p-4 rounded-2xl border border-amber-desert/30 text-xs text-amber-desert space-y-1">
@@ -173,14 +190,16 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
             )}
 
             {/* Road Log Story Snippet */}
-            <div>
-              <div className="text-xs font-mono text-parchment-muted uppercase tracking-wider mb-2">
-                Leg Overview
+            {!selectedWaypoint.driverName && (
+              <div>
+                <div className="text-xs font-mono text-parchment-muted uppercase tracking-wider mb-2">
+                  Leg Overview
+                </div>
+                <p className="text-sm text-parchment/90 leading-relaxed bg-asphalt-darker/60 p-4 rounded-2xl border border-asphalt-border/60">
+                  &quot;{selectedWaypoint.storySnippet}&quot;
+                </p>
               </div>
-              <p className="text-sm text-parchment/90 leading-relaxed bg-asphalt-darker/60 p-4 rounded-2xl border border-asphalt-border/60">
-                &quot;{selectedWaypoint.storySnippet}&quot;
-              </p>
-            </div>
+            )}
 
             {/* Quick Helper Note */}
             <div className="text-[11px] font-mono text-parchment-muted text-center pt-2 border-t border-asphalt-border/40">

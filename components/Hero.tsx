@@ -70,9 +70,13 @@ export default function Hero({ metrics, launchDate = "2027-05-01T00:00:00Z" }: H
           </div>
 
           {/* Main Cinematic Headline */}
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-parchment tracking-tight leading-[1.08]">
-            2 BROTHERS. 2,000 MILES. <br className="hidden sm:inline" />
-            <span className="text-gradient-amber">RESTARTING IN 2027.</span>
+          <h1 className="font-display font-black text-parchment tracking-tight leading-none text-center">
+            <span className="block whitespace-nowrap text-[clamp(1.15rem,5.6vw,4.25rem)]">
+              2 BROTHERS. 2,000 MILES.
+            </span>
+            <span className="block text-gradient-amber text-[clamp(1.25rem,6.2vw,4.75rem)] mt-2 sm:mt-3">
+              RESTARTING IN 2027.
+            </span>
           </h1>
 
           {/* Subheading */}
