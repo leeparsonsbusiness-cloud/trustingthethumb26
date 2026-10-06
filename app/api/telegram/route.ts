@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
       if (!updateResult.ok) {
         await sendTelegramMessage(
           chatId,
-          `❌ *${updateResult.error}*\nValid IDs: \`la\`, \`barstow\`, \`flagstaff\`, \`albuquerque\`, \`amarillo\`, \`okc\`, \`stlouis\`, \`indianapolis\`, \`ohio\``
+          `❌ *${updateResult.error}*\nValid IDs: \`la\`, \`barstow\`, \`vegas\`, \`phoenix\`, \`flagstaff\`, \`albuquerque\`, \`amarillo\`, \`okc\`, \`stlouis\`, \`indianapolis\`, \`ohio\``
         );
         return NextResponse.json({ ok: false, error: updateResult.error });
       }

@@ -24,29 +24,26 @@
       }
     }
   },
-  "launchDate": "2026-10-01T00:00:00Z",
+  "launchDate": "2027-05-01T00:00:00Z",
   "liveStatus": {
-    "state": "active",
-    "statusBadgeText": "Live on Highway • Kingman AZ",
-    "statusType": "active",
-    "currentCity": "Kingman AZ",
-    "currentCoordinates": [
-      36.1716,
-      -115.1391
-    ],
-    "lastUpdated": "2026-10-05T00:53:16.254Z",
-    "currentNote": "Stopped in Barstow, CA and caught another ride north. Currently live in Las Vegas, NV!"
+    "state": "concluded",
+    "statusBadgeText": "Journey Concluded • Phoenix, AZ (Restarting 2027)",
+    "statusType": "concluded",
+    "currentCity": "Phoenix, AZ",
+    "currentCoordinates": [33.4484, -112.0740],
+    "lastUpdated": "2026-10-06T10:30:00Z",
+    "currentNote": "Due to a lack of preparation and unforeseen circumstances, our 2026 journey came to an end in Phoenix, Arizona. We are regrouping and starting the entire journey over from LA to Ohio in 2027!"
   },
   "metrics": {
-    "milesTraveled": 270,
+    "milesTraveled": 580,
     "totalMilesGoal": 2150,
-    "ridesCaught": 2,
-    "daysOnHighway": 2,
-    "generosityCounter": 2,
-    "peopleMet": 4,
-    "ridesTaken": 2,
-    "mealsShared": 1,
-    "placesStayed": 1,
+    "ridesCaught": 4,
+    "daysOnHighway": 5,
+    "generosityCounter": 5,
+    "peopleMet": 8,
+    "ridesTaken": 4,
+    "mealsShared": 3,
+    "placesStayed": 2,
     "moneySpent": 0
   },
   "waypoints": [
@@ -54,10 +51,7 @@
       "id": "la",
       "name": "Los Angeles, CA (Start Line)",
       "state": "CA",
-      "coordinates": [
-        34.0522,
-        -118.2437
-      ],
+      "coordinates": [34.0522, -118.2437],
       "status": "completed",
       "mileMarker": 0,
       "dateCompleted": "2026-10-01T10:00:00Z",
@@ -69,10 +63,7 @@
       "id": "barstow",
       "name": "Barstow, CA",
       "state": "CA",
-      "coordinates": [
-        34.8958,
-        -117.0173
-      ],
+      "coordinates": [34.8958, -117.0173],
       "status": "completed",
       "mileMarker": 115,
       "dateCompleted": "2026-10-02T15:30:00Z",
@@ -84,29 +75,35 @@
       "id": "vegas",
       "name": "Las Vegas, NV",
       "state": "NV",
-      "coordinates": [
-        36.1716,
-        -115.1391
-      ],
-      "status": "current",
+      "coordinates": [36.1716, -115.1391],
+      "status": "completed",
       "mileMarker": 270,
-      "dateCompleted": null,
-      "storySnippet": "Neon lights detour! Currently in Las Vegas after catching a ride up the I-15 corridor.",
-      "driverName": null,
-      "rideVehicle": null
+      "dateCompleted": "2026-10-03T20:15:00Z",
+      "storySnippet": "Neon lights detour! Caught a ride up the I-15 corridor into Las Vegas.",
+      "driverName": "Rick",
+      "rideVehicle": "Dodge Ram 1500"
+    },
+    {
+      "id": "phoenix",
+      "name": "Phoenix, AZ (2026 Final Stop)",
+      "state": "AZ",
+      "coordinates": [33.4484, -112.0740],
+      "status": "current",
+      "mileMarker": 580,
+      "dateCompleted": "2026-10-06T10:00:00Z",
+      "storySnippet": "2026 Journey Conclusion: Unfortunately, our journey ended in Phoenix due to lack of preparation and unexpected circumstances. We are regrouping and starting the entire journey over from LA to Ohio in 2027!",
+      "driverName": "Marcus",
+      "rideVehicle": "Chevy Silverado"
     },
     {
       "id": "flagstaff",
       "name": "Flagstaff, AZ",
       "state": "AZ",
-      "coordinates": [
-        35.1983,
-        -111.6513
-      ],
+      "coordinates": [35.1983, -111.6513],
       "status": "upcoming",
       "mileMarker": 520,
       "dateCompleted": null,
-      "storySnippet": "Targeting the pine forests of Northern Arizona along Route 66.",
+      "storySnippet": "Upcoming 2027 restart leg: Targeting the pine forests of Northern Arizona along Route 66.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -114,14 +111,11 @@
       "id": "albuquerque",
       "name": "Albuquerque, NM",
       "state": "NM",
-      "coordinates": [
-        35.0844,
-        -106.6504
-      ],
+      "coordinates": [35.0844, -106.6504],
       "status": "upcoming",
       "mileMarker": 805,
       "dateCompleted": null,
-      "storySnippet": "Crossing into the Land of Enchantment along the I-40 highway corridor.",
+      "storySnippet": "Upcoming 2027 restart leg: Crossing into the Land of Enchantment along the I-40 corridor.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -129,14 +123,11 @@
       "id": "amarillo",
       "name": "Amarillo, TX",
       "state": "TX",
-      "coordinates": [
-        35.222,
-        -101.8313
-      ],
+      "coordinates": [35.222, -101.8313],
       "status": "upcoming",
       "mileMarker": 1092,
       "dateCompleted": null,
-      "storySnippet": "Panhandle plains ahead. Big skies and Texas highway stops.",
+      "storySnippet": "Upcoming 2027 restart leg: Panhandle plains, big skies, and Texas highway stops.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -144,14 +135,11 @@
       "id": "okc",
       "name": "Oklahoma City, OK",
       "state": "OK",
-      "coordinates": [
-        35.4676,
-        -97.5164
-      ],
+      "coordinates": [35.4676, -97.5164],
       "status": "upcoming",
       "mileMarker": 1350,
       "dateCompleted": null,
-      "storySnippet": "Connecting Route 66 into I-44 towards the heartland.",
+      "storySnippet": "Upcoming 2027 restart leg: Connecting Route 66 into I-44 towards the heartland.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -159,14 +147,11 @@
       "id": "stlouis",
       "name": "St. Louis, MO",
       "state": "MO",
-      "coordinates": [
-        38.627,
-        -90.1994
-      ],
+      "coordinates": [38.627, -90.1994],
       "status": "upcoming",
       "mileMarker": 1850,
       "dateCompleted": null,
-      "storySnippet": "The Gateway to the West. Crossing the Mississippi River.",
+      "storySnippet": "Upcoming 2027 restart leg: The Gateway to the West. Crossing the Mississippi River.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -174,14 +159,11 @@
       "id": "indianapolis",
       "name": "Indianapolis, IN",
       "state": "IN",
-      "coordinates": [
-        39.7684,
-        -86.1581
-      ],
+      "coordinates": [39.7684, -86.1581],
       "status": "upcoming",
       "mileMarker": 2090,
       "dateCompleted": null,
-      "storySnippet": "Final stretch on I-70 East towards the finish line.",
+      "storySnippet": "Upcoming 2027 restart leg: Final stretch on I-70 East towards the finish line.",
       "driverName": null,
       "rideVehicle": null
     },
@@ -189,14 +171,11 @@
       "id": "ohio",
       "name": "Columbus, OH (Finish Line)",
       "state": "OH",
-      "coordinates": [
-        39.9612,
-        -82.9988
-      ],
+      "coordinates": [39.9612, -82.9988],
       "status": "upcoming",
       "mileMarker": 2150,
       "dateCompleted": null,
-      "storySnippet": "The finish line! Reunion after 2,000 miles of trusting thumbs and human kindness.",
+      "storySnippet": "The finish line! 2027 reunion after conquering all 2,000 miles from LA to Ohio.",
       "driverName": null,
       "rideVehicle": null
     }

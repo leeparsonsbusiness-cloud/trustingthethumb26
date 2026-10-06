@@ -50,7 +50,7 @@ export async function POST(req: Request) {
             currency: "usd",
             product_data: {
               name: `${productName} — ${color} (Size: ${size})`,
-              description: `Trust The Thumb Official Merch • 100% of proceeds fund Lee & Jake's 2,000-mile journey from LA to Ohio`,
+              description: `Trust The Thumb Official Merch • 100% of proceeds fund Lee & Jake as they prepare to restart their 2,000-mile journey from LA to Ohio in 2027`,
               images: image ? [fullImageUrl] : [],
             },
             unit_amount: unitAmount,

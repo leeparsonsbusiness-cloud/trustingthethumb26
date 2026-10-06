@@ -4,7 +4,10 @@ import React from "react";
 import { 
   MapPin, 
   Sparkles,
-  Flame
+  Flame,
+  Calendar,
+  AlertTriangle,
+  RotateCcw
 } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 
@@ -26,7 +29,7 @@ interface HeroProps {
   launchDate?: string;
 }
 
-export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: HeroProps) {
+export default function Hero({ metrics, launchDate = "2027-05-01T00:00:00Z" }: HeroProps) {
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-asphalt-darker">
       {/* Background Ambient Glows */}
@@ -61,7 +64,7 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
               </span>
               <span className="text-parchment-muted">•</span>
               <span className="text-xs text-parchment-muted font-mono">
-                LA ➔ OHIO
+                LA ➔ OHIO • RETURNING 2027
               </span>
             </div>
           </div>
@@ -69,12 +72,12 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
           {/* Main Cinematic Headline */}
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-parchment tracking-tight leading-[1.08]">
             2 BROTHERS. 2,000 MILES. <br className="hidden sm:inline" />
-            <span className="text-gradient-amber">0 RIDES BOOKED.</span>
+            <span className="text-gradient-amber">RESTARTING IN 2027.</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg sm:text-2xl text-parchment-muted font-normal max-w-3xl mx-auto leading-relaxed">
-            Testing American kindness from <span className="text-parchment font-semibold border-b border-amber-desert/50">Los Angeles to Ohio</span> with only backpacks, thumbs out, and an open mind.
+            Testing American kindness from <span className="text-parchment font-semibold border-b border-amber-desert/50">Los Angeles to Ohio</span>. Our 2026 expedition concluded in Phoenix, AZ—now preparing to start over from scratch in 2027.
           </p>
 
           {/* Core Thesis Statement */}
@@ -87,8 +90,46 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
             </div>
           </div>
 
+          {/* Official Journey Status Announcement Banner */}
+          <div className="max-w-3xl mx-auto bg-gradient-to-b from-asphalt-card/95 via-asphalt-card/85 to-asphalt-darker/95 border border-amber-desert/40 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-md text-left space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-asphalt-border/60">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-desert/15 border border-amber-desert/40 text-amber-desert font-mono text-xs font-bold uppercase shadow-amber-glow">
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-desert" />
+                Official Expedition Update
+              </div>
+              <span className="text-xs font-mono text-parchment-muted">October 2026 • Phoenix, Arizona</span>
+            </div>
+
+            <h2 className="font-display font-black text-xl sm:text-2xl text-parchment leading-snug">
+              Our Journey Concluded in Phoenix, AZ — <span className="text-gradient-amber">We Are Starting Over LA ➔ Ohio in 2027</span>
+            </h2>
+
+            <div className="space-y-3 text-sm text-parchment/90 leading-relaxed font-normal">
+              <p>
+                Unfortunately, we had to end our 2026 journey in <strong>Phoenix, Arizona</strong> due to a lack of preparation and unforeseen, unexpected circumstances on the road.
+              </p>
+              <p className="text-parchment-muted">
+                Hitchhiking 2,000 miles across America with only thumbs and backpacks is an immense test of endurance and logistical planning. When unexpected challenges arose, safety and wisdom came first.
+              </p>
+              <p className="text-parchment font-medium">
+                This is not the end of Trust The Thumb! We are taking every hard-earned lesson to heart, regrouping, and preparing to <strong>continue this journey and start completely over from Los Angeles to Ohio again in 2027</strong>. Thank you deeply to everyone who picked us up, supported us, and believed in this mission.
+              </p>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-asphalt-darker border border-amber-desert/30 text-xs font-mono text-amber-desert">
+                <MapPin className="w-3.5 h-3.5 text-amber-desert" />
+                <span>2026 Concluded Stop: Phoenix, AZ</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-asphalt-darker border border-sunset/30 text-xs font-mono text-sunset">
+                <RotateCcw className="w-3.5 h-3.5 text-sunset" />
+                <span>Starting Over: LA ➔ Ohio in 2027</span>
+              </div>
+            </div>
+          </div>
+
           {/* Official Countdown Timer Section */}
-          <div id="countdown" className="pt-6 pb-2">
+          <div id="countdown" className="pt-4 pb-2">
             <CountdownTimer targetDate={launchDate} />
           </div>
 
@@ -99,7 +140,7 @@ export default function Hero({ metrics, launchDate = "2026-10-01T00:00:00Z" }: H
               className="inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-base shadow-amber-glow hover:scale-105 active:scale-95 transition-all duration-200"
             >
               <MapPin className="w-5 h-5 stroke-[2.5]" />
-              <span>Explore Live Route Map</span>
+              <span>Explore Route Map & Phoenix Stop</span>
             </a>
           </div>
 

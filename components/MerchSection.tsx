@@ -285,7 +285,7 @@ export default function MerchSection() {
             <div className="inline-flex items-center gap-2.5 p-4 rounded-2xl bg-amber-desert/10 border border-amber-desert/30 text-amber-desert text-xs sm:text-sm font-medium shadow-amber-glow text-left">
               <Heart className="w-5 h-5 shrink-0 fill-amber-desert text-amber-desert animate-pulse" />
               <span>
-                <strong className="font-bold text-parchment">All funds go towards us.</strong> 100% of proceeds directly fund Lee and Jake&apos;s roadside diner meals, camera gear, water refills, and emergency provisions.
+                <strong className="font-bold text-parchment">All funds go towards us.</strong> 100% of proceeds directly fund Lee and Jake&apos;s living expenses, emergency provisions, and gear preparation as we get ready to restart from LA to Ohio in 2027.
               </span>
             </div>
           </div>
@@ -484,10 +484,10 @@ export default function MerchSection() {
             </div>
             <div>
               <h4 className="font-display font-bold text-lg text-parchment">
-                100% of Merch Proceeds Support The Journey
+                100% of Merch Proceeds Support Our 2027 Restart
               </h4>
               <p className="text-xs text-parchment-muted mt-1 leading-relaxed">
-                We are 100% community powered and independently funded. Every shirt and hoodie sold puts miles behind our boots, buys warm meals from roadside diners, and keeps our video cameras powered from LA to Ohio.
+                We are 100% community powered and independently funded. Every shirt and hoodie sold supports our equipment, preparation, and upcoming 2,000-mile fresh restart from Los Angeles to Ohio in 2027.
               </p>
             </div>
           </div>

@@ -59,10 +59,27 @@ export default function Mission() {
                 <strong className="text-parchment font-semibold">We refuse to accept that story.</strong>
               </p>
               <p>
-                Starting October 1st, 2026, two brothers—Lee (23) and Jake (20)—are stepping into the unknown with only backpacks, thumbs out, and open minds. 2,000 miles from Los Angeles, California to Columbus, Ohio with zero booked rides, zero hotel reservations, and zero safety net.
+                In October 2026, two brothers—Lee (23) and Jake (20)—stepped into the unknown with only backpacks, thumbs out, and open minds to hitchhike 2,000 miles from Los Angeles, California to Columbus, Ohio with zero booked rides, zero hotel reservations, and zero safety net.
               </p>
               <p>
-                This isn&apos;t just a road trip—it&apos;s a live sociological experiment in real-world human kindness. We are testing whether everyday Americans across truck stops, desert highways, and heartland towns are as divided as the internet makes them seem, or whether generosity, warmth, and brotherhood still thrive in the heart of our country.
+                Unfortunately, due to a lack of preparation and unforeseen, unexpected circumstances on the highway, our 2026 journey came to an end in <strong className="text-amber-desert">Phoenix, Arizona</strong>. The open road is unforgiving, and when unexpected challenges arose, stepping back was the only responsible decision.
+              </p>
+              <p>
+                <strong className="text-parchment font-semibold">The journey is not over.</strong> The warmth, rides, and generosity we experienced across the desert proved our thesis true: everyday Americans are extraordinary. We are taking every lesson learned to heart, regrouping, and will <strong className="text-parchment font-semibold">continue this journey by starting completely over from Los Angeles to Ohio again in 2027</strong>.
+              </p>
+            </div>
+
+            {/* Phoenix Lessons & 2027 Fresh Start Callout */}
+            <div className="bg-asphalt-darker/70 border border-amber-desert/30 rounded-2xl p-5 sm:p-6 text-left space-y-3 max-w-3xl mx-auto shadow-inner">
+              <div className="flex items-center gap-2 text-amber-desert text-xs font-mono font-bold uppercase">
+                <Compass className="w-4 h-4" />
+                <span>The Road to 2027 • What We Learned in Phoenix</span>
+              </div>
+              <h4 className="font-display font-bold text-base sm:text-lg text-parchment">
+                Honesty Over Ego: Ending in Phoenix & Preparing for the 2027 Reboot
+              </h4>
+              <p className="text-xs sm:text-sm text-parchment-muted leading-relaxed">
+                When unforeseen circumstances emerge on the highway, pushing ahead unprepared isn&apos;t courage—it&apos;s reckless. Choosing to conclude in Phoenix gave us invaluable knowledge about endurance, supply lines, and road safety. In 2027, we reset the counter to zero in Los Angeles and conquer all 2,000 miles to Ohio with the preparation the highway demands.
               </p>
             </div>
 

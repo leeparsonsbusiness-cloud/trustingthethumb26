@@ -73,8 +73,8 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
     });
 
     // Custom Icon Builder
-    const createMarkerIcon = (status: string) => {
-      if (status === "current") {
+    const createMarkerIcon = (status: string, id: string) => {
+      if (id === "phoenix" || status === "current") {
         return L.divIcon({
           className: "pulse-marker-container",
           html: `<div class="pulse-marker-ring"></div><div class="pulse-marker-dot"></div>`,
@@ -131,14 +131,15 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
 
     // Add Markers
     waypoints.forEach((wp) => {
+      const isPhoenix = wp.id === "phoenix";
       const marker = L.marker(wp.coordinates, {
-        icon: createMarkerIcon(wp.status),
+        icon: createMarkerIcon(wp.status, wp.id),
       }).addTo(map);
 
       const popupContent = `
         <div style="padding: 4px; max-width: 240px; font-family: sans-serif;">
           <div style="font-weight: bold; font-size: 14px; color: #F4F1DE; border-bottom: 1px solid rgba(224,122,95,0.3); padding-bottom: 4px;">
-            ${wp.name}
+            ${wp.name} ${isPhoenix ? "🛑" : ""}
           </div>
           <p style="font-size: 12px; color: #D8D4BC; margin-top: 6px; line-height: 1.4;">
             "${wp.storySnippet}"
@@ -146,6 +147,11 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
           ${
             wp.driverName
               ? `<div style="font-size: 11px; color: #F2CC8F; margin-top: 6px; font-family: monospace;">🚗 Ride: ${wp.driverName} (${wp.rideVehicle || "Vehicle"})</div>`
+              : ""
+          }
+          ${
+            isPhoenix
+              ? `<div style="font-size: 11px; color: #E07A5F; margin-top: 6px; font-weight: bold;">🔄 Restarting LA ➔ Ohio in 2027</div>`
               : ""
           }
         </div>

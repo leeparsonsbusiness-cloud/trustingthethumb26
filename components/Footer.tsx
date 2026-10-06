@@ -33,7 +33,7 @@ export default function Footer() {
             </div>
             
             <p className="text-xs text-parchment-muted leading-relaxed max-w-sm">
-              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness, brotherhood, and open minds starting October 1st, 2026.
+              &quot;The algorithm says be afraid. We&apos;re going to find the truth.&quot; A 2,000-mile cross-country experiment in human kindness. 2026 journey concluded in Phoenix, AZ due to lack of preparation and unexpected circumstances — starting over from LA to Ohio in 2027.
             </p>
 
             <div className="text-xs font-mono text-amber-desert">
@@ -49,12 +49,12 @@ export default function Footer() {
             <ul className="space-y-2 text-xs">
               <li>
                 <a href="/#countdown" className="hover:text-amber-desert transition-colors">
-                  ➔ Launch Countdown
+                  ➔ 2027 Restart Countdown
                 </a>
               </li>
               <li>
                 <a href="/#live-tracker" className="hover:text-amber-desert transition-colors">
-                  ➔ Live Route Map
+                  ➔ Route Map & Phoenix Stop
                 </a>
               </li>
               <li>
@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-asphalt-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div>
-            © 2026 Trust The Thumb. All Rights Reserved. LA ➔ Ohio.
+            © 2026–2027 Trust The Thumb. All Rights Reserved. LA ➔ Ohio (Returning 2027).
           </div>
 
           <div className="flex items-center gap-6">

@@ -15,9 +15,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Trust The Thumb | 2,000 Miles Across America with Lee & Jake",
+  title: "Trust The Thumb | 2,000 Miles Across America (Restarting 2027)",
   description:
-    "Follow Lee and Jake Parsons as they hitchhike 2,000 miles from Los Angeles to Ohio starting October 1st, testing real-world American kindness and human connection.",
+    "Follow Lee and Jake Parsons on Trust The Thumb. Our 2026 journey concluded in Phoenix, Arizona due to unexpected circumstances and lack of preparation. We are regrouping to start over from Los Angeles to Ohio in 2027, testing real-world American kindness and human connection.",
   keywords: [
     "hitchhiking america",
     "Lee Parsons",
@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "Trust The Thumb",
     "cross country hitchhiking",
     "LA to Ohio road trip",
+    "Phoenix Arizona hitchhiking",
+    "2027 restart",
+    "LA to Ohio 2027",
     "human kindness experiment",
     "highway adventure",
   ],
@@ -33,9 +36,9 @@ export const metadata: Metadata = {
     { name: "Jake Parsons", url: "https://instagram.com/Jake_thedrummer26" },
   ],
   openGraph: {
-    title: "Trust The Thumb: 2,000 Miles Across America",
+    title: "Trust The Thumb: 2,000 Miles Across America (Restarting 2027)",
     description:
-      "The algorithm says be afraid. We're going to find the truth. Live route map, countdown timer, and brotherhood journey launching October 1st.",
+      "The algorithm says be afraid. We're going to find the truth. 2026 journey concluded in Phoenix, AZ — full 2,000-mile restart from LA to Ohio in 2027.",
     url: "https://trustthethumb.com",
     siteName: "Trust The Thumb",
     images: [
@@ -51,9 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trust The Thumb: 2,000 Miles Across America",
+    title: "Trust The Thumb: 2,000 Miles Across America (Restarting 2027)",
     description:
-      "Testing American kindness from LA to Ohio with thumbs out and open minds launching Oct 1st.",
+      "Testing American kindness from LA to Ohio. 2026 journey concluded in Phoenix, AZ — starting over from LA to Ohio in 2027.",
     creator: "@theleeparsons",
   },
 };

@@ -52,13 +52,13 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-asphalt-card border border-asphalt-border text-amber-desert text-xs font-mono font-semibold uppercase">
               <Navigation2 className="w-3.5 h-3.5" />
-              Live Route GPS & Story Log
+              Route GPS & Expedition Log
             </div>
             <h2 className="font-display text-3xl sm:text-5xl font-black text-parchment">
               THE 2,000 MILE <span className="text-gradient-amber">CORRIDOR</span>
             </h2>
             <p className="text-base sm:text-lg text-parchment-muted">
-              Interactive map of Interstate 40 ➔ I-44 ➔ I-70. Click any waypoint to view upcoming leg previews and roadside updates starting October 1st.
+              Interactive map of our cross-country route. Our 2026 expedition reached Phoenix, Arizona before concluding due to unexpected circumstances and lack of preparation. We are regrouping and starting the complete route from LA to Ohio over again in 2027.
             </p>
           </div>
 
@@ -67,14 +67,13 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
             <div className="flex items-center justify-between gap-3 mb-2">
               <span className="flex items-center gap-2 text-xs font-bold font-mono text-amber-desert">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-desert"></span>
                 </span>
-                {liveStatus.state === "active" ? "LIVE ON HIGHWAY" : "LAUNCHING OCT 1, 2026"}
+                JOURNEY CONCLUDED IN PHOENIX, AZ
               </span>
-              <span className="text-[11px] font-mono text-parchment-muted flex items-center gap-1">
+              <span className="text-[11px] font-mono text-sunset flex items-center gap-1 font-semibold">
                 <Clock className="w-3 h-3" />
-                {liveStatus.state === "active" ? "Active Road Leg" : "Pre-Launch Mode"}
+                Returning 2027
               </span>
             </div>
             <div className="font-display font-bold text-xl text-parchment flex items-center justify-between">
@@ -102,11 +101,11 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
             <div className="absolute bottom-4 left-4 z-[1000] bg-asphalt-darker/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-asphalt-border text-[11px] font-mono text-parchment-muted flex items-center gap-4 shadow-lg">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-desert inline-block" />
-                <span>Start Line (LA)</span>
+                <span>2026 Route (LA ➔ Phoenix)</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-sage inline-block" />
-                <span>Upcoming Stops</span>
+                <span>2027 Restart Route (➔ Ohio)</span>
               </div>
             </div>
           </div>
@@ -122,7 +121,13 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
                 </h3>
               </div>
               <span className="text-xs font-mono px-2.5 py-1 rounded-full font-bold uppercase bg-amber-desert/20 text-amber-desert border border-amber-desert/40">
-                {selectedWaypoint.status === "current" ? "Start Point" : "Upcoming"}
+                {selectedWaypoint.id === "phoenix"
+                  ? "2026 Final Stop"
+                  : selectedWaypoint.status === "completed"
+                  ? "Completed Leg"
+                  : selectedWaypoint.status === "current"
+                  ? "Current Stop"
+                  : "Upcoming in 2027"}
               </span>
             </div>
 
@@ -150,10 +155,20 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
                   Vehicle: <span className="text-parchment">{selectedWaypoint.rideVehicle || "Standard vehicle"}</span>
                 </p>
               </div>
+            ) : selectedWaypoint.id === "phoenix" ? (
+              <div className="bg-amber-desert/10 p-4 rounded-2xl border border-amber-desert/30 text-xs text-amber-desert space-y-1">
+                <div className="font-bold flex items-center gap-1.5">
+                  <Info className="w-4 h-4 shrink-0" />
+                  <span>2026 Concluded Stop</span>
+                </div>
+                <p className="text-parchment-muted">
+                  Journey concluded here due to lack of preparation and unforeseen circumstances. The entire route restarts from LA in 2027!
+                </p>
+              </div>
             ) : (
               <div className="bg-asphalt-darker/40 p-4 rounded-2xl border border-asphalt-border/40 text-xs text-parchment-muted flex items-center gap-2">
                 <Info className="w-4 h-4 text-amber-desert shrink-0" />
-                <span>Upcoming leg preview. Real-time updates post live as rides are caught starting Oct 1st!</span>
+                <span>Target waypoint for our 2027 fresh start from Los Angeles to Ohio!</span>
               </div>
             )}
 
@@ -169,7 +184,7 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
 
             {/* Quick Helper Note */}
             <div className="text-[11px] font-mono text-parchment-muted text-center pt-2 border-t border-asphalt-border/40">
-              💡 Creators update GPS coordinates directly via <code className="text-amber-desert bg-asphalt-darker px-1.5 py-0.5 rounded">trackerConfig.json</code> from their mobile devices.
+              💡 Route log: 2026 expedition concluded in Phoenix, AZ. Full 2,000-mile LA ➔ Ohio journey restarts in 2027.
             </div>
 
           </div>

@@ -8,7 +8,7 @@ interface CountdownTimerProps {
 }
 
 export default function CountdownTimer({
-  targetDate = "2026-10-01T00:00:00Z",
+  targetDate = "2027-05-01T00:00:00Z",
 }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -44,7 +44,7 @@ export default function CountdownTimer({
     return (
       <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-amber-desert/20 border border-amber-desert text-amber-desert font-display font-bold text-lg shadow-amber-glow animate-pulse">
         <Rocket className="w-6 h-6 text-amber-desert" />
-        <span>THE JOURNEY HAS BEGUN! LA ➔ OHIO</span>
+        <span>2027 EXPEDITION UNDERWAY! LA ➔ OHIO</span>
       </div>
     );
   }
@@ -60,7 +60,7 @@ export default function CountdownTimer({
     <div className="space-y-3">
       <div className="flex items-center justify-center gap-2 text-xs font-mono font-bold text-amber-desert uppercase tracking-widest">
         <Calendar className="w-4 h-4 text-amber-desert animate-pulse" />
-        <span>Official Launch Countdown • October 1st, 2026</span>
+        <span>Official 2027 Restart Countdown • LA ➔ Ohio</span>
       </div>
 
       <div className="grid grid-cols-4 gap-2.5 sm:gap-4 max-w-xl mx-auto">
@@ -77,6 +77,10 @@ export default function CountdownTimer({
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="text-[11px] font-mono text-parchment-muted text-center pt-1">
+        Regrouping after concluding in Phoenix, AZ • Preparing to start over from scratch in 2027!
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export default function OurRules() {
       number: "02",
       title: "No plan is set in stone",
       icon: Map,
-      desc: "Flexibility is our roadmap. Weather changes, detours happen, and the best moments are never scheduled.",
+      desc: "Flexibility is our roadmap. Weather shifts, unforeseen circumstances arise, and knowing when to pause, regroup, and restart in 2027 is the highway's deepest lesson.",
     },
     {
       number: "03",

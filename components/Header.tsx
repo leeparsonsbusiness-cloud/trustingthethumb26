@@ -19,8 +19,8 @@ interface HeaderProps {
 }
 
 export default function Header({
-  statusBadgeText = "Launching Oct 1: Los Angeles, CA",
-  currentCity = "Los Angeles, CA",
+  statusBadgeText = "Journey Concluded • Phoenix, AZ (Restarting 2027)",
+  currentCity = "Phoenix, AZ",
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,7 +69,7 @@ export default function Header({
                 TRUST THE THUMB
               </span>
               <span className="text-[10px] tracking-widest text-parchment-muted uppercase font-mono mt-1">
-                2,000 Miles Across America
+                2,000 Miles Across America • Restarting 2027
               </span>
             </div>
           </Link>
@@ -108,7 +108,7 @@ export default function Header({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-desert opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-desert"></span>
               </span>
-              <span>Oct 1 Start</span>
+              <span>Phoenix Stop • 2027 Restart</span>
             </div>
 
             <button

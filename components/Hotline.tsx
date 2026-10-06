@@ -148,7 +148,7 @@ export default function Hotline() {
           </h2>
           
           <p className="text-base sm:text-lg text-parchment-muted leading-relaxed">
-            Check our current live highway location below! Please reach out if you&apos;re around the same area or highway corridor.
+            Check our 2026 stopping point below! Please reach out with encouragement, advice, or support as we regroup and prepare to start over from LA to Ohio in 2027.
           </p>
 
           {/* Live Location Badge Card */}
@@ -157,10 +157,10 @@ export default function Hotline() {
               <MapPin className="w-5 h-5 text-amber-desert animate-bounce" />
             </div>
             <div>
-              <div className="text-[11px] font-mono uppercase text-amber-desert font-bold">Current Active Location</div>
+              <div className="text-[11px] font-mono uppercase text-amber-desert font-bold">2026 Concluded Location</div>
               <div className="text-sm font-display font-bold text-parchment flex items-center gap-2">
-                <span>📍 Los Angeles, CA (Start Line)</span>
-                <span className="text-xs text-parchment-muted font-normal">• Launching Oct 1st</span>
+                <span>📍 Phoenix, AZ (Final 2026 Stop)</span>
+                <span className="text-xs text-parchment-muted font-normal">• Preparing 2027 Restart (LA ➔ Ohio)</span>
               </div>
             </div>
           </div>

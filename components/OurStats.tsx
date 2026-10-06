@@ -32,7 +32,7 @@ export default function OurStats({ metrics }: OurStatsProps) {
       id: "miles",
       label: "Miles Travelled",
       value: `${metrics.milesTraveled.toLocaleString()} mi`,
-      subText: `Goal: ${metrics.totalMilesGoal.toLocaleString()} mi`,
+      subText: `Goal: ${metrics.totalMilesGoal.toLocaleString()} mi (Restarting 2027)`,
       icon: MapPin,
       color: "text-amber-desert",
       border: "hover:border-amber-desert/50",
@@ -147,7 +147,7 @@ export default function OurStats({ metrics }: OurStatsProps) {
         <div className="mt-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-asphalt-card/60 border border-asphalt-border/60 text-xs font-mono text-parchment-muted">
             <Flame className="w-4 h-4 text-amber-desert" />
-            <span>Updated live starting October 1st launch from Los Angeles, CA</span>
+            <span>2026 expedition concluded in Phoenix, AZ • Starting over LA to Ohio in 2027</span>
           </div>
         </div>
 

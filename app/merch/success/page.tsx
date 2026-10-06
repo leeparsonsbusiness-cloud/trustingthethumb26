@@ -37,7 +37,7 @@ export default function MerchSuccessPage() {
 
   return (
     <main className="min-h-screen bg-asphalt-darker text-parchment flex flex-col justify-between selection:bg-amber-desert/30">
-      <Header statusBadgeText="Order Confirmed • On The Road" currentCity="Los Angeles, CA" />
+      <Header statusBadgeText="Journey Concluded in Phoenix • Returning 2027" currentCity="Phoenix, AZ" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-32 relative z-10 text-center space-y-8">
         
@@ -56,7 +56,7 @@ export default function MerchSuccessPage() {
             YOU&apos;RE FUELING THE <span className="text-gradient-amber">JOURNEY</span>!
           </h1>
           <p className="text-base sm:text-lg text-parchment-muted max-w-xl mx-auto leading-relaxed">
-            Thank you for grabbing official gear. 100% of your order goes straight toward highway meals, emergency supplies, and camera batteries for Lee and Jake.
+            Thank you for grabbing official gear. 100% of your order goes straight toward Lee and Jake&apos;s living provisions and gear preparation as we get ready to restart from LA to Ohio in 2027.
           </p>
         </div>
 
