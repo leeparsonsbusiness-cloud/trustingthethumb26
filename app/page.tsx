@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import RouteTracker from "@/components/RouteTracker";
+import Archive2026 from "@/components/Archive2026";
 import Mission from "@/components/Mission";
 import OurRules from "@/components/OurRules";
 import MerchSection from "@/components/MerchSection";
@@ -41,10 +41,11 @@ export default function HomePage() {
         launchDate={config.launchDate}
       />
 
-      {/* Interactive Route Map Tracker */}
-      <RouteTracker
+      {/* 2026 Archive (chapter-based journal) */}
+      <Archive2026
         waypoints={config.waypoints as any}
         liveStatus={config.liveStatus as any}
+        metrics={config.metrics}
       />
 
       {/* The Mission & Creator Profiles */}

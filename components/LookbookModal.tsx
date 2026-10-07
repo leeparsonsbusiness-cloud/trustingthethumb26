@@ -26,17 +26,18 @@ interface LookbookModalProps {
   waypoint: LookbookWaypoint | null;
   isOpen: boolean;
   onClose: () => void;
+  initialIndex?: number;
 }
 
-export default function LookbookModal({ waypoint, isOpen, onClose }: LookbookModalProps) {
+export default function LookbookModal({ waypoint, isOpen, onClose, initialIndex = 0 }: LookbookModalProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Reset active index when opened with a new waypoint
   useEffect(() => {
     if (isOpen) {
-      setActiveIndex(0);
+      setActiveIndex(initialIndex);
     }
-  }, [isOpen, waypoint?.id]);
+  }, [isOpen, waypoint?.id, initialIndex]);
 
   const photos = waypoint?.photos || [];
   const hasPhotos = photos.length > 0;
