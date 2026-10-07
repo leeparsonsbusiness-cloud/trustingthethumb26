@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
           `🚗 *Rides Caught:* ${cfg.metrics.ridesCaught || 0}\n` +
           `☕ *Generosity Index:* ${cfg.metrics.generosityCounter || 0}\n` +
           `🕒 *Last Updated:* ${new Date(cfg.liveStatus.lastUpdated).toUTCString()}\n\n` +
-          `🌐 [View Live Tracker](https://www.trustthethumb.com)`;
+          `🌐 [View the 2026 Archive](https://www.trustthethumb.com)`;
 
         await sendTelegramMessage(chatId, statusMsg);
         return NextResponse.json({ ok: true, command: 'status' });

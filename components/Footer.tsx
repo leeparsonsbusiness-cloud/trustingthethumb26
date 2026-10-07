@@ -53,8 +53,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/#live-tracker" className="hover:text-amber-desert transition-colors">
-                  ➔ Route Map & Phoenix Stop
+                <a href="/#archive" className="hover:text-amber-desert transition-colors">
+                  ➔ 2026 Archive & Photo Lookbooks
                 </a>
               </li>
               <li>

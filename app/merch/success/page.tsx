@@ -94,11 +94,11 @@ export default function MerchSuccessPage() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
-            href="/#live-tracker"
+            href="/#archive"
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-black text-sm shadow-amber-glow hover:scale-105 transition-all flex items-center justify-center gap-2"
           >
             <Compass className="w-4 h-4 stroke-[2.5]" />
-            <span>Track Live Highway Map</span>
+            <span>Explore the 2026 Archive</span>
           </Link>
 
           <Link

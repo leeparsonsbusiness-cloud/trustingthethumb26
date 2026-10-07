@@ -288,7 +288,7 @@ export function formatStatsReply(stats: TripStatsRecord): string {
     `☕ *Generosity Index:* ${stats.generosity_count} acts of kindness\n` +
     `🏷️ *Status:* ${stats.current_status_text || 'On the road'}\n` +
     `🕒 *Last Logged:* ${new Date(stats.updated_at).toUTCString()}\n\n` +
-    `🌐 [View Live Tracker](https://trustthethumb.com)`;
+    `🌐 [View the 2026 Archive](https://trustthethumb.com)`;
 }
 
 /**

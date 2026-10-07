@@ -140,11 +140,11 @@ export default function Hero({ metrics, launchDate = "2027-05-01T00:00:00Z" }: H
           {/* Action CTA Button */}
           <div className="flex justify-center pt-2">
             <a
-              href="#live-tracker"
+              href="#archive"
               className="inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset text-asphalt-darker font-display font-bold text-base shadow-amber-glow hover:scale-105 active:scale-95 transition-all duration-200"
             >
               <MapPin className="w-5 h-5 stroke-[2.5]" />
-              <span>Explore Route Map & Phoenix Stop</span>
+              <span>Explore the 2026 Archive</span>
             </a>
           </div>
 

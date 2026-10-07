@@ -34,7 +34,7 @@ export default function Header({
   }, []);
 
   const navLinks = [
-    { name: "Live Tracker", href: "/#live-tracker", icon: MapPin },
+    { name: "2026 Archive", href: "/#archive", icon: MapPin },
     { name: "The Mission", href: "/#the-mission", icon: Compass },
     { name: "Our Rules", href: "/#our-rules", icon: ShieldCheck },
     { name: "Merch", href: "/#merch", icon: ShoppingBag },

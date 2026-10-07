@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import type { Waypoint } from "./MapInner";
 import LookbookModal from "./LookbookModal";
+import TimelineScrubber from "./TimelineScrubber";
 
 // Dynamic import for Leaflet map component with ssr disabled
 const MapInner = dynamic(() => import("./MapInner"), {
@@ -20,7 +21,7 @@ const MapInner = dynamic(() => import("./MapInner"), {
   loading: () => (
     <div className="w-full h-full min-h-[450px] bg-asphalt-card/60 rounded-3xl animate-pulse flex flex-col items-center justify-center border border-asphalt-border gap-3 text-parchment-muted">
       <Compass className="w-8 h-8 animate-spin text-amber-desert" />
-      <span className="text-sm font-mono">Loading Interactive Highway Tracker...</span>
+      <span className="text-sm font-mono">Loading 2026 Archive Map...</span>
     </div>
   ),
 });
@@ -50,7 +51,10 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
   };
 
   return (
-    <section id="live-tracker" className="py-20 bg-asphalt-darker relative overflow-hidden border-t border-asphalt-border/40">
+    <>
+    {/* Legacy anchor so old #live-tracker links still land here */}
+    <span id="live-tracker" className="block h-0 scroll-mt-20" aria-hidden="true" />
+    <section id="archive" className="py-20 bg-asphalt-darker relative overflow-hidden border-t border-asphalt-border/40 scroll-mt-20">
       
       {/* Background accents */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-amber-desert/10 blur-[150px] rounded-full pointer-events-none" />
@@ -62,24 +66,24 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-asphalt-card border border-asphalt-border text-amber-desert text-xs font-mono font-semibold uppercase">
               <Navigation2 className="w-3.5 h-3.5" />
-              Route GPS & Expedition Log
+              2026 Archive • LA ➔ Phoenix
             </div>
             <h2 className="font-display text-3xl sm:text-5xl font-black text-parchment">
-              THE 2,000 MILE <span className="text-gradient-amber">CORRIDOR</span>
+              THE 2026 <span className="text-gradient-amber">ARCHIVE</span>
             </h2>
             <p className="text-base sm:text-lg text-parchment-muted">
-              Interactive map of our cross-country route. Our 2026 expedition reached Phoenix, Arizona before concluding due to unexpected circumstances and lack of preparation. We are regrouping and starting the complete route from LA to Ohio over again in 2027.
+              Every stop, ride, and photo from our 2026 hitchhike from Los Angeles to Phoenix, Arizona. Click any dot on the map to open its photo lookbook, or scrub the timeline below to relive the road in order. The full LA ➔ Ohio route starts over in 2027.
             </p>
           </div>
 
-          {/* Current Live Status Card */}
+          {/* 2026 Final Stop Card */}
           <div className="bg-asphalt-card/90 p-4 sm:p-5 rounded-2xl border border-amber-desert/30 shadow-amber-glow max-w-md w-full">
             <div className="flex items-center justify-between gap-3 mb-2">
               <span className="flex items-center gap-2 text-xs font-bold font-mono text-amber-desert">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-desert"></span>
                 </span>
-                JOURNEY CONCLUDED IN PHOENIX, AZ
+                2026 JOURNEY ENDED IN PHOENIX, AZ
               </span>
               <span className="text-[11px] font-mono text-sunset flex items-center gap-1 font-semibold">
                 <Clock className="w-3 h-3" />
@@ -128,7 +132,7 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-amber-desert" />
                 <h3 className="font-display font-bold text-lg text-parchment">
-                  Waypoint Preview
+                  Archive Entry
                 </h3>
               </div>
               <span className="text-xs font-mono px-2.5 py-1 rounded-full font-bold uppercase bg-amber-desert/20 text-amber-desert border border-amber-desert/40">
@@ -234,6 +238,14 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
 
         </div>
 
+        {/* Chronological Story Timeline Scrubber */}
+        <TimelineScrubber
+          waypoints={waypoints}
+          selectedId={selectedWaypoint.id}
+          onSelect={(wp) => setSelectedWaypoint(wp)}
+          onOpenLookbook={handleOpenLookbook}
+        />
+
       </div>
 
       {/* Interactive Photo Lookbook Modal */}
@@ -243,5 +255,6 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
         onClose={() => setIsLookbookOpen(false)}
       />
     </section>
+    </>
   );
 }

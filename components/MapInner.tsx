@@ -85,12 +85,18 @@ export default function MapInner({
       }
     });
 
+    // Small "📷 N" pill shown above any stop that has a photo lookbook
+    const lookbookBadge = (photoCount: number, lift: string) =>
+      photoCount > 0
+        ? `<div style="position:absolute;left:50%;bottom:${lift};transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:3px;padding:2px 7px;border-radius:999px;background:#F2CC8F;color:#1F2421;font-family:ui-monospace,monospace;font-size:10px;font-weight:800;line-height:1.3;border:1.5px solid #1F2421;box-shadow:0 2px 8px rgba(0,0,0,0.5);cursor:pointer;pointer-events:auto;">📷 ${photoCount}</div>`
+        : "";
+
     // Custom Icon Builder
-    const createMarkerIcon = (status: string, id: string) => {
+    const createMarkerIcon = (status: string, id: string, photoCount: number) => {
       if (id === "phoenix" || status === "current") {
         return L.divIcon({
           className: "pulse-marker-container cursor-pointer",
-          html: `<div class="pulse-marker-ring"></div><div class="pulse-marker-dot"></div>`,
+          html: `<div class="pulse-marker-ring"></div><div class="pulse-marker-dot"></div>${lookbookBadge(photoCount, "calc(100% - 4px)")}`,
           iconSize: [40, 40],
           iconAnchor: [20, 20],
         });
@@ -99,7 +105,7 @@ export default function MapInner({
       if (status === "completed") {
         return L.divIcon({
           className: "custom-completed-pin cursor-pointer",
-          html: `<div style="width: 14px; height: 14px; background: #E07A5F; border: 2px solid #F4F1DE; border-radius: 50%; box-shadow: 0 0 10px rgba(224,122,95,0.6); cursor: pointer;"></div>`,
+          html: `<div style="width: 14px; height: 14px; background: #E07A5F; border: 2px solid #F4F1DE; border-radius: 50%; box-shadow: 0 0 10px rgba(224,122,95,0.6); cursor: pointer;"></div>${lookbookBadge(photoCount, "calc(100% + 6px)")}`,
           iconSize: [14, 14],
           iconAnchor: [7, 7],
         });
@@ -107,7 +113,7 @@ export default function MapInner({
 
       return L.divIcon({
         className: "custom-upcoming-pin cursor-pointer",
-        html: `<div style="width: 10px; height: 10px; background: #515E58; border: 2px solid #1F2421; border-radius: 50%; cursor: pointer;"></div>`,
+        html: `<div style="width: 10px; height: 10px; background: #515E58; border: 2px solid #1F2421; border-radius: 50%; cursor: pointer;"></div>${lookbookBadge(photoCount, "calc(100% + 6px)")}`,
         iconSize: [10, 10],
         iconAnchor: [5, 5],
       });
@@ -144,9 +150,11 @@ export default function MapInner({
 
     // Add Markers (no popup tooltip - directly opens lookbook on click)
     waypoints.forEach((wp) => {
+      const photoCount = wp.photos?.length || 0;
       const marker = L.marker(wp.coordinates, {
-        icon: createMarkerIcon(wp.status, wp.id),
+        icon: createMarkerIcon(wp.status, wp.id, photoCount),
         title: `${wp.name} — Click to view photo lookbook`,
+        zIndexOffset: photoCount > 0 ? 500 : 0,
       }).addTo(map);
 
       marker.on("click", () => {
