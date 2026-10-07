@@ -57,7 +57,25 @@
       "dateCompleted": "2026-10-01T10:00:00Z",
       "storySnippet": "Official Start Line! Thumbs out on Santa Monica Blvd and kicked off the 2,000-mile journey across America.",
       "driverName": null,
-      "rideVehicle": null
+      "rideVehicle": null,
+      "photos": [
+        {
+          "url": "/photos/la/la-01.jpg",
+          "caption": "Pink Los Angeles skies and palm trees before we hit the road"
+        },
+        {
+          "url": "/photos/la/la-02.jpg",
+          "caption": "Thumb out at the Freeway Entrance, 170 South, with our packs by the curb"
+        },
+        {
+          "url": "/photos/la/la-03.jpg",
+          "caption": "Sign in hand at the on-ramp, ready to catch our first ride"
+        },
+        {
+          "url": "/photos/la/la-04.jpg",
+          "caption": "Night falls on our first day in Los Angeles"
+        }
+      ]
     },
     {
       "id": "barstow",
@@ -69,7 +87,17 @@
       "dateCompleted": "2026-10-02T15:30:00Z",
       "storySnippet": "First major highway stop! Crossed the High Desert and stopped in Barstow to regroup before heading north.",
       "driverName": "Dave",
-      "rideVehicle": "1998 Ford F-150"
+      "rideVehicle": "1998 Ford F-150",
+      "photos": [
+        {
+          "url": "/photos/barstow/barstow-01.jpg",
+          "caption": "Welcome to Barstow! Taking a breather against the town sign"
+        },
+        {
+          "url": "/photos/barstow/barstow-02.jpg",
+          "caption": "Waking up to sunrise through the tent mesh"
+        }
+      ]
     },
     {
       "id": "vegas",
@@ -98,6 +126,86 @@
         {
           "url": "/photos/vegas/shoutout-shirt.png",
           "caption": "Highway memories & supporter shoutouts in Vegas"
+        },
+        {
+          "url": "/photos/vegas/vegas-01.jpg",
+          "caption": "Recharging on a stairwell, packs everywhere, before diving into the Strip"
+        },
+        {
+          "url": "/photos/vegas/vegas-02.jpg",
+          "caption": "Neon nights with New York-New York glowing behind us"
+        },
+        {
+          "url": "/photos/vegas/vegas-03.jpg",
+          "caption": "Coffee and snack run inside a Strip hotel"
+        },
+        {
+          "url": "/photos/vegas/vegas-04.jpg",
+          "caption": "Strip traffic rolling by under the walkway lights"
+        },
+        {
+          "url": "/photos/vegas/vegas-05.jpg",
+          "caption": "Thumb out under the Four Seasons arch with our VEGAS sign"
+        },
+        {
+          "url": "/photos/vegas/vegas-06.jpg",
+          "caption": "Lady Liberty lit up at New York-New York"
+        },
+        {
+          "url": "/photos/vegas/vegas-07.jpg",
+          "caption": "Sorting through gear in the hotel room"
+        },
+        {
+          "url": "/photos/vegas/vegas-08.jpg",
+          "caption": "Walking past the Luxor pyramid under the palm trees"
+        },
+        {
+          "url": "/photos/vegas/vegas-09.jpg",
+          "caption": "Thumbs up from the hotel room"
+        },
+        {
+          "url": "/photos/vegas/vegas-10.jpg",
+          "caption": "Hotel room mirror vibes"
+        },
+        {
+          "url": "/photos/vegas/vegas-11.jpg",
+          "caption": "Resting up after a long day on the road"
+        },
+        {
+          "url": "/photos/vegas/vegas-12.jpg",
+          "caption": "Pink neon fountains along the Strip"
+        },
+        {
+          "url": "/photos/vegas/vegas-13.jpg",
+          "caption": "Hell's Kitchen glowing on the Strip at night"
+        },
+        {
+          "url": "/photos/vegas/vegas-14.jpg",
+          "caption": "Selfie with the Statue of Liberty"
+        },
+        {
+          "url": "/photos/vegas/vegas-15.jpg",
+          "caption": "Watching the Strip traffic from the pedestrian bridge"
+        },
+        {
+          "url": "/photos/vegas/vegas-16.jpg",
+          "caption": "The Luxor sky beam piercing the night above Excalibur"
+        },
+        {
+          "url": "/photos/vegas/vegas-17.jpg",
+          "caption": "Morning stroll past the pool deck"
+        },
+        {
+          "url": "/photos/vegas/vegas-18.jpg",
+          "caption": "Sidewalk break and a phone check"
+        },
+        {
+          "url": "/photos/vegas/vegas-19.jpg",
+          "caption": "Early morning light at an empty Vegas intersection"
+        },
+        {
+          "url": "/photos/vegas/vegas-20.jpg",
+          "caption": "On the bus and heading out of Las Vegas"
         }
       ]
     },
@@ -111,7 +219,73 @@
       "dateCompleted": "2026-10-04T18:00:00Z",
       "storySnippet": "We woke up after sleeping in a tent a few hundred feet away from a gas station (the ONLY gas station within 60+ miles, anyways we wake up and walk towards the gas station to get to the street and begin hitch hiking when Kalaheo asked what we were doing and told us he thought it was cool but he is heading to california, then after 20 seconds he yelled over to us \"Fck it ill take you guys to Kingman AZ (1+ hour drive in the OPPOSITE direction from where he is going) SHOUTOUT TO HIM HE IS AWESOME FOR THAT (oh yeah he bought us cold waters!)\"",
       "driverName": "Kalaheo",
-      "rideVehicle": "Highway Lift"
+      "rideVehicle": "Highway Lift",
+      "photos": [
+        {
+          "url": "/photos/kingman/kingman-01.jpg",
+          "caption": "Thumb out on the desert highway with the hills behind us"
+        },
+        {
+          "url": "/photos/kingman/kingman-02.jpg",
+          "caption": "Roadside break beside a casino sign"
+        },
+        {
+          "url": "/photos/kingman/kingman-03.jpg",
+          "caption": "Selfie with a friendly stranger at the gas station"
+        },
+        {
+          "url": "/photos/kingman/kingman-04.jpg",
+          "caption": "Golden hour at the gas station lot"
+        },
+        {
+          "url": "/photos/kingman/kingman-05.jpg",
+          "caption": "Sun setting behind the desert mountains"
+        },
+        {
+          "url": "/photos/kingman/kingman-06.jpg",
+          "caption": "Late-night goofing around on an office chair someone left in the lot"
+        },
+        {
+          "url": "/photos/kingman/kingman-07.jpg",
+          "caption": "The stars coming out over the desert"
+        },
+        {
+          "url": "/photos/kingman/kingman-08.jpg",
+          "caption": "Walking past a highway message board at dusk"
+        },
+        {
+          "url": "/photos/kingman/kingman-09.jpg",
+          "caption": "Camped out beside a solar message trailer for the night"
+        },
+        {
+          "url": "/photos/kingman/kingman-10.jpg",
+          "caption": "Capturing the sunset glow on the phone"
+        },
+        {
+          "url": "/photos/kingman/kingman-11.jpg",
+          "caption": "Dusk lights up the highway rest stop"
+        },
+        {
+          "url": "/photos/kingman/kingman-12.jpg",
+          "caption": "Silhouette against the desert sunset"
+        },
+        {
+          "url": "/photos/kingman/kingman-13.jpg",
+          "caption": "Setting up camp at dusk"
+        },
+        {
+          "url": "/photos/kingman/kingman-14.jpg",
+          "caption": "Watching the city lights flicker on from the hills"
+        },
+        {
+          "url": "/photos/kingman/kingman-15.jpg",
+          "caption": "The Milky Way over our campsite"
+        },
+        {
+          "url": "/photos/kingman/kingman-16.jpg",
+          "caption": "FLAGSTAFF sign in hand at the I-40 / US-93 junction"
+        }
+      ]
     },
     {
       "id": "phoenix",
@@ -123,7 +297,21 @@
       "dateCompleted": "2026-10-06T10:00:00Z",
       "storySnippet": "The end of the line for 2026. Due to a lack of preparation and unforeseen circumstances, our journey ended here in Phoenix, Arizona. We're regrouping and starting over from Los Angeles in 2027.",
       "driverName": null,
-      "rideVehicle": null
+      "rideVehicle": null,
+      "photos": [
+        {
+          "url": "/photos/phoenix/phoenix-01.jpg",
+          "caption": "Waiting at the airport terminal for our flight"
+        },
+        {
+          "url": "/photos/phoenix/phoenix-02.jpg",
+          "caption": "Quiet moment in the terminal, the end of the 2026 road"
+        },
+        {
+          "url": "/photos/phoenix/phoenix-03.jpg",
+          "caption": "Wing view at dusk, see you in 2027"
+        }
+      ]
     },
     {
       "id": "flagstaff",
