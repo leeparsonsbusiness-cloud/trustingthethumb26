@@ -89,7 +89,7 @@ export default function Archive2026({ waypoints, liveStatus, metrics }: Archive2
     { label: "Miles Hitched", value: metrics.milesTraveled.toLocaleString() },
     { label: "Rides Caught", value: String(metrics.ridesCaught) },
     { label: "Days on the Road", value: String(metrics.daysOnHighway) },
-    { label: "Acts of Kindness", value: String(metrics.generosityCounter) },
+    { label: "States Travelled", value: String(new Set(stops.map((s) => s.state)).size) },
   ];
 
   return (
