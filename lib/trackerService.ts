@@ -20,6 +20,11 @@ export interface Waypoint {
   storySnippet: string;
   driverName: string | null;
   rideVehicle: string | null;
+  photos?: Array<{
+    url: string;
+    caption?: string;
+    title?: string;
+  }>;
 }
 
 export interface LiveStatus {

@@ -4,6 +4,12 @@ import React, { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+export interface WaypointPhoto {
+  url: string;
+  caption?: string;
+  title?: string;
+}
+
 export interface Waypoint {
   id: string;
   name: string;
@@ -15,15 +21,22 @@ export interface Waypoint {
   storySnippet: string;
   driverName?: string | null;
   rideVehicle?: string | null;
+  photos?: WaypointPhoto[];
 }
 
 interface MapInnerProps {
   waypoints: Waypoint[];
   activeWaypointId: string;
   onSelectWaypoint: (wp: Waypoint) => void;
+  onOpenLookbook?: (wp: Waypoint) => void;
 }
 
-export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint }: MapInnerProps) {
+export default function MapInner({ 
+  waypoints, 
+  activeWaypointId, 
+  onSelectWaypoint,
+  onOpenLookbook 
+}: MapInnerProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 
@@ -76,7 +89,7 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
     const createMarkerIcon = (status: string, id: string) => {
       if (id === "phoenix" || status === "current") {
         return L.divIcon({
-          className: "pulse-marker-container",
+          className: "pulse-marker-container cursor-pointer",
           html: `<div class="pulse-marker-ring"></div><div class="pulse-marker-dot"></div>`,
           iconSize: [40, 40],
           iconAnchor: [20, 20],
@@ -85,16 +98,16 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
 
       if (status === "completed") {
         return L.divIcon({
-          className: "custom-completed-pin",
-          html: `<div style="width: 14px; height: 14px; background: #E07A5F; border: 2px solid #F4F1DE; border-radius: 50%; box-shadow: 0 0 10px rgba(224,122,95,0.6);"></div>`,
+          className: "custom-completed-pin cursor-pointer",
+          html: `<div style="width: 14px; height: 14px; background: #E07A5F; border: 2px solid #F4F1DE; border-radius: 50%; box-shadow: 0 0 10px rgba(224,122,95,0.6); cursor: pointer;"></div>`,
           iconSize: [14, 14],
           iconAnchor: [7, 7],
         });
       }
 
       return L.divIcon({
-        className: "custom-upcoming-pin",
-        html: `<div style="width: 10px; height: 10px; background: #515E58; border: 2px solid #1F2421; border-radius: 50%;"></div>`,
+        className: "custom-upcoming-pin cursor-pointer",
+        html: `<div style="width: 10px; height: 10px; background: #515E58; border: 2px solid #1F2421; border-radius: 50%; cursor: pointer;"></div>`,
         iconSize: [10, 10],
         iconAnchor: [5, 5],
       });
@@ -129,36 +142,19 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
       }).addTo(map);
     }
 
-    // Add Markers
+    // Add Markers (no popup tooltip - directly opens lookbook on click)
     waypoints.forEach((wp) => {
-      const isPhoenix = wp.id === "phoenix";
       const marker = L.marker(wp.coordinates, {
         icon: createMarkerIcon(wp.status, wp.id),
+        title: `${wp.name} — Click to view photo lookbook`,
       }).addTo(map);
 
-      const popupContent = `
-        <div style="padding: 4px; max-width: 240px; font-family: sans-serif;">
-          <div style="font-weight: bold; font-size: 14px; color: #F4F1DE; border-bottom: 1px solid rgba(224,122,95,0.3); padding-bottom: 4px;">
-            ${wp.name} ${isPhoenix ? "🛑" : ""}
-          </div>
-          <p style="font-size: 12px; color: #D8D4BC; margin-top: 6px; line-height: 1.4;">
-            "${wp.storySnippet}"
-          </p>
-          ${
-            wp.driverName
-              ? `<div style="font-size: 11px; color: #F2CC8F; margin-top: 6px; font-family: monospace;">🚗 Ride: ${wp.driverName} (${wp.rideVehicle || "Vehicle"})</div>`
-              : ""
-          }
-          ${
-            isPhoenix
-              ? `<div style="font-size: 11px; color: #E07A5F; margin-top: 6px; font-weight: bold;">🔄 Restarting LA ➔ Ohio in 2027</div>`
-              : ""
-          }
-        </div>
-      `;
-
-      marker.bindPopup(popupContent);
-      marker.on("click", () => onSelectWaypoint(wp));
+      marker.on("click", () => {
+        onSelectWaypoint(wp);
+        if (onOpenLookbook) {
+          onOpenLookbook(wp);
+        }
+      });
     });
 
     // Center Map on Active Waypoint
@@ -166,7 +162,7 @@ export default function MapInner({ waypoints, activeWaypointId, onSelectWaypoint
     if (activeWp) {
       map.flyTo(activeWp.coordinates, 7, { duration: 1.2 });
     }
-  }, [waypoints, activeWaypointId, onSelectWaypoint]);
+  }, [waypoints, activeWaypointId, onSelectWaypoint, onOpenLookbook]);
 
   // Clean cleanup on component unmount
   useEffect(() => {

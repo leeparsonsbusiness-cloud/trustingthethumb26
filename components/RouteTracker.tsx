@@ -8,9 +8,11 @@ import {
   Clock, 
   Car, 
   Compass, 
-  Info
+  Info,
+  Camera
 } from "lucide-react";
 import type { Waypoint } from "./MapInner";
+import LookbookModal from "./LookbookModal";
 
 // Dynamic import for Leaflet map component with ssr disabled
 const MapInner = dynamic(() => import("./MapInner"), {
@@ -38,6 +40,14 @@ interface RouteTrackerProps {
 export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProps) {
   const currentWaypoint = waypoints.find((w) => w.status === "current") || waypoints[0];
   const [selectedWaypoint, setSelectedWaypoint] = useState<Waypoint>(currentWaypoint);
+  const [lookbookWaypoint, setLookbookWaypoint] = useState<Waypoint | null>(null);
+  const [isLookbookOpen, setIsLookbookOpen] = useState(false);
+
+  const handleOpenLookbook = (wp: Waypoint) => {
+    setSelectedWaypoint(wp);
+    setLookbookWaypoint(wp);
+    setIsLookbookOpen(true);
+  };
 
   return (
     <section id="live-tracker" className="py-20 bg-asphalt-darker relative overflow-hidden border-t border-asphalt-border/40">
@@ -95,6 +105,7 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               waypoints={waypoints}
               activeWaypointId={selectedWaypoint.id}
               onSelectWaypoint={(wp) => setSelectedWaypoint(wp)}
+              onOpenLookbook={handleOpenLookbook}
             />
 
             {/* Map Legend Overlay */}
@@ -201,9 +212,22 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
               </div>
             )}
 
+            {/* View Lookbook Button */}
+            <button
+              onClick={() => handleOpenLookbook(selectedWaypoint)}
+              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-amber-desert to-sunset hover:from-amber-desert/90 hover:to-sunset/90 text-asphalt-darker font-display font-black text-sm tracking-wide shadow-amber-glow flex items-center justify-center gap-2 transition-all group cursor-pointer"
+            >
+              <Camera className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <span>
+                {selectedWaypoint.photos && selectedWaypoint.photos.length > 0
+                  ? `Open Photo Lookbook (${selectedWaypoint.photos.length} photos)`
+                  : "Open Stop Lookbook"}
+              </span>
+            </button>
+
             {/* Quick Helper Note */}
             <div className="text-[11px] font-mono text-parchment-muted text-center pt-2 border-t border-asphalt-border/40">
-              💡 Route log: 2026 expedition concluded in Phoenix, AZ. Full 2,000-mile LA ➔ Ohio journey restarts in 2027.
+              💡 Click any dot on the map to open that stop&apos;s photo lookbook directly!
             </div>
 
           </div>
@@ -211,6 +235,13 @@ export default function RouteTracker({ waypoints, liveStatus }: RouteTrackerProp
         </div>
 
       </div>
+
+      {/* Interactive Photo Lookbook Modal */}
+      <LookbookModal
+        waypoint={lookbookWaypoint}
+        isOpen={isLookbookOpen}
+        onClose={() => setIsLookbookOpen(false)}
+      />
     </section>
   );
 }

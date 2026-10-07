@@ -81,7 +81,25 @@
       "dateCompleted": "2026-10-03T20:15:00Z",
       "storySnippet": "Neon lights detour! Caught a ride up the I-15 corridor into Las Vegas.",
       "driverName": "Rick",
-      "rideVehicle": "Dodge Ram 1500"
+      "rideVehicle": "Dodge Ram 1500",
+      "photos": [
+        {
+          "url": "/photos/vegas/vegas-strip.jpg",
+          "caption": "Arriving on the Las Vegas Strip under the neon lights"
+        },
+        {
+          "url": "/photos/vegas/luxor-pyramid.png",
+          "caption": "Exploring near the Luxor pyramid"
+        },
+        {
+          "url": "/photos/vegas/hotel-desk.jpg",
+          "caption": "Recharging and planning our next highway ride"
+        },
+        {
+          "url": "/photos/vegas/shoutout-shirt.png",
+          "caption": "Highway memories & supporter shoutouts in Vegas"
+        }
+      ]
     },
     {
       "id": "kingman",
