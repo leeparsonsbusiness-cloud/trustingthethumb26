@@ -55,7 +55,7 @@
       "status": "completed",
       "mileMarker": 0,
       "dateCompleted": "2026-10-01T10:00:00Z",
-      "storySnippet": "Official Start Line! Thumbs out on Santa Monica Blvd and kicked off the 2,000-mile journey across America.",
+      "storySnippet": "Official Start Line: walking out of my door in Hollywood, California.",
       "driverName": null,
       "rideVehicle": null,
       "photos": [
@@ -86,8 +86,8 @@
       "mileMarker": 115,
       "dateCompleted": "2026-10-02T15:30:00Z",
       "storySnippet": "First major highway stop! Crossed the High Desert and stopped in Barstow to regroup before heading north.",
-      "driverName": "Dave",
-      "rideVehicle": "1998 Ford F-150",
+      "driverName": "Jessica + Jackie",
+      "rideVehicle": null,
       "photos": [
         {
           "url": "/photos/barstow/barstow-01.jpg",
@@ -108,8 +108,8 @@
       "mileMarker": 270,
       "dateCompleted": "2026-10-03T20:15:00Z",
       "storySnippet": "Neon lights detour! Caught a ride up the I-15 corridor into Las Vegas.",
-      "driverName": "Rick",
-      "rideVehicle": "Dodge Ram 1500",
+      "driverName": "Tracy",
+      "rideVehicle": null,
       "photos": [
         {
           "url": "/photos/vegas/vegas-strip.jpg",
@@ -218,8 +218,8 @@
       "mileMarker": 380,
       "dateCompleted": "2026-10-04T18:00:00Z",
       "storySnippet": "We woke up after sleeping in a tent a few hundred feet away from a gas station (the ONLY gas station within 60+ miles, anyways we wake up and walk towards the gas station to get to the street and begin hitch hiking when Kalaheo asked what we were doing and told us he thought it was cool but he is heading to california, then after 20 seconds he yelled over to us \"Fck it ill take you guys to Kingman AZ (1+ hour drive in the OPPOSITE direction from where he is going) SHOUTOUT TO HIM HE IS AWESOME FOR THAT (oh yeah he bought us cold waters!)\"",
-      "driverName": "Kalaheo",
-      "rideVehicle": "Highway Lift",
+      "driverName": "Kalaheo + Kiya",
+      "rideVehicle": null,
       "photos": [
         {
           "url": "/photos/kingman/kingman-01.jpg",
