@@ -88,6 +88,16 @@
       "storySnippet": "First major highway stop! Crossed the High Desert and stopped in Barstow to regroup before heading north.",
       "driverName": "Jessica + Jackie",
       "rideVehicle": null,
+      "driverNotes": [
+        {
+          "name": "Jessica",
+          "note": "Jessica went out of her way to get us from Barstow to the truck station, a 5-mile hop that got us right back on the road."
+        },
+        {
+          "name": "Jackie",
+          "note": "Jackie carried us from the truck station all the way to Las Vegas with big energy and even bigger conversation. She got us there!"
+        }
+      ],
       "photos": [
         {
           "url": "/photos/barstow/barstow-01.jpg",
@@ -110,6 +120,12 @@
       "storySnippet": "Neon lights detour! Caught a ride up the I-15 corridor into Las Vegas.",
       "driverName": "Tracy",
       "rideVehicle": null,
+      "driverNotes": [
+        {
+          "name": "Tracy",
+          "note": "Tracy treated us to a tour of Boulder City and a look at the Hoover Dam. He was kind and welcoming, and he shared great stories about the towns of St. Thomas and Nelson, Nevada."
+        }
+      ],
       "photos": [
         {
           "url": "/photos/vegas/vegas-strip.jpg",
@@ -220,6 +236,16 @@
       "storySnippet": "We woke up after sleeping in a tent a few hundred feet away from a gas station (the ONLY gas station within 60+ miles, anyways we wake up and walk towards the gas station to get to the street and begin hitch hiking when Kalaheo asked what we were doing and told us he thought it was cool but he is heading to california, then after 20 seconds he yelled over to us \"Fck it ill take you guys to Kingman AZ (1+ hour drive in the OPPOSITE direction from where he is going) SHOUTOUT TO HIM HE IS AWESOME FOR THAT (oh yeah he bought us cold waters!)\"",
       "driverName": "Kalaheo + Kiya",
       "rideVehicle": null,
+      "driverNotes": [
+        {
+          "name": "Kalaheo",
+          "note": "Kal is a traveler who's out there enjoying life. He turned around and went backwards on his own trip just to take us, and he plays great music for the ride."
+        },
+        {
+          "name": "Kiya",
+          "note": "Kiya picked us up and drove us up the highway to the truck stop. She showed incredible trust by leaving her car running with us inside while she shopped at Walmart. It was a short chat, but a warm one, and we loved hearing her dreams of hitchhiking and train hopping."
+        }
+      ],
       "photos": [
         {
           "url": "/photos/kingman/kingman-01.jpg",

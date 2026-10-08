@@ -379,6 +379,22 @@ export default function Archive2026({ waypoints, liveStatus, metrics }: Archive2
                             </div>
                           )}
 
+                          {stop.driverNotes && stop.driverNotes.length > 0 && (
+                            <ul className="mt-3 space-y-2">
+                              {stop.driverNotes.map((d) => (
+                                <li
+                                  key={d.name}
+                                  className="text-sm text-parchment/90 leading-relaxed"
+                                >
+                                  <span className="font-display font-black text-amber-desert">
+                                    {d.name}:
+                                  </span>{" "}
+                                  {d.note}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
                           <p
                             className={`mt-4 text-sm sm:text-base text-parchment/90 leading-relaxed ${
                               stop.driverName

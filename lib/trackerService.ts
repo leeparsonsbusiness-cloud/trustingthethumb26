@@ -20,6 +20,7 @@ export interface Waypoint {
   storySnippet: string;
   driverName: string | null;
   rideVehicle: string | null;
+  driverNotes?: Array<{ name: string; note: string }>;
   photos?: Array<{
     url: string;
     caption?: string;

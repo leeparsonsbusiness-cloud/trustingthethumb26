@@ -15,6 +15,7 @@ export interface Waypoint {
   storySnippet: string;
   driverName?: string | null;
   rideVehicle?: string | null;
+  driverNotes?: { name: string; note: string }[];
   photos?: WaypointPhoto[];
 }
 
