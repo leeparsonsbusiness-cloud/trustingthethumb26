@@ -361,38 +361,40 @@ export default function Archive2026({ waypoints, liveStatus, metrics }: Archive2
                           </h3>
 
                           {stop.driverName && (
-                            <div className="mt-4 inline-flex items-center gap-3 self-start bg-asphalt-darker/80 border border-amber-desert/40 rounded-2xl px-4 py-2.5">
-                              <Car className="w-4 h-4 text-sunset shrink-0" />
-                              <div>
-                                <div className="text-[10px] font-mono uppercase tracking-wider text-sunset font-bold">
-                                  Ride Hero
-                                </div>
-                                <div className="font-display font-black text-parchment leading-tight">
-                                  {stop.driverName}
-                                  {stop.rideVehicle && (
-                                    <span className="font-mono text-[11px] font-normal text-parchment-muted ml-2">
-                                      {stop.rideVehicle}
-                                    </span>
-                                  )}
+                            <div className="mt-4 self-start max-w-xl bg-asphalt-darker/80 border border-amber-desert/40 rounded-2xl px-4 py-3">
+                              <div className="flex items-center gap-3">
+                                <Car className="w-4 h-4 text-sunset shrink-0" />
+                                <div>
+                                  <div className="text-[10px] font-mono uppercase tracking-wider text-sunset font-bold">
+                                    Ride Hero
+                                  </div>
+                                  <div className="font-display font-black text-parchment leading-tight">
+                                    {stop.driverName}
+                                    {stop.rideVehicle && (
+                                      <span className="font-mono text-[11px] font-normal text-parchment-muted ml-2">
+                                        {stop.rideVehicle}
+                                      </span>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          )}
 
-                          {stop.driverNotes && stop.driverNotes.length > 0 && (
-                            <ul className="mt-3 space-y-2">
-                              {stop.driverNotes.map((d) => (
-                                <li
-                                  key={d.name}
-                                  className="text-sm text-parchment/90 leading-relaxed"
-                                >
-                                  <span className="font-display font-black text-amber-desert">
-                                    {d.name}:
-                                  </span>{" "}
-                                  {d.note}
-                                </li>
-                              ))}
-                            </ul>
+                              {stop.driverNotes && stop.driverNotes.length > 0 && (
+                                <ul className="mt-3 pt-3 border-t border-amber-desert/20 space-y-2.5">
+                                  {stop.driverNotes.map((d) => (
+                                    <li
+                                      key={d.name}
+                                      className="text-sm text-parchment/90 leading-relaxed"
+                                    >
+                                      <span className="font-display font-black text-amber-desert">
+                                        {d.name}:
+                                      </span>{" "}
+                                      {d.note}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
                           )}
 
                           <p
